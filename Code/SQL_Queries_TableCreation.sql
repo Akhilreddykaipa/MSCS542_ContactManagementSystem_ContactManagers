@@ -1,13 +1,14 @@
 CREATE DATABASE IF NOT EXISTS myCms;
 USE myCms;
 
-
+-- Creates Supervisor Table
 CREATE TABLE Supervisor (
   ID INT NOT NULL PRIMARY KEY,
   UserID INT,
   DepartmentID INT
   );
 
+-- Creates Department Table
 CREATE TABLE Department (
   ID INT NOT NULL PRIMARY KEY,
   DName VARCHAR(45),
@@ -15,6 +16,7 @@ CREATE TABLE Department (
   FOREIGN KEY (Supervisor_ID) REFERENCES Supervisor (ID)
    );
 
+-- Creates Employees Table
  CREATE TABLE Employees (
   ID INT NOT NULL PRIMARY KEY,
   Fname VARCHAR(45),
@@ -30,6 +32,7 @@ CREATE TABLE Department (
  FOREIGN KEY (Supervisor_ID) REFERENCES Supervisor (ID)
  );
 
+-- Creates User Table
 CREATE TABLE users (
   userlogin INT NOT NULL PRIMARY KEY,
   userpassword VARCHAR(45) ,
@@ -40,6 +43,7 @@ CREATE TABLE users (
     FOREIGN KEY (Employees_ID) REFERENCES Employees (ID)
     );
 
+-- Creates Relationship Table
 CREATE TABLE  Relationship (
   ID INT NOT NULL PRIMARY KEY,
   user1ID INT ,
@@ -48,6 +52,7 @@ CREATE TABLE  Relationship (
   Rdate DATE
   );
 
+-- Creates GroupMembers Table
   CREATE TABLE GroupMembers (
   ID INT NOT NULL PRIMARY KEY,
   GroupID INT ,
@@ -55,6 +60,7 @@ CREATE TABLE  Relationship (
   JoinDate DATE
   );
 
+-- Creates GroupDetails Table
   CREATE TABLE GroupDetails (
   ID INT NOT NULL PRIMARY KEY ,
   LeaderID INT ,
@@ -64,6 +70,7 @@ CREATE TABLE  Relationship (
    FOREIGN KEY (GroupMembers_ID) REFERENCES GroupMembers (ID)
    );
 
+-- Creates Messages Table
 CREATE TABLE Messages (
   ID INT NOT NULL PRIMARY KEY,
   senderID INT ,
@@ -72,6 +79,7 @@ CREATE TABLE Messages (
   Messagedate DATE
  );
 
+-- Creates EmailHistory Table
  CREATE TABLE EmailHistory (
   ID INT NOT NULL PRIMARY KEY,
   SenderID INT ,
@@ -80,6 +88,7 @@ CREATE TABLE Messages (
   EmailDate DATE
   );
 
+-- Creates Certified Table
 CREATE TABLE Certified (
   ID INT NOT NULL PRIMARY KEY,
   UserID INT ,
@@ -89,7 +98,7 @@ CREATE TABLE Certified (
  FOREIGN KEY (Employees_ID) REFERENCES Employees (ID)
     );
 
-
+-- Creates Certification Table
   CREATE TABLE Certification (
   ID INT NOT NULL PRIMARY KEY,
   Name VARCHAR(45) ,
@@ -98,6 +107,7 @@ CREATE TABLE Certified (
   FOREIGN KEY (Certified_ID) REFERENCES Certified(ID)
    );
 
+-- Creates Employees_has_Relationship Table
   CREATE TABLE Employees_has_Relationship (
   Employees_ID INT NOT NULL  ,
   Relationship_ID INT NOT NULL  ,
@@ -106,6 +116,7 @@ CREATE TABLE Certified (
     FOREIGN KEY (Relationship_ID) REFERENCES Relationship(ID)
    );
 
+-- Creates Employees_has_Messages Table
    CREATE TABLE Employees_has_Messages (
   Employees_ID INT NOT NULL,
   Messages_ID INT NOT NULL,
@@ -114,6 +125,7 @@ CREATE TABLE Certified (
     FOREIGN KEY (Messages_ID) REFERENCES Messages (ID)
     );
 
+-- Creates Employees_has_Groups Table
   CREATE TABLE Employees_has_Groups (
   Employees_ID INT NOT NULL,
   Groups_ID INT NOT NULL,
@@ -122,7 +134,8 @@ CREATE TABLE Certified (
     FOREIGN KEY (Groups_ID) REFERENCES GroupDetails(ID)
     );
 
-    CREATE TABLE Employees_has_Email_History (
+-- Creates Employees_has_Email_History Table
+  CREATE TABLE Employees_has_Email_History (
   Employees_ID INT NOT NULL,
   Email_History_ID INT NOT NULL,
   PRIMARY KEY (Employees_ID, Email_History_ID),
@@ -130,7 +143,8 @@ CREATE TABLE Certified (
     FOREIGN KEY (Email_History_ID) REFERENCES EmailHistory (ID)
     );
 
-    CREATE TABLE Messages_has_Groups (
+  -- Creates Messages_has_Groups Table
+  CREATE TABLE Messages_has_Groups (
   Messages_ID INT NOT NULL,
   Groups_ID INT NOT NULL,
   PRIMARY KEY (Messages_ID, Groups_ID),
