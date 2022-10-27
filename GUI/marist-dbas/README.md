@@ -1,8 +1,17 @@
+# Requirements
+
+- Node.js
+- MySQL
+
 # Launching the application
+
+### `npm install`
+
+This should be run on first launch to install any missing node modules.
 
 ### `npm run dev`
 
-Launches the react application while concurrently launching the associated electron application
+This launches the react application while concurrently launching the associated electron application.
 
 ## Available Scripts
 
