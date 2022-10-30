@@ -1,17 +1,16 @@
 import Dashboard from "./Dashboard";
 import "../css/Login.css";
 import {
-    BrowserRouter as Router,
     Routes,
     Route,
     Link
 }
-from 'react-router-dom';  
+from 'react-router-dom';
 
 const Login = (props) => {
   function runLogin() {
     console.log("logging in");
-    <Route exact path='/dashboard' element={<Dashboard />}></Route>;
+    props.loggedIn(true);
   }
 
   return (
