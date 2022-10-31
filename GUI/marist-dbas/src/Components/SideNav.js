@@ -15,8 +15,7 @@ const SideNav = (props) => {
 
   function setItemActive(clickedItem) {
     const newList = list.map((newItem) => {
-      (newItem.id === clickedItem.id) ? (newItem.toggleClass = 'active') : (newItem.toggleClass = '');
-
+      newItem.id === clickedItem.id ? newItem.toggleClass = 'active' : newItem.toggleClass = '';
       return newItem;
     });
     setList(newList);

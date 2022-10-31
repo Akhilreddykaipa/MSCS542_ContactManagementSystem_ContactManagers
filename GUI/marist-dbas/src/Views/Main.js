@@ -13,22 +13,16 @@ const Main = (props) => {
     document.getElementById("userProfile").style.background = "#" + Math.floor(Math.random() * 16777215).toString(16); // max hex color value is 256 * 256 * 256
   });
 
-  function setActive(newClass) {
-    setClass(newClass);
-  }
-
   return (
     <>
       <nav className={`sidenav p-3 py-4 ${newClass}`}>
-        <SideNav setActive={setActive}/>
+        <SideNav setActive={setClass}/>
       </nav>
-      <div id="userProfile">
-
-      </div>
+      <div id="userProfile"></div>
 
       <div className="main p-4 p-md-5 pt-5">
         <Routes>
-          <Route path="/" exact element={<Main/>}/>
+          <Route path="/" exact element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/account" element={<Account/>}/>
         </Routes>
