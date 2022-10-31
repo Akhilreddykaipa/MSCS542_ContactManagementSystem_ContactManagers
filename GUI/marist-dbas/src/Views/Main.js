@@ -14,7 +14,14 @@ const Main = (props) => {
   useEffect(() => {
     if (firstRun) {
       // max hex color value is (16*16) * (16*16) * (16*16) - 1 = 16777215
-      $("#userProfileImg").css({ "background": "#" + Math.floor(Math.random() * 16777215).toString(16) });
+      let hex2Dec = hex => parseInt(hex, 16);
+      let randomHex = [ Math.floor(Math.random() * 64).toString(16), Math.floor(Math.random() * 64).toString(16), Math.floor(Math.random() * 64).toString(16) ];
+      let finalNum = "#";
+      randomHex.forEach((item, i) => {
+        finalNum += item;
+      });
+
+      $("#userProfile").css({ "background": finalNum });
       setFirstRun(false);
     }
   });
@@ -27,7 +34,6 @@ const Main = (props) => {
         </nav>
         <div id="userProfile">
           <p>{props.name}</p>
-          <div id="userProfileImg"></div>
         </div>
 
         <div id="routes" className="p-4 p-md-5 pt-5">

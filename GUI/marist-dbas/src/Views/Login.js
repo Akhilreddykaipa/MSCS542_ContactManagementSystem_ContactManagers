@@ -5,7 +5,7 @@ import $ from 'jquery';
 import validate from 'jquery-validation'
 import "../css/Login.css";
 
-let password = "1";
+let password = " ";
 
 const Login = (props) => {
   function handleSubmit(e) {
