@@ -12,7 +12,8 @@ const Main = (props) => {
 
   useEffect(() => {
     if (firstRun) {
-      document.getElementById("userProfile").style.background = "#" + Math.floor(Math.random() * 16777215).toString(16); // max hex color value is 256 * 256 * 256
+      // max hex color value is (16*16) * (16*16) * (16*16) - 1 = 16777215
+      $("#userProfileImg").css({ "background": "#" + Math.floor(Math.random() * 16777215).toString(16) });
       setFirstRun(false);
     }
   });
@@ -23,7 +24,12 @@ const Main = (props) => {
         <nav className={`sidenav p-3 py-4 ${newClass}`}>
           <SideNav setActive={setClass}/>
         </nav>
-        <div id="userProfile"></div>
+        <div id="userProfile">
+          <p>{props.name}</p>
+          <div id="userProfileImg">
+
+          </div>
+        </div>
 
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>

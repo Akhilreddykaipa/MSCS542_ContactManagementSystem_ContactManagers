@@ -1,10 +1,10 @@
-#login {
+#createAccount {
   display: flex;
   height: 100%;
   align-items: center;
 }
 
-#login > div {
+#createAccount > div {
   width: 400px;
   height: auto;
   display: flex;
@@ -18,52 +18,52 @@
   color: #fff;
 }
 
-#login > div > div {
+#createAccount > div > div {
   width: 100%;
 }
 
-#login .header {
+#createAccount .header {
   text-align: left;
   font-size: 48px;
   margin-bottom: 12px;
 }
 
-#login label {
+#createAccount label {
   font-size: 24px;
 }
 
-#login input {
+#createAccount input {
   border-radius: 8px;
 }
 
-#login input.fullWidth {
+#createAccount input.fullWidth {
   width: 100%;
   height: 48px;
   font-size: 24px;
 }
 
-#login .password-helper {
+#createAccount .password-helper {
   font-size: 16px;
   margin: 0px 8px 8px 8px;
 }
 
-#login button {
+#createAccount button {
   width: 100%;
   height: 48px;
   font-size: 24px;
   line-height: 24px;
 }
 
-#login #loginTitle {
+#createAccount #createAccountTitle {
   width: 100%;
   color: #b34b4b;
   font-size: 20px;
 }
 
-#login form#loginForm {
+#createAccount form#createAccountForm {
   width: 100%;
 }
 
-#login #newAccount {
+#createAccount #newAccount {
   margin-top: 8px;
 }

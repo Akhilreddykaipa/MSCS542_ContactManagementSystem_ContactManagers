@@ -3,10 +3,23 @@
 }
 
 #main #userProfile {
-  background: #000;
   position: absolute;
+  display: flex;
+  color: #fff;
   top: 24px;
   right: 24px;
+  height: 64px;
+}
+
+#main #userProfile p {
+  height: 100%;
+  line-height: 64px;
+  font-size: 32px;
+  margin-right: 8px;
+}
+
+#main #userProfileImg {
+  background: #000;
   height: 64px;
   width: 64px;
   border-radius: 100%;

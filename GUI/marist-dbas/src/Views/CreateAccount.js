@@ -1,23 +1,17 @@
-import { Link } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import CreateAccount from "./CreateAccount";
+
 import $ from 'jquery';
-import validate from 'jquery-validation'
+import "../css/CreateAccount.css";
 import "../css/Login.css";
 
-let password = "test123";
-
-const Login = (props) => {
+const CreateAccount = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
-    $("#loginForm").validate({
+    $("#createAccountForm").validate({
 
     });
 
-    if ($("#password").val() == password) {
-      props.loggedIn(true);
-      props.setName($("#name").val());
-    }
+    props.loggedIn(true);
+    props.setName($("#name").val());
   }
 
   function togglePassword(e) {
@@ -36,19 +30,15 @@ const Login = (props) => {
     }
   }
 
-  function createAccount() {
-    props.createAccount(true);
-  }
-
   return (
     <>
-      <div id="login" className="container">
+      <div id="createAccount" className="container">
         <div>
-          <h4 id="loginTitle" className="text-start">Marist DBAs</h4>
+          <h4 id="createAccountTitle" className="text-start">Marist DBAs</h4>
           <div className="header">
-            Sign in
+            Create Account
           </div>
-          <form id="loginForm" onSubmit={handleSubmit} >
+          <form id="createAccountForm" onSubmit={handleSubmit} >
             <div>
               <div>
                 <label>Name</label>
@@ -68,10 +58,7 @@ const Login = (props) => {
               </div>
             </div>
             <div>
-              <button className="btn-primary btn" type="submit">Login</button>
-            </div>
-            <div id="newAccount">
-              <Link onClick={createAccount}>Create new account</Link>
+              <button className="btn-primary btn" type="submit">Create</button>
             </div>
           </form>
         </div>
@@ -80,4 +67,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default CreateAccount;
