@@ -1,0 +1,116 @@
+:root {
+  --mdba-color: #0d6efd;
+  --transition-time: 0.2s;
+}
+
+.sidenav {
+  min-width: 100px;
+  max-width: 100px;
+  padding: 42px 32px;
+  background:#1c1d1f;
+  color: #fff;
+  -webkit-transition: all var(--transition-time);
+  -o-transition: all var(--transition-time);
+  transition: all var(--transition-time);
+}
+
+.sidenav.active {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+a.sideNavButton {
+  font-family: Roboto_Light,sans-serif;
+  width: 100%;
+  height: 42px;
+  color: #fff;
+  border: 0px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  display: flex;
+  text-decoration: none;
+}
+
+a.sideNavButton:hover {
+  /* -webkit-transition: 0.1s; */
+  background: #333436;
+  color: #fff;
+}
+
+nav {
+  position: fixed;
+  height: 100%;
+}
+
+nav.sidenav .sideNavButton span {
+  display: none;
+}
+
+nav.sidenav.active .sideNavButton span {
+  display: block;
+}
+
+a.sideNavButton div {
+  position: fixed;
+  left: 35px;
+  font-size: 32px;
+  padding-bottom: 4px;
+}
+a.sideNavButton div svg path {
+  stroke: #fff;
+}
+
+a.sideNavButton span  {
+  position: fixed;
+  left: 84px;
+}
+
+a.sideNavButton div, a.sideNavButton span {
+  align-self: center;
+}
+
+a.sideNavButton.active {
+  background: #333436;
+  color: var(--mdba-color);
+}
+
+.toggleNav {
+  display: inline-block;
+  position: absolute;
+  top: 14px;
+  right: 0;
+  margin-right: -20px;
+}
+
+button.sidebarCollapse {
+  background: #000;
+  color: var(--mdba-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  border: 2px solid rgba(0,0,0,0);
+  transition: var(--transition-time);
+}
+
+button.sidebarCollapse:hover {
+  border: 2px solid var(--mdba-color);
+  transition: var(--transition-time);
+}
+
+nav.active button.sidebarCollapse span {
+  font-size: 24px;
+  display: flex;
+  transform: rotate(0deg);
+}
+
+nav button.sidebarCollapse span {
+  font-size: 24px;
+  display: flex;
+  -webkit-transition: 0.3s;
+  transform: rotate(-180deg);
+}
+
+div.sidenavFooter {
+  position: absolute;
+  bottom: 0px;
+}

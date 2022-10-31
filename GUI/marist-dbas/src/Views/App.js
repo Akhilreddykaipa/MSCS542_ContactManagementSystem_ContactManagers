@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
-import "./css/App.css";
+import Login from "./Login";
+import Main from "./Main";
+import "../css/App.css";
 
 function App() {
   const [loggedIn, setLogin] = useState(false);
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="App">
-        {loggedIn == true ? <Dashboard /> : <Login loggedIn={setLogin} />}
+        { loggedIn == true ? <Main/> : <Login loggedIn={setLogin}/> }
       </div>
     </>
   );

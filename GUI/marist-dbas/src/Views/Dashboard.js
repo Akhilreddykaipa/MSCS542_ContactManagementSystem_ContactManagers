@@ -4,7 +4,7 @@ const Dashboard = (props) => {
   return (
     <>
       <div id="dashboard" className="container">
-        Dashboard
+        <h2>Dashboard</h2>
       </div>
     </>
   );
