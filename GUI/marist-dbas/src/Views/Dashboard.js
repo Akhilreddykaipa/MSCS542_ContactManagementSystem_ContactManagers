@@ -1,4 +1,5 @@
 import "../css/Dashboard.css";
+import TableCell from "../Components/TableCell"
 
 const Dashboard = (props) => {
   return (
@@ -12,27 +13,35 @@ const Dashboard = (props) => {
               <th scope="col">ID</th>
               <th scope="col">First</th>
               <th scope="col">Last</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>wqosbpjegnegnr</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>qpgj294gjwg2mg</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>koweqgopwinjgr</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
+            <TableCell
+              rowNum={1}
+              ID={"wqosbpjegnegnr"}
+              firstName={"test1"}
+              lastName={"test1"}
+              />
+            <TableCell
+              rowNum={2}
+              ID={"rewqerhywrhwer"}
+              firstName={"test2"}
+              lastName={"test2"}
+              />
+            <TableCell
+              rowNum={3}
+              ID={"wehwewjtwrtjjt"}
+              firstName={"test3"}
+              lastName={"test3"}
+              />
+            <TableCell
+              rowNum={4}
+              ID={"dghkdghtghkytt"}
+              firstName={"test4"}
+              lastName={"test4"}
+              />
           </tbody>
         </table>
       </div>
