@@ -26,9 +26,7 @@ const Main = (props) => {
         </nav>
         <div id="userProfile">
           <p>{props.name}</p>
-          <div id="userProfileImg">
-
-          </div>
+          <div id="userProfileImg"></div>
         </div>
 
         <div id="routes" className="p-4 p-md-5 pt-5">
