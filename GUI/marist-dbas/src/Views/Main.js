@@ -1,6 +1,7 @@
 import SideNav from "../Components/SideNav";
 import Dashboard from "./Dashboard";
 import Account from "./Account";
+import Settings from "./Settings";
 import { Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../css/Main.css';
@@ -34,6 +35,7 @@ const Main = (props) => {
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/account" element={<Account/>}/>
+            <Route path="/settings" element={<Settings/>}/>
           </Routes>
         </div>
       </div>
