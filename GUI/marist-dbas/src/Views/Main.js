@@ -19,17 +19,19 @@ const Main = (props) => {
 
   return (
     <>
-      <nav className={`sidenav p-3 py-4 ${newClass}`}>
-        <SideNav setActive={setClass}/>
-      </nav>
-      <div id="userProfile"></div>
+      <div id="main">
+        <nav className={`sidenav p-3 py-4 ${newClass}`}>
+          <SideNav setActive={setClass}/>
+        </nav>
+        <div id="userProfile"></div>
 
-      <div className="main p-4 p-md-5 pt-5">
-        <Routes>
-          <Route path="/" exact element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/account" element={<Account/>}/>
-        </Routes>
+        <div id="routes" className="p-4 p-md-5 pt-5">
+          <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/account" element={<Account/>}/>
+          </Routes>
+        </div>
       </div>
     </>
   );

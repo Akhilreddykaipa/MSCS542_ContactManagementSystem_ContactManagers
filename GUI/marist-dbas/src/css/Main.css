@@ -1,9 +1,26 @@
-#userProfile {
+:root {
+  --transition-time2: 0.6s;
+}
+
+#main #userProfile {
   background: #000;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 24px;
+  right: 24px;
   height: 64px;
   width: 64px;
   border-radius: 100%;
+}
+
+#main #routes .container {
+  padding-left: 100px;
+  transition: padding-left var(--transition-time2);
+}
+
+#main:has(nav.active) #routes .container {
+  padding-left: 250px;
+  transition: padding-left var(--transition-time2);
+}
+
+#routes {
 }
