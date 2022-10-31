@@ -8,9 +8,13 @@ import $ from 'jquery';
 
 const Main = (props) => {
   const [newClass, setClass] = useState("");
+  const [firstRun, setFirstRun] = useState(true);
 
   useEffect(() => {
-    document.getElementById("userProfile").style.background = "#" + Math.floor(Math.random() * 16777215).toString(16); // max hex color value is 256 * 256 * 256
+    if (firstRun) {
+      document.getElementById("userProfile").style.background = "#" + Math.floor(Math.random() * 16777215).toString(16); // max hex color value is 256 * 256 * 256
+      setFirstRun(false);
+    }
   });
 
   return (
