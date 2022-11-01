@@ -1,4 +1,5 @@
 import SideNav from "../Components/SideNav";
+import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Account from "./Account";
 import Settings from "./Settings";
@@ -39,6 +40,7 @@ const Main = (props) => {
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/settings" element={<Settings/>}/>

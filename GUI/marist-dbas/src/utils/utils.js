@@ -1,3 +1,7 @@
+function newID() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
 class CaesarCipher {
   constructor(str, offset) {
     this.str = str;
@@ -40,6 +44,7 @@ class CaesarCipher {
 let ces = new CaesarCipher("testString", 12);
 ces.decrypt();
 
-export {
+module.exports = {
+  newID,
   CaesarCipher,
 };

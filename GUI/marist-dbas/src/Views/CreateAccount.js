@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import $ from 'jquery';
 import "../css/CreateAccount.css";
 import "../css/Login.css";
@@ -59,6 +59,9 @@ const CreateAccount = (props) => {
             </div>
             <div>
               <button className="btn-primary btn" type="submit">Create</button>
+            </div>
+            <div id="newAccount">
+              <Link to="/login">Log in</Link>
             </div>
           </form>
         </div>
