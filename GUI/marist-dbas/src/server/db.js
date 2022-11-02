@@ -3,8 +3,8 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
   host: 'localhost',
   user:'root',
-  password:'root',
-  database:'elmasri_company'
+  password:'rootroot',
+  database:'myCms'
 });
 
 export default db;
