@@ -19,6 +19,7 @@ function App() {
             <CreateAccount
               loggedIn={setLogin}
               setName={setUserName}
+              setLoginView={setCreateAccount}
             /> :
             <Login
               loggedIn={setLogin}

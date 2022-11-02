@@ -30,6 +30,10 @@ const CreateAccount = (props) => {
     }
   }
 
+  function goToLogin() {
+    props.setLoginView(false);
+  }
+
   return (
     <>
       <div id="createAccount" className="container">
@@ -61,7 +65,7 @@ const CreateAccount = (props) => {
               <button className="btn-primary btn" type="submit">Create</button>
             </div>
             <div id="newAccount">
-              <Link to="/login">Log in</Link>
+              <Link onClick={goToLogin}>Log in</Link>
             </div>
           </form>
         </div>
