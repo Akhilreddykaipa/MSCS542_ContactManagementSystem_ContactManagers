@@ -1,13 +1,13 @@
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
+const dbConnection = mysql.createConnection({
   host: 'localhost',
   user:'root',
   password:'rootroot',
   database:'myCms'
 });
 
-db.connect(function(err) {
+dbConnection.connect(function(err) {
     if(err){
         console.log(err);
     }
@@ -16,6 +16,6 @@ db.connect(function(err) {
 });
 
 module.exports = {
-  db,
+  dbConnection,
 }
-// export default db;
+// export default dbConnection;
