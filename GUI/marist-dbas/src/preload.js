@@ -1,9 +1,10 @@
-const { contextBridge } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron');
+const fs = require('fs');
 
 const dbc = require('./server/db.js');
-// let mysql = require('mysql');
-console.log(dbc.connectToMysql);
+
+ipcRenderer.send('some-name', 'sending a message');
 
 contextBridge.exposeInMainWorld('dbConnection', {
-  // connect to db here
+  doThing: () => ipcRenderer.send('some-name', 'sending a message')
 });

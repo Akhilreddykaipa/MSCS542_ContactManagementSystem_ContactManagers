@@ -56,3 +56,7 @@ app.on('activate', function () {
         createWindow();
     }
 });
+
+ipcMain.on('some-name', (event, args) => {
+  console.log("got on server side: ", args);
+});
