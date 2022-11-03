@@ -1,5 +1,4 @@
-
-drop database myCMS;
+drop database myCms;
 CREATE DATABASE IF NOT EXISTS myCms;
 USE myCms;
 
@@ -208,7 +207,7 @@ Insert into Certification(ID,name,type,certified_ID)values
     (9,'Attendance','Admin',null);
 
 -- Loads data into Certified
-Insert into certified(ID,userID,certificationID, certdate,employees_ID)values
+Insert into Certified(ID,userID,certificationID, certdate,employees_ID)values
 	(0,0,0,'2022-05-20',0),
     (1,0,1,'2022-05-20',0),
     (2,0,2,'2022-05-20',0),
@@ -239,7 +238,7 @@ Insert into Department(ID, DName, Supervisor_ID)values
         (1,1,2),
         (2,2,3),
         (3,3,8);
-        
+
 -- Loads data into Messages
 	Insert into Messages(ID,senderID,userID,groupID,message,messagedate)values
 		(0,0,1,0,'We are going to play a company game of telephone pass along my message the next day "Pancakes"','2022-5-20'),
@@ -259,7 +258,7 @@ Insert into Department(ID, DName, Supervisor_ID)values
         (14,14,0,0,'Your message to the company said cornbread','2022-6-03'),
         (15,0,1,0,'That is not the word I gave you and as such you are now terminated at this company','2022-6-04'),
         (16,1,2,0,'They were basically the same thing :(','2022-6-05');
-        
+
 -- Loads data into GroupsDetails
 Insert into GroupDetails(ID,leaderID,groupname,createddate,groupmembers_ID)values
 	(0,0,'I fired The Rock','2022-5-20',0),
@@ -274,7 +273,7 @@ Insert into GroupDetails(ID,leaderID,groupname,createddate,groupmembers_ID)value
     (9,5,'Project Report Phase 4','2022-6-21',0);
 
 -- Loads data into GroupMembers
-Insert into groupmembers(ID,groupid,userid,joindate)values
+Insert into GroupMembers(ID,groupid,userid,joindate)values
 	(0,0,0,'2022-05-20'),
     (1,0,1,'2022-05-20'),
     (2,0,2,'2022-05-20'),
@@ -289,9 +288,9 @@ Insert into groupmembers(ID,groupid,userid,joindate)values
     (11,3,14,'2022-05-26'),
     (12,4,6,'2022-05-28'),
     (13,4,5,'2022-05-28');
-    
+
 -- Loads data into Email History
-Insert into emailhistory(ID,SenderID,Message,ReceiverID,EmailDate)values
+Insert into EmailHistory(ID,SenderID,Message,ReceiverID,EmailDate)values
 		(0,0,'I will give you one last chance pass along my message "telephone"',1,'2022-06-04'),
         (1,1,'Passing along the CEOs message "telephone"',2,'2022-06-05'),
         (2,2,'Passing along the CEOs message "telephone"',3,'2022-06-06'),
@@ -304,11 +303,11 @@ Insert into emailhistory(ID,SenderID,Message,ReceiverID,EmailDate)values
         (9,0,'Congrats it looks like you will no longer be terminated',1,'2022-06-13');
 SET FOREIGN_KEY_CHECKS = 0;
 
-select * from employees;
+select * from Employees;
 select * from users;
-select * from department;
-select * from supervisor;
-select * from messages;
-select * from groupdetails;
-select * from groupmembers;
-select * from emailhistory;
+select * from Department;
+select * from Supervisor;
+select * from Messages;
+select * from GroupDetails;
+select * from GroupMembers;
+select * from EmailHistory;
