@@ -1,0 +1,43 @@
+:root {
+  --transition-time2: 0.6s;
+}
+
+#main #userProfile {
+  position: absolute;
+  display: flex;
+  color: #fff;
+  top: 24px;
+  right: 24px;
+  height: 64px;
+  user-select: none;
+}
+
+#main #userProfile p {
+  height: 100%;
+  line-height: 32px;
+  font-size: 16px;
+  margin: auto 8px;
+  overflow: hidden;
+  max-width: 25ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#main #userProfile {
+  background: #000;
+  height: 32px;
+  border-radius: 4px;
+}
+
+#main #routes .container {
+  padding-left: 100px;
+  transition: padding-left var(--transition-time2);
+}
+
+#main:has(nav.active) #routes .container {
+  padding-left: 250px;
+  transition: padding-left var(--transition-time2);
+}
+
+#routes {
+}

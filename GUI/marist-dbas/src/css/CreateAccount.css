@@ -1,0 +1,69 @@
+#createAccount {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+#createAccount > div {
+  width: 400px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 32px 24px 32px 24px;
+  border-radius: 24px;
+  background: #1c1d1f;
+  color: #fff;
+}
+
+#createAccount > div > div {
+  width: 100%;
+}
+
+#createAccount .header {
+  text-align: left;
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+#createAccount label {
+  font-size: 24px;
+}
+
+#createAccount input {
+  border-radius: 8px;
+}
+
+#createAccount input.fullWidth {
+  width: 100%;
+  height: 48px;
+  font-size: 24px;
+}
+
+#createAccount .password-helper {
+  font-size: 16px;
+  margin: 0px 8px 8px 8px;
+}
+
+#createAccount button {
+  width: 100%;
+  height: 48px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+#createAccount #createAccountTitle {
+  width: 100%;
+  color: #b34b4b;
+  font-size: 20px;
+}
+
+#createAccount form#createAccountForm {
+  width: 100%;
+}
+
+#createAccount #newAccount {
+  margin-top: 8px;
+}
