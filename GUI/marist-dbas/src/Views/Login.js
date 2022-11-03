@@ -4,6 +4,8 @@ import CreateAccount from "./CreateAccount";
 import $ from 'jquery';
 import validate from 'jquery-validation'
 import "../css/Login.css";
+// const dbc = require('../server/db');
+// console.log(dbc.db);
 
 let password = "1";
 

@@ -17,7 +17,12 @@ function createWindow() {
       autoHideMenuBar: true,
       title: "Marist Database Administrators",
       webPreferences: {
-        contextIsolation: true
+        preload: path.join(__dirname, '../preload.js'),
+        webSecurity: false,
+        enableRemoteModule: true,
+        nodeIntegration: true,
+        contextIsolation: false,
+        preload: path.join(__dirname, '../preload.js')
       }
     });
 
