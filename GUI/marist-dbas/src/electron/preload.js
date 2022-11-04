@@ -5,8 +5,12 @@ console.log(doc);
 
 const dbc = require('../server/db.js');
 
-ipcRenderer.send('some-name', 'sending a message');
+ipcRenderer.send('app-start', 'starting application');
 
 contextBridge.exposeInMainWorld('dbConnection', {
-  doThing: () => ipcRenderer.send('some-name', 'sending a message')
+  checkLogin: (usr, pwd) => ipcRenderer.send('check-login', [usr, pwd]),
+});
+
+ipcRenderer.on('got-login', () => {
+  console.log("we got the login!");
 });

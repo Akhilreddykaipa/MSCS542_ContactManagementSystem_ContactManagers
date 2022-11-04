@@ -70,7 +70,7 @@ const Login = (props) => {
               </div>
             </div>
             <div>
-              <button className="btn-primary btn" type="submit">Login</button>
+              <button className="btn-primary btn" type="submit" onClick={window.dbConnection.checkLogin("test1", "test2")}>Login</button>
             </div>
             <div id="newAccount">
               <Link onClick={createAccount}>Create new account</Link>

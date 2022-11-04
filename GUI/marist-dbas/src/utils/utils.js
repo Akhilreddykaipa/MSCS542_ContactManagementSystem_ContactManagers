@@ -26,7 +26,6 @@ class CaesarCipher {
 
   decrypt() {
     let res = "";
-    console.log(this.encrypted);
     for (let i = 0; i < this.encrypted.length; i++) {
       let code = this.encrypted.charCodeAt(i);
       // Capital letter codes

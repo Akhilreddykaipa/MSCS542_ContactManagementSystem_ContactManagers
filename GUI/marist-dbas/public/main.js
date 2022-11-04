@@ -57,6 +57,12 @@ app.on('activate', function () {
     }
 });
 
-ipcMain.on('some-name', (event, args) => {
-  console.log("got on server side: ", args);
+ipcMain.on('app-start', (event, args) => {
+  console.log("received from preload: ", args);
+});
+ipcMain.on('check-login', (event, args) => {
+  // console.log(event);
+  event.return
+  console.log("checking login: ", args);
+  mainWindow.webContents.send('got-login', 'found login');
 });

@@ -16,13 +16,13 @@ dbConnection.connect(function(err) {
   }
 });
 
-dbConnection.query('show tables', (err, result) => {
-  if(err) {
-    console.log("failed conenction.");
-    console.log(err);
-  }
-  console.log("Query result:", result);
-});
+// dbConnection.query('show tables', (err, result) => {
+//   if(err) {
+//     console.log("failed conenction.");
+//     console.log(err);
+//   }
+//   console.log("Query result:", result);
+// });
 
 module.exports = {
   dbConnection
