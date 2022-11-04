@@ -1,24 +1,43 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Dashboard from "./Dashboard";
-import CreateAccount from "./CreateAccount";
 import $ from 'jquery';
 import validate from 'jquery-validation'
 import "../css/Login.css";
-// const dbc = require('../server/db');
-// console.log(dbc.db);
 
 let password = "1";
 
 const Login = (props) => {
+  useEffect(() => {
+    console.log(window.checkLogin);
+    // ipcRenderer.send('app-start', 'starting application');
+    // window.dbConnection.checkLogin(
+    //   {
+    //     name: $("#name").val(),
+    //     password: $("#password").val()
+    //   }
+    // );
+  });
+
   function handleSubmit(e) {
     e.preventDefault();
-    $("#loginForm").validate({
 
-    });
+    // $("#loginForm").validate({
+    //   // submitHandler: function(form) {
+    //   //   console.log('validating form');
+    //   // }
+    // });
+    let test123 = window.dbConnection.checkLogin(
+      {
+        userEmail: $("#userEmail").val(),
+        password: $("#password").val()
+      }
+    );
 
-    if ($("#password").val() == password) {
+    console.log(test123);
+
+    if ($("#password").val() === password) {
       props.loggedIn(true);
-      props.setName($("#name").val());
+      props.setUserEmail($("#userEmail").val());
     }
   }
 
@@ -50,13 +69,13 @@ const Login = (props) => {
           <div className="header">
             Sign in
           </div>
-          <form id="loginForm" onSubmit={handleSubmit} >
+          <form id="loginForm" onSubmit={handleSubmit}>
             <div>
               <div>
                 <label>Name</label>
               </div>
               <div>
-                <input id="name" name="name" className="fullWidth mb-3" label="name" type="text" required></input>
+                <input id="userEmail" name="userEmail" className="fullWidth mb-3" label="userEmail" type="text" required></input>
               </div>
               <div>
                 <label>Password</label>
@@ -70,7 +89,7 @@ const Login = (props) => {
               </div>
             </div>
             <div>
-              <button className="btn-primary btn" type="submit" onClick={window.dbConnection.checkLogin("test1", "test2")}>Login</button>
+              <button className="btn-primary btn" type="submit">Login</button>
             </div>
             <div id="newAccount">
               <Link onClick={createAccount}>Create new account</Link>

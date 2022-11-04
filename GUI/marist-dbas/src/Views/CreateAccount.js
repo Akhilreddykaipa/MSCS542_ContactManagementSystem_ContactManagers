@@ -11,7 +11,7 @@ const CreateAccount = (props) => {
     });
 
     props.loggedIn(true);
-    props.setName($("#name").val());
+    props.setUserEmail($("#userEmail").val());
   }
 
   function togglePassword(e) {
@@ -45,10 +45,10 @@ const CreateAccount = (props) => {
           <form id="createAccountForm" onSubmit={handleSubmit} >
             <div>
               <div>
-                <label>Name</label>
+                <label>User Email</label>
               </div>
               <div>
-                <input id="name" name="name" className="fullWidth mb-3" label="name" type="text" required></input>
+                <input id="userEmail" name="userEmail" className="fullWidth mb-3" label="userEmail" type="text" required></input>
               </div>
               <div>
                 <label>Password</label>

@@ -5,6 +5,7 @@ const https = require('https');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+const db = require('../src/server/db.js');
 
 let mainWindow;
 
@@ -57,12 +58,30 @@ app.on('activate', function () {
     }
 });
 
+// Received from ipcRenderer
 ipcMain.on('app-start', (event, args) => {
   console.log("received from preload: ", args);
 });
-ipcMain.on('check-login', (event, args) => {
-  // console.log(event);
-  event.return
-  console.log("checking login: ", args);
-  mainWindow.webContents.send('got-login', 'found login');
+
+ipcMain.handle('check-login', async (event, arg) => {
+  event.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from users', [], (err,results) => {
+      if(err){
+        reject(err)
+      }
+      results.forEach((el, i) => {
+        if (el.useremail === arg.userEmail) {
+          if (el.userpassword === arg.password) {
+            console.log("USER AUTHENTICATED");
+            resolve(true);
+          } else {
+            console.log("DID NOT AUTHENTICATE");
+            resolve(false);
+          }
+        }
+      });
+      resolve(false);
+    });
+  });
 });

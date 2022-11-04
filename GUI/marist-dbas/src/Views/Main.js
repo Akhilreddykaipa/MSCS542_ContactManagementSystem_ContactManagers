@@ -1,6 +1,12 @@
 import SideNav from "../Components/SideNav";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
+import Messages from "./Messages";
+import Employees from "./Employees";
+import Users from "./Users";
+import EmailHistory from "./EmailHistory";
+import Groups from "./Groups";
+import Contacts from "./Contacts";
 import Account from "./Account";
 import Settings from "./Settings";
 import { Routes, Route, Link } from 'react-router-dom';
@@ -40,8 +46,13 @@ const Main = (props) => {
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/messages" element={<Messages/>}/>
+            <Route path="/employees" element={<Employees/>}/>
+            <Route path="/users" element={<Users/>}/>
+            <Route path="/emailHistory" element={<EmailHistory/>}/>
+            <Route path="/groups" element={<Groups/>}/>
+            <Route path="/contacts" element={<Contacts/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/settings" element={<Settings/>}/>
           </Routes>

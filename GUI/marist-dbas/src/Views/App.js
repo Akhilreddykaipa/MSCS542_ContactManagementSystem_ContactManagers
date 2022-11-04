@@ -18,12 +18,12 @@ function App() {
           (createAccount == true) ?
             <CreateAccount
               loggedIn={setLogin}
-              setName={setUserName}
+              setUserEmail={setUserName}
               setLoginView={setCreateAccount}
             /> :
             <Login
               loggedIn={setLogin}
-              setName={setUserName}
+              setUserEmail={setUserName}
               createAccount={setCreateAccount}
             /> }
       </div>

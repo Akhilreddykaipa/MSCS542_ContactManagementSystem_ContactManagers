@@ -22,6 +22,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "sequelize": "^6.25.3",
+    "util": "^0.12.5",
     "wait-on": "^6.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -57,5 +58,22 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.9"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "plugins": [
+        "@electron-forge/plugin-webpack",
+        {
+          "renderer": {
+            "entryPoints": [
+              {
+                "js": "./src/electron/renderer.js"
+              }
+            ]
+          }
+        }
+      ]
+    }
   }
 }
