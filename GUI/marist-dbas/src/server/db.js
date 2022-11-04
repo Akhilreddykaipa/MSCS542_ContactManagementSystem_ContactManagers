@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 const dbConnection = mysql.createConnection({
-  host: '127.0.0.1',
-  user:'root',
-  password:'root',
-  database:'myCms'
+  host: 'localhost',
+  user:'marist_dbas',
+  password:'rootroot',
+  database: 'myCms'
 });
 
 dbConnection.connect(function(err) {

@@ -7,7 +7,6 @@ import { Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../css/Main.css';
 import $ from 'jquery';
-const ipcMain = require('electron');
 
 const Main = (props) => {
   const [newClass, setClass] = useState("");
