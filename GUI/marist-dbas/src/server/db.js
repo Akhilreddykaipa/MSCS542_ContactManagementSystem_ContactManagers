@@ -8,8 +8,6 @@ const con = mysql.createConnection({
   database: 'myCms'
 });
 
-// const query = promisify(con.query).bind(con);
-
 con.connect(function(err) {
   if (err) {
     console.log("failed connection.");
@@ -21,5 +19,4 @@ con.connect(function(err) {
 
 module.exports = {
   con,
-  // query
 }

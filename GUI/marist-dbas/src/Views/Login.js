@@ -7,33 +7,14 @@ import "../css/Login.css";
 let password = "1";
 
 const Login = (props) => {
-  useEffect(() => {
-    console.log(window.checkLogin);
-    // ipcRenderer.send('app-start', 'starting application');
-    // window.dbConnection.checkLogin(
-    //   {
-    //     name: $("#name").val(),
-    //     password: $("#password").val()
-    //   }
-    // );
-  });
-
   function handleSubmit(e) {
     e.preventDefault();
-
-    // $("#loginForm").validate({
-    //   // submitHandler: function(form) {
-    //   //   console.log('validating form');
-    //   // }
-    // });
-    let test123 = window.dbConnection.checkLogin(
+    window.dbConnection.checkLogin(
       {
         userEmail: $("#userEmail").val(),
         password: $("#password").val()
       }
     );
-
-    console.log(test123);
 
     if ($("#password").val() === password) {
       props.loggedIn(true);
