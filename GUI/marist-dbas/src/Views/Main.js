@@ -46,7 +46,7 @@ const Main = (props) => {
             <Route path="/settings" element={<Settings/>}/>
           </Routes>
         </div>
-        <button onClick={window.dbConnection.doThing}>Beeg button</button>
+        <button className="btn btn-primary" onClick={window.dbConnection.doThing}>Beeg button</button>
       </div>
     </>
   );

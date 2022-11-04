@@ -17,7 +17,7 @@ function createWindow() {
       autoHideMenuBar: true,
       title: "Marist Database Administrators",
       webPreferences: {
-        preload: path.join(__dirname, '../src/preload.js'),
+        preload: path.join(__dirname, '../src/electron/preload.js'),
         enableRemoteModule: true,
         nodeIntegration: true
       }
