@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import GenderData from '../Components/GenderData';
 import GenderOptions from '../Components/GenderOptions';
 import $ from 'jquery';

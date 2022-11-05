@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import TableCell from "../Components/TableCell.js"
 import $ from 'jquery';
 import "../css/Messages.css";
 
@@ -50,14 +49,6 @@ const Messages = (props) => {
           '</tr>');
       })
     });
-  }
-
-  function test1() {
-    return (
-      <MessagesCells
-        rows={messages}
-      />
-    )
   }
 
   return (

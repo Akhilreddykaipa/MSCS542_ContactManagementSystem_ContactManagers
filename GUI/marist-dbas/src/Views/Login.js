@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
 import $ from 'jquery';
-import validate from 'jquery-validation'
 import "../css/Login.css";
-
-let password = "1";
 
 const Login = (props) => {
   function handleSubmit(e) {
@@ -35,10 +31,6 @@ const Login = (props) => {
     } else {
       $("label.password-helper").text("Show password");
     }
-  }
-
-  function createAccount() {
-    props.createAccount(true);
   }
 
   return (
