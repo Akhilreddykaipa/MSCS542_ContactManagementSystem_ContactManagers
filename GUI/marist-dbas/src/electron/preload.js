@@ -8,6 +8,9 @@ contextBridge.exposeInMainWorld('dbConnection', {
   }),
   createAccount: (args) => ipcRenderer.invoke('create-account', (args)).then((result) => {
     return result;
+  }),
+  getMessages: (args) => ipcRenderer.invoke('get-messages', (args)).then((result) => {
+    return result;
   })
 });
 

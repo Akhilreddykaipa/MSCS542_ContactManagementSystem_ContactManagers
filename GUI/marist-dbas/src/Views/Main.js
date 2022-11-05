@@ -9,6 +9,7 @@ import Groups from "./Groups";
 import Contacts from "./Contacts";
 import Account from "./Account";
 import Settings from "./Settings";
+import CreateAccount from "../Views/CreateAccount.js"
 import { Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../css/Main.css';
@@ -66,6 +67,7 @@ const Main = (props) => {
             <Route path="/contacts" element={<Contacts/>}/>
             <Route path="/account" element={<Account/>}/>
             <Route path="/settings" element={<Settings admin={props.admin}/>}/>
+            <Route path="/createAccount" element={<CreateAccount/>}/>
           </Routes>
         </div>
       </div>

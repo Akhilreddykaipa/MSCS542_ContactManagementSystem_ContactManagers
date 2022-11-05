@@ -97,7 +97,7 @@ ipcMain.handle('check-login', async (e, arg) => {
 ipcMain.handle('create-account', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from users', [], (err,results) => {
+    db.con.query('select * from users', [], (err, results) => {
       if (err) {
         reject(err)
       }
@@ -116,6 +116,25 @@ ipcMain.handle('create-account', async (e, arg) => {
           reject(err)
         }
         console.log(results);
+    });
+  });
+});
+
+ipcMain.handle('get-messages', async (e, arg) => {
+  e.preventDefault();
+  console.log("getting messages");
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from messages', [], (err, results) => {
+      if (err) {
+        reject(err)
+      }
+
+      console.log(results);
+
+      results.forEach((el, i) => {
+        console.log(el);
+      });
+      resolve(results);
     });
   });
 });
