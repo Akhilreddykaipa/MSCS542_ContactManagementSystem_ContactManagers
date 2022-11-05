@@ -32,11 +32,11 @@
   font-size: 24px;
 }
 
-#createAccount input {
+#createAccount input, #createAccount select {
   border-radius: 8px;
 }
 
-#createAccount input.fullWidth {
+#createAccount input.fullWidth, #createAccount select {
   width: 100%;
   height: 48px;
   font-size: 24px;

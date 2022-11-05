@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import GenderData from '../Components/GenderData';
+import GenderOptions from '../Components/GenderOptions';
 import $ from 'jquery';
 import "../css/CreateAccount.css";
 import "../css/Login.css";
@@ -55,16 +57,46 @@ const CreateAccount = (props) => {
           <form id="createAccountForm" onSubmit={handleSubmit} >
             <div>
               <div>
+                <label>First Name</label>
+              </div>
+              <div>
+                <input id="firstName" name="firstName" className="fullWidth mb-3" type="text" required></input>
+              </div>
+              <div>
+                <label>Last Name</label>
+              </div>
+              <div>
+                <input id="lastName" name="lastName" className="fullWidth mb-3" type="text" required></input>
+              </div>
+              <div>
                 <label>User Email</label>
               </div>
               <div>
-                <input id="userEmail" name="userEmail" className="fullWidth mb-3" label="userEmail" type="text" required></input>
+                <input id="userEmail" name="userEmail" className="fullWidth mb-3" type="text" required></input>
+              </div>
+              <div>
+                <label>Phone Number</label>
+              </div>
+              <div>
+                <input id="phoneNum" name="phoneNum" className="fullWidth mb-3" required></input>
+              </div>
+              <div>
+                <label>Gender</label>
+              </div>
+              <select id="gender" name="gender" className="fullWidth mb-3">
+                <GenderOptions genderData={GenderData} />
+              </select>
+              <div>
+                <label>Age</label>
+              </div>
+              <div>
+                <input id="age" name="age" className="fullWidth mb-3" type="age" required></input>
               </div>
               <div>
                 <label>Password</label>
               </div>
               <div>
-                <input id="password" name="password" className="fullWidth" label="password" type="password" required></input>
+                <input id="password" name="password" className="fullWidth mb-3" type="password" required></input>
               </div>
               <div>
                 <input type="checkbox" onClick={togglePassword}></input>

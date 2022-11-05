@@ -29,17 +29,11 @@ function App() {
       <div className="App">
         { (loggedIn == true) ?
           <Main name={username}/> :
-          (createAccount == true) ?
-            <CreateAccount
-              loggedIn={setLogin}
-              setUserEmail={setUserName}
-              setLoginView={setCreateAccount}
-            /> :
-            <Login
-              loggedIn={setLogin}
-              setUserEmail={setUserName}
-              createAccount={setCreateAccount}
-            /> }
+          <Login
+            loggedIn={setLogin}
+            setUserEmail={setUserName}
+            createAccount={setCreateAccount}
+          /> }
       </div>
     </>
   );

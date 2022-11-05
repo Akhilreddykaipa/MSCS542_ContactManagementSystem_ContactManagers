@@ -71,9 +71,6 @@ const Login = (props) => {
             <div>
               <button className="btn-primary btn" type="submit">Login</button>
             </div>
-            <div id="newAccount">
-              <Link onClick={createAccount}>Create new account</Link>
-            </div>
           </form>
         </div>
       </div>

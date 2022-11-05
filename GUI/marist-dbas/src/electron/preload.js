@@ -12,5 +12,5 @@ contextBridge.exposeInMainWorld('dbConnection', {
 
 // From main.js
 ipcRenderer.on('got-login', () => {
-  console.log("we got the login!");
+  console.log("logged in.");
 });

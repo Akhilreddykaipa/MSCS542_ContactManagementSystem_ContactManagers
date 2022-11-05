@@ -6,6 +6,7 @@ const path = require('path');
 const url = require('url');
 const fs = require('fs');
 const db = require('../src/server/db.js');
+const utils = require('../src/utils/utils.js');
 
 let mainWindow;
 
@@ -66,21 +67,18 @@ ipcMain.on('app-start', (e, args) => {
 ipcMain.handle('check-login', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from users', [], (err,results) => {
-      if(err){
+    db.con.query('select * from users', [], (err, results) => {
+      if (err) {
         reject(err)
       }
+
       results.some((el, i) => {
-        console.log(el);
-        if (el.useremail === arg.userEmail) {
-          if (el.userpassword === arg.password) {
+        if (el.useremail === arg.userEmail && el.userpassword === arg.password) {
             console.log("USER AUTHENTICATED");
             resolve(true);
             return true;
-          }
         }
       });
-      console.log("END OF USER LIST");
       resolve(false);
     });
   });
@@ -90,21 +88,24 @@ ipcMain.handle('create-account', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
     db.con.query('select * from users', [], (err,results) => {
-      if(err){
+      if (err) {
         reject(err)
       }
-      results.forEach((el, i) => {
+      results.some((el, i) => {
         if (el.useremail === arg.userEmail) {
-          if (el.userpassword === arg.password) {
-            console.log("USER AUTHENTICATED");
-            resolve(true);
-          } else {
-            console.log("DID NOT AUTHENTICATE");
-            resolve(false);
-          }
+          console.log("USER ALREADY EXISTS");
+          resolve("User already exists");
+          return true;
         }
       });
-      resolve(false);
+    });
+
+    db.con.query('insert into users (userpassword, useremail, usertype) values(?, ?, ?)',
+      [arg.userEmail, arg.userpassword, 'employee'], (err, results) => {
+        if (err) {
+          reject(err)
+        }
+        console.log(results);
     });
   });
 });
