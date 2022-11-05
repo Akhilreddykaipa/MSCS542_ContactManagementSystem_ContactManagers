@@ -3,7 +3,6 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('dbConnection', {
   checkLogin: (args) => ipcRenderer.invoke('check-login', (args)).then((result) => {
-    console.table(result);
     return result;
   }),
 });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Login from "./Login";
 import Main from "./Main";
 import CreateAccount from "./CreateAccount";
@@ -9,6 +9,21 @@ function App() {
   const [createAccount, setCreateAccount] = useState(false);
   const [page, setPage] = useState("login");
   const [username, setUserName] = useState("");
+
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "../electron/renderer.js";
+    script.type = "text/babel";
+    script.async = true;
+    console.log(script);
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
 
   return (
     <>

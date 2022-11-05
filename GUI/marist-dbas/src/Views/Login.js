@@ -9,17 +9,16 @@ let password = "1";
 const Login = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
-    window.dbConnection.checkLogin(
-      {
-        userEmail: $("#userEmail").val(),
-        password: $("#password").val()
+    window.dbConnection.checkLogin({
+      userEmail: $("#userEmail").val(),
+      password: $("#password").val()
+    }).then((result) => {
+      console.log("authenticated?", result);
+      if (result) {
+        props.loggedIn(true);
+        props.setUserEmail($("#userEmail").val());
       }
-    );
-
-    if ($("#password").val() === password) {
-      props.loggedIn(true);
-      props.setUserEmail($("#userEmail").val());
-    }
+    });
   }
 
   function togglePassword(e) {

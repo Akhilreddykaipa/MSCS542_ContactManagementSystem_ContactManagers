@@ -59,12 +59,12 @@ app.on('activate', function () {
 });
 
 // Received from ipcRenderer
-ipcMain.on('app-start', (event, args) => {
+ipcMain.on('app-start', (e, args) => {
   console.log("received from preload: ", args);
 });
 
-ipcMain.handle('check-login', async (event, arg) => {
-  event.preventDefault();
+ipcMain.handle('check-login', async (e, arg) => {
+  e.preventDefault();
   return new Promise((resolve, reject) => {
     db.con.query('select * from users', [], (err,results) => {
       if(err){

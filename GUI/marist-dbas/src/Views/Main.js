@@ -31,7 +31,18 @@ const Main = (props) => {
       $("#userProfile").css({ "background": finalNum });
       setFirstRun(false);
     }
-  });
+
+    const script = document.createElement('script');
+    script.src = "../electron/renderer.js";
+    script.async = true;
+    console.log(script);
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
 
   return (
     <>

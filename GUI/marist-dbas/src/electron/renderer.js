@@ -1,8 +1,6 @@
-const { ipcRenderer } = require('electron');
-// import $ from 'jquery';
-// console.log("loaded");
-(function() {
-  // console.log($);
-  // $(document);
+// const { ipcRenderer } = require('electron');
+import $ from 'jquery';
+
+$(document).ready(() => {
   console.log("test renderer");
-})
+});
