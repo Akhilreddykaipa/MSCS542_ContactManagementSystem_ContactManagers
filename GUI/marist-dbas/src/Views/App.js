@@ -16,7 +16,6 @@ function App() {
     script.src = "../electron/renderer.js";
     script.type = "text/babel";
     script.async = true;
-    console.log(script);
 
     document.body.appendChild(script);
 

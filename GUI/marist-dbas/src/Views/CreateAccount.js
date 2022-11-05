@@ -6,9 +6,19 @@ import "../css/Login.css";
 const CreateAccount = (props) => {
   function handleSubmit(e) {
     e.preventDefault();
-    $("#createAccountForm").validate({
 
+    window.dbConnection.createAccount({
+      userEmail: $("#userEmail").val(),
+      password: $("#password").val()
+    }).then((result) => {
+      console.log("authenticated?", result);
+      if (result) {
+        props.loggedIn(true);
+        props.setUserEmail($("#userEmail").val());
+      }
     });
+
+
 
     props.loggedIn(true);
     props.setUserEmail($("#userEmail").val());

@@ -70,6 +70,29 @@ ipcMain.handle('check-login', async (e, arg) => {
       if(err){
         reject(err)
       }
+      results.some((el, i) => {
+        console.log(el);
+        if (el.useremail === arg.userEmail) {
+          if (el.userpassword === arg.password) {
+            console.log("USER AUTHENTICATED");
+            resolve(true);
+            return true;
+          }
+        }
+      });
+      console.log("END OF USER LIST");
+      resolve(false);
+    });
+  });
+});
+
+ipcMain.handle('create-account', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from users', [], (err,results) => {
+      if(err){
+        reject(err)
+      }
       results.forEach((el, i) => {
         if (el.useremail === arg.userEmail) {
           if (el.userpassword === arg.password) {
