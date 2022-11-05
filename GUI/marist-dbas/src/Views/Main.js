@@ -35,7 +35,6 @@ const Main = (props) => {
     const script = document.createElement('script');
     script.src = "../electron/renderer.js";
     script.async = true;
-    console.log(script);
 
     document.body.appendChild(script);
 
@@ -52,6 +51,7 @@ const Main = (props) => {
         </nav>
         <div id="userProfile">
           <p>{props.name}</p>
+          { props.admin ? <AdminView /> : null }
         </div>
 
         <div id="routes" className="p-4 p-md-5 pt-5">
@@ -65,10 +65,21 @@ const Main = (props) => {
             <Route path="/groups" element={<Groups/>}/>
             <Route path="/contacts" element={<Contacts/>}/>
             <Route path="/account" element={<Account/>}/>
-            <Route path="/settings" element={<Settings/>}/>
+            <Route path="/settings" element={<Settings admin={props.admin}/>}/>
           </Routes>
         </div>
       </div>
+    </>
+  );
+};
+
+const AdminView = (props) => {
+  useEffect(() => {
+    console.log("admined");
+  }, []);
+  return (
+    <>
+      <p className="admin">admin mode</p>
     </>
   );
 };

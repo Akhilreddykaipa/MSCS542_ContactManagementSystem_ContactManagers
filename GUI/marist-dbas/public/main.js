@@ -66,6 +66,7 @@ ipcMain.on('app-start', (e, args) => {
 
 ipcMain.handle('check-login', async (e, arg) => {
   e.preventDefault();
+  let admin = false;
   return new Promise((resolve, reject) => {
     db.con.query('select * from users', [], (err, results) => {
       if (err) {
@@ -74,12 +75,21 @@ ipcMain.handle('check-login', async (e, arg) => {
 
       results.some((el, i) => {
         if (el.useremail === arg.userEmail && el.userpassword === arg.password) {
+          if (el.usertype === "admin") admin = true;
             console.log("USER AUTHENTICATED");
-            resolve(true);
+            resolve({
+              authenticated: true,
+              email: el.useremail,
+              admin: admin
+            });
             return true;
         }
       });
-      resolve(false);
+      resolve({
+        authenticated: false,
+        email: null,
+        admin: null
+      });
     });
   });
 });

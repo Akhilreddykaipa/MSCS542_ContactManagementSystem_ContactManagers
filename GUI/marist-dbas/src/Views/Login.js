@@ -13,8 +13,9 @@ const Login = (props) => {
       userEmail: $("#userEmail").val(),
       password: $("#password").val()
     }).then((result) => {
-      console.log("authenticated?", result);
-      if (result) {
+      console.log(result);
+      if (result.authenticated) {
+        props.setAdmin(result.admin);
         props.loggedIn(true);
         props.setUserEmail($("#userEmail").val());
       }

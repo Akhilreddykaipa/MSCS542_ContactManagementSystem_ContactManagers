@@ -9,6 +9,7 @@ function App() {
   const [createAccount, setCreateAccount] = useState(false);
   const [page, setPage] = useState("login");
   const [username, setUserName] = useState("");
+  const [admin, setAdmin] = useState(false);
 
 
   useEffect(() => {
@@ -28,11 +29,12 @@ function App() {
     <>
       <div className="App">
         { (loggedIn == true) ?
-          <Main name={username}/> :
+          <Main name={username} admin={admin}/> :
           <Login
             loggedIn={setLogin}
             setUserEmail={setUserName}
             createAccount={setCreateAccount}
+            setAdmin={setAdmin}
           /> }
       </div>
     </>
