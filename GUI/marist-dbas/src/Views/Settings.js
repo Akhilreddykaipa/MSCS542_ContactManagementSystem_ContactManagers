@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { browserHistory } from 'react-router'
 import "../css/Settings.css";
 
 const Settings = (props) => {
   function handleLogout(e) {
     e.preventDefault();
+    window.history.replaceState(null, null, "/");
     window.location.reload();
   }
 
@@ -14,18 +15,6 @@ const Settings = (props) => {
         <hr/>
         <div>
           <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
-        </div>
-        <hr/>
-        <div>
-          {props.admin ?
-          <>
-            <h3>Admin</h3>
-            <hr/>
-            <button className="btn btn-primary">
-              <Link to="/createAccount">Create new user</Link>
-            </button>
-          </>
-          : null}
         </div>
       </div>
     </>

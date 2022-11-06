@@ -1,4 +1,3 @@
-import SideNav from "../Components/SideNav";
 import { useState } from 'react';
 import "../css/Account.css";
 
@@ -7,6 +6,7 @@ const Account = (props) => {
     <>
       <div id="Account" className="container">
         <h2>Account</h2>
+        <hr/>
         <table className="table table-dark table-hover">
           <thead>
             <tr>

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron');
 const isDev = require('electron-is-dev');
 const http = require('http');
 const https = require('https');
@@ -59,6 +59,20 @@ app.on('activate', function () {
     }
 });
 
+app.on('browser-window-focus', function () {
+    globalShortcut.register("CommandOrControl+R", () => {
+        console.log("CommandOrControl+R is pressed: Shortcut Disabled");
+    });
+    globalShortcut.register("F5", () => {
+        console.log("F5 is pressed: Shortcut Disabled");
+    });
+});
+
+app.on('browser-window-blur', function () {
+    globalShortcut.unregister('CommandOrControl+R');
+    globalShortcut.unregister('F5');
+});
+
 // Received from ipcRenderer
 ipcMain.on('app-start', (e, args) => {
   console.log("received from preload: ", args);
@@ -97,19 +111,6 @@ ipcMain.handle('check-login', async (e, arg) => {
 ipcMain.handle('create-account', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from users', [], (err, results) => {
-      if (err) {
-        reject(err)
-      }
-      results.some((el, i) => {
-        if (el.useremail === arg.userEmail) {
-          console.log("USER ALREADY EXISTS");
-          resolve("User already exists");
-          return true;
-        }
-      });
-    });
-
     db.con.query('insert into users (userpassword, useremail, usertype) values(?, ?, ?)',
       [arg.userEmail, arg.userpassword, 'employee'], (err, results) => {
         if (err) {
@@ -128,8 +129,6 @@ ipcMain.handle('get-messages', async (e, arg) => {
       if (err) {
         reject(err)
       }
-
-      console.log(results);
 
       results.forEach((el, i) => {
         console.log(el);

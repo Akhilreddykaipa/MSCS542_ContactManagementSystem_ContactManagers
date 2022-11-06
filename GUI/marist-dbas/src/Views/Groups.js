@@ -5,6 +5,7 @@ const Groups = (props) => {
     <>
       <div id="contacts" className="container">
         <h2>Groups</h2>
+        <hr/>
       </div>
     </>
   );

@@ -67,3 +67,7 @@
 #createAccount #newAccount {
   margin-top: 8px;
 }
+
+#backButton {
+  margin-bottom: 32px;
+}

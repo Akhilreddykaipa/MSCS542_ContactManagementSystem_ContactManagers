@@ -1,3 +1,4 @@
+import Login from "./Login";
 import SideNav from "../Components/SideNav";
 import Dashboard from "./Dashboard";
 import Messages from "./Messages";
@@ -9,7 +10,8 @@ import Contacts from "./Contacts";
 import Account from "./Account";
 import Settings from "./Settings";
 import CreateAccount from "../Views/CreateAccount.js"
-import { Routes, Route } from 'react-router-dom';
+import Admin from "../Views/Admin.js"
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../css/Main.css';
 import $ from 'jquery';
@@ -46,7 +48,7 @@ const Main = (props) => {
     <>
       <div id="main">
         <nav className={`sidenav p-3 py-4 ${newClass}`}>
-          <SideNav setActive={setClass}/>
+          <SideNav setActive={setClass} admin={props.admin}/>
         </nav>
         <div id="userProfile" className="rngColor">
           <p>{props.name}</p>
@@ -56,6 +58,7 @@ const Main = (props) => {
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
+            <Route path="/login" exact element={<Login />} />
             <Route path="/dashboard" element={<Dashboard/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/employees" element={<Employees/>}/>
@@ -64,8 +67,12 @@ const Main = (props) => {
             <Route path="/groups" element={<Groups/>}/>
             <Route path="/contacts" element={<Contacts/>}/>
             <Route path="/account" element={<Account/>}/>
-            <Route path="/settings" element={<Settings admin={props.admin}/>}/>
+            <Route path="/settings" element={<Settings/>}/>
             <Route path="/createAccount" element={<CreateAccount/>}/>
+            <Route path="/admin" element={<Admin admin={props.admin}/>}/>
+            <Route render={
+              ()=>(<Navigate to="/login"/>)}
+            />
           </Routes>
         </div>
       </div>
