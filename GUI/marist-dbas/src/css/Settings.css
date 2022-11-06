@@ -1,4 +1,4 @@
-#settings button {
+#settings button a {
   color: #fff;
-  background: #666;
+  text-decoration: none;
 }

@@ -47,7 +47,7 @@ const Login = (props) => {
           <form id="loginForm" onSubmit={handleSubmit}>
             <div>
               <div>
-                <label>Name</label>
+                <label>Email</label>
               </div>
               <div>
                 <input id="userEmail" name="userEmail" className="fullWidth mb-3" label="userEmail" type="text" required></input>

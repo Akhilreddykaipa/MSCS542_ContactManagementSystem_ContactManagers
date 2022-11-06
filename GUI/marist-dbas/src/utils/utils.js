@@ -2,6 +2,14 @@ function newID() {
   return (Date.now() + Math.random()).toString().substr(4);
 }
 
+function formatDate(date) {
+  let newDate = new Date(date);
+  let m = newDate.getMonth();
+  let d = newDate.getDate();
+  let y = newDate.getFullYear().toString().slice(2,4);
+  return m + "/" + d + "/" + y;
+}
+
 class CaesarCipher {
   constructor(str, offset) {
     this.str = str;
@@ -45,5 +53,6 @@ ces.decrypt();
 
 module.exports = {
   newID,
+  formatDate,
   CaesarCipher,
 };

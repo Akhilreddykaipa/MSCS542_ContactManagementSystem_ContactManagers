@@ -21,13 +21,13 @@ const Main = (props) => {
   useEffect(() => {
     if (firstRun) {
       // max hex color value is (16*16) * (16*16) * (16*16) - 1 = 16777215
-      let randomHex = [ Math.floor(Math.random() * 64).toString(16), Math.floor(Math.random() * 64).toString(16), Math.floor(Math.random() * 64).toString(16) ];
+      let newHexVal = [ String(Math.floor(Math.random() * 63) + 1).toString(16), String(Math.floor(Math.random() * 63) + 1).toString(16), String(Math.floor(Math.random() * 63) + 1).toString(16) ];
       let finalNum = "#";
-      randomHex.forEach((item, i) => {
+      newHexVal.forEach((item, i) => {
         finalNum += item;
       });
 
-      $("#userProfile").css({ "background": finalNum });
+      $("body").append("<style>.rngColor{background:" + finalNum + "!important;}</style>");
       setFirstRun(false);
     }
 
@@ -48,7 +48,7 @@ const Main = (props) => {
         <nav className={`sidenav p-3 py-4 ${newClass}`}>
           <SideNav setActive={setClass}/>
         </nav>
-        <div id="userProfile">
+        <div id="userProfile" className="rngColor">
           <p>{props.name}</p>
           { props.admin ? <AdminView /> : null }
         </div>

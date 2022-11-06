@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
 import "../css/Messages.css";
+const utils = require('../utils/utils.js');
 
 const MessagesCells = (props) => {
   let sender, receiver, group, message, timstamp;
@@ -35,17 +36,22 @@ const Messages = (props) => {
   function getMessages(e) {
     // e.preventDefault();
     window.dbConnection.getMessages().then((result) => {
-    console.log(result);
+    // console.log(result);
       setMessages([...result]);
 
       result.forEach((item, i) => {
-        console.log(item);
+        // console.log(item);
+        let message = item.Messagedate;
+        let messageDate = utils.formatDate(message);
+        // let messageDate = new Date(item.Messagedate);
+        // let newDate = messageDate.getMonth() + "/" + messageDate.getDay() + "/" + messageDate.getYear() +
+                      // " " + messageDate.getHours() + ":" + messageDate.getMinutes() + " ";
         $("#messagesBody").append('<tr>' +
           '<td>' + item.senderID + '</td>' +
           '<td>' + item.userID + '</td>' +
           '<td>' + item.groupID + '</td>' +
           '<td>' + item.Message + '</td>' +
-          '<td>' + item.Messagedate + '</td>' +
+          '<td>' + messageDate + '</td>' +
           '</tr>');
       })
     });
