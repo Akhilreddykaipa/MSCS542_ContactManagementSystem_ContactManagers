@@ -46,5 +46,6 @@ hr {
   transition: padding-left var(--transition-time2);
 }
 
-#routes {
+#routes button a {
+  color: #000;
 }

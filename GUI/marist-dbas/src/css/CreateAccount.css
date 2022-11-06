@@ -5,6 +5,7 @@
 }
 
 #createAccount > div {
+  position: relative;
   width: 100%;
   height: auto;
   display: flex;
@@ -70,4 +71,27 @@
 
 #backButton {
   margin-bottom: 32px;
+}
+
+#createAccount .successMessage, #createAccount .errorMessage {
+  opacity: 0%;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  top: 64px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#createAccount .successMessage {
+  background: green;
+}
+
+#createAccount .errorMessage {
+  background: red;
+}
+
+#createAccount .successMessage.active, #createAccount .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.4s;
 }

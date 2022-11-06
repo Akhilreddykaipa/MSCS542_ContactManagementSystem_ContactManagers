@@ -17,3 +17,8 @@ code {
 h2, h3 {
   color: #fff;
 }
+
+button a {
+  color: #fff;
+  text-decoration: none;
+}

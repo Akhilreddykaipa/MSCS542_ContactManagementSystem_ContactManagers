@@ -111,12 +111,49 @@ ipcMain.handle('check-login', async (e, arg) => {
 ipcMain.handle('create-account', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('insert into users (userpassword, useremail, usertype) values(?, ?, ?)',
-      [arg.userEmail, arg.userpassword, 'employee'], (err, results) => {
-        if (err) {
-          reject(err)
+    let duplicateAccount = false;
+    db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
+      if (err) {
+        console.log("error:", err);
+      }
+      console.log("checking for existing user");
+      results.some((item, i) => {
+        console.log(item.email);
+        if (item.email === arg.email) {
+          console.log("FOUND SAME EMAIL");
+          duplicateAccount = true;
+          resolve("Error: An account with that email already exists.");
+          return true;
         }
-        console.log(results);
+      });
+
+      console.log("duplicateAccount:", duplicateAccount);
+      if (!duplicateAccount) {
+        console.log("inserting query...");
+        db.con.query('insert into employees (Fname, Lname, email, phoneNum, WorkNum, gender, age, Department_ID, Supervisor_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+          [arg.Fname, arg.Lname, arg.email, arg.phoneNum, null, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID], (err, results) => {
+            if (err) {
+              console.log(err);
+              reject(err)
+            }
+            console.log(results);
+            resolve(results);
+        });
+      }
+    });
+  });
+});
+
+ipcMain.handle('get-departments', async (e) => {
+  e.preventDefault();
+  console.log("getting departments");
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from department', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
     });
   });
 });
@@ -127,12 +164,9 @@ ipcMain.handle('get-messages', async (e, arg) => {
   return new Promise((resolve, reject) => {
     db.con.query('select * from messages', [], (err, results) => {
       if (err) {
-        reject(err)
+        console.log(err);
+        resolve(err)
       }
-
-      results.forEach((el, i) => {
-        console.log(el);
-      });
       resolve(results);
     });
   });
