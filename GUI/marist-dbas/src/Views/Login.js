@@ -13,6 +13,9 @@ const Login = (props) => {
         props.setAdmin(result.admin);
         props.loggedIn(true);
         props.setUserEmail($("#userEmail").val());
+      } else {
+        let loginError = "<p class='error'>Incorrect Email or Password</p>";
+        $("#loginForm").before(loginError);
       }
     });
   }
