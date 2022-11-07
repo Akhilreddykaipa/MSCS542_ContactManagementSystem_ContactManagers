@@ -129,34 +129,29 @@ ipcMain.handle('create-account', async (e, arg) => {
 
       console.log("duplicateAccount:", duplicateAccount);
       if (!duplicateAccount) {
-        console.log("inserting query...");
         db.con.query('insert into employees (Fname, Lname, email, phoneNum, WorkNum, gender, age, Department_ID, Supervisor_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
           [arg.Fname, arg.Lname, arg.email, arg.phoneNum, null, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID], (err, results) => {
             if (err) {
               console.log(err);
-              reject(err)
+              resolve(err)
             }
             console.log(results);
-            resolve(results);
+            // resolve(results);
         });
 
-        let employee_id = null;
         db.con.query('SELECT LAST_INSERT_ID()', [], (err, results) => {
-          employee_id = Object.values(results[0])[0];
-          console.log(results);
-          console.log(Object.values(results[0])[0]);
-          console.log(JSON.stringify(results[Object.keys(results)[0]]));
-          console.log(typeof results[0]);
-        });
+          let employee_id = Number(Object.values(results[0])[0]);
 
-        db.con.query('insert into users (userPassword, useremail, usertype, Employees_ID) values(?, ?, ?, ?)',
-          [arg.password, arg.email, arg.userType, employee_id], (err, results) => {
-            if (err) {
-              console.log(err);
-              reject(err)
-            }
-            console.log(results);
-            resolve(results);
+          console.log("employee id");
+          db.con.query('insert into users (userPassword, useremail, usertype, Employees_ID) values(?, ?, ?, ?)',
+            [arg.password, arg.email, arg.userType, employee_id], (err, results) => {
+              if (err) {
+                console.log(err);
+                resolve(err)
+              }
+              console.log(results);
+              resolve(results);
+          });
         });
       }
     });
