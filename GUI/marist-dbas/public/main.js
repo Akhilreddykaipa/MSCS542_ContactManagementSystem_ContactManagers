@@ -136,7 +136,6 @@ ipcMain.handle('create-account', async (e, arg) => {
               resolve(err)
             }
             console.log(results);
-            // resolve(results);
         });
 
         db.con.query('SELECT LAST_INSERT_ID()', [], (err, results) => {

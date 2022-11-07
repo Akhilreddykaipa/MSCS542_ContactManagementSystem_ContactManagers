@@ -24,7 +24,7 @@ const Main = (props) => {
   useEffect(() => {
     if (firstRun) {
       // max hex color value is (16*16) * (16*16) * (16*16) - 1 = 16777215
-      let newHexVal = [ String(Math.floor(Math.random() * 63) + 1).toString(16), String(Math.floor(Math.random() * 63) + 1).toString(16), String(Math.floor(Math.random() * 63) + 1).toString(16) ];
+      let newHexVal = [ String(Math.floor(Math.random() * 63) + 16).toString(16), String(Math.floor(Math.random() * 63) + 16).toString(16), String(Math.floor(Math.random() * 63) + 16).toString(16) ];
       let finalNum = "#";
       newHexVal.forEach((item, i) => {
         finalNum += item;
@@ -83,9 +83,6 @@ const Main = (props) => {
 };
 
 const AdminView = (props) => {
-  useEffect(() => {
-    console.log("admined");
-  }, []);
   return (
     <>
       <p className="admin">admin mode</p>
