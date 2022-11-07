@@ -15,6 +15,9 @@ contextBridge.exposeInMainWorld('dbConnection', {
   }),
   getMessages: (args) => ipcRenderer.invoke('get-messages', (args)).then((result) => {
     return result;
+  }),
+  setLastLogin: (args) => ipcRenderer.invoke('set-last-login', (args)).then((result) => {
+    return result;
   })
 });
 

@@ -183,6 +183,19 @@ ipcMain.handle('create-account', async (e, arg) => {
   });
 });
 
+ipcMain.handle('set-last-login', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from department', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-departments', async (e) => {
   e.preventDefault();
   console.log("getting departments");
