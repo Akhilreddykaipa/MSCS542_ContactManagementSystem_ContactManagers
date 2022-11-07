@@ -19,7 +19,7 @@ CREATE TABLE Department (
 
 -- Creates Employees Table
  CREATE TABLE Employees (
-  ID INT NOT NULL PRIMARY KEY,
+  ID INT NOT NULL PRIMARY KEY auto_increment,
   Fname VARCHAR(45),
   Lname VARCHAR(45),
   email VARCHAR(45),
@@ -35,7 +35,7 @@ CREATE TABLE Department (
 
 -- Creates User Table
 CREATE TABLE users (
-  userlogin INT NOT NULL PRIMARY KEY,
+  userlogin INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   userpassword VARCHAR(45) ,
   useremail VARCHAR(45) ,
   usertype VARCHAR(45) ,
@@ -158,22 +158,22 @@ CREATE TABLE Certified (
    );
    SET FOREIGN_KEY_CHECKS=0;
 -- Loads data in Employee
- Insert into Employees(ID,FName,LName,email,phonenum,worknum,gender,age,department_ID,Supervisor_ID)values
-	(0,	'Ariana',	 'Grande',		       'agran@cms.com',0000000000,0000000001,'F',30,0,0),
-    (1,	'Dwayne',	 'TheRockJohnson',     'dther@cms.com',0000000002,0000000003,'M',50,1,0),
-    (2,	'Barak',     'Obama',		       'bobam@cms.com',0000000004,0000000005,'M',56,2,0),
-    (3, 'Abraham',   'Lincoln',		       'alinc@cms.com',0000000006,0000000007,'M',200,3,0),
-    (4, 'Michael',   'Jackson',		   	   'mjack@cms.com',0000000008,0000000009,'M',43,0,0),
-    (5, 'Magic',     'Johnson',		       'mjohn@cms.com',0000000010,0000000011,'M',54,0,1),
-    (6, 'Jennifer',  'Lawrence',	       'jlawr@cms.com',0000000012,0000000013,'F',36,6,2),
-    (7, 'Taylor',    'Swift',		       'tswif@cms.com',0000000014,0000000015,'F',27,7,3),
-    (8, 'King',      'George III',		   'kgeor@cms.com',0000000016,0000000017,'M',300,8,0),
-    (9, 'Queen',     'Elizabeth',		   'qeliz@cms.com',0000000018,0000000019,'F',96,1,0),
-    (10,'Megan',     'Markel',		   	   'mmark@cms.com',0000000020,0000000021,'F',29,5,1),
-    (11,'Derek',     'Jeter',		       'djete@cms.com',0000000022,0000000023,'M',42,4,3),
-    (12,'Will',      'Smith',		 	   'wsmit@cms.com',0000000024,0000000025,'M',55,3,3),
-    (13,'Meryl',     'Streep',		       'mstre@cms.com',0000000026,0000000027,'F',64,2,2),
-    (14,'Lizzo',      Null,		 	       'lizzo@cms.com',0000000028,0000000029,'F',28,9,2);
+ Insert into Employees(FName,LName,email,phonenum,worknum,gender,age,department_ID,Supervisor_ID)values
+	('Ariana',	 'Grande',		       'agran@cms.com',0000000000,0000000001,'F',30,0,0),
+    ('Dwayne',	 'TheRockJohnson',     'dther@cms.com',0000000002,0000000003,'M',50,1,0),
+    ('Barak',     'Obama',		       'bobam@cms.com',0000000004,0000000005,'M',56,2,0),
+    ('Abraham',   'Lincoln',		       'alinc@cms.com',0000000006,0000000007,'M',200,3,0),
+    ('Michael',   'Jackson',		   	   'mjack@cms.com',0000000008,0000000009,'M',43,0,0),
+    ('Magic',     'Johnson',		       'mjohn@cms.com',0000000010,0000000011,'M',54,0,1),
+    ('Jennifer',  'Lawrence',	       'jlawr@cms.com',0000000012,0000000013,'F',36,6,2),
+    ('Taylor',    'Swift',		       'tswif@cms.com',0000000014,0000000015,'F',27,7,3),
+    ('King',      'George III',		   'kgeor@cms.com',0000000016,0000000017,'M',300,8,0),
+    ('Queen',     'Elizabeth',		   'qeliz@cms.com',0000000018,0000000019,'F',96,1,0),
+    ('Megan',     'Markel',		   	   'mmark@cms.com',0000000020,0000000021,'F',29,5,1),
+    ('Derek',     'Jeter',		       'djete@cms.com',0000000022,0000000023,'M',42,4,3),
+    ('Will',      'Smith',		 	   'wsmit@cms.com',0000000024,0000000025,'M',55,3,3),
+    ('Meryl',     'Streep',		       'mstre@cms.com',0000000026,0000000027,'F',64,2,2),
+    ('Lizzo',      Null,		 	       'lizzo@cms.com',0000000028,0000000029,'F',28,9,2);
 
 -- Loads data in Users
 Insert into users(userlogin,userpassword,useremail,usertype,loginkey,employees_ID)values
