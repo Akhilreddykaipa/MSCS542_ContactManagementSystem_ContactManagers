@@ -139,6 +139,25 @@ ipcMain.handle('create-account', async (e, arg) => {
             console.log(results);
             resolve(results);
         });
+
+        let employee_id = null;
+        db.con.query('SELECT LAST_INSERT_ID()', [], (err, results) => {
+          employee_id = Object.values(results[0])[0];
+          console.log(results);
+          console.log(Object.values(results[0])[0]);
+          console.log(JSON.stringify(results[Object.keys(results)[0]]));
+          console.log(typeof results[0]);
+        });
+
+        db.con.query('insert into users (userPassword, useremail, usertype, Employees_ID) values(?, ?, ?, ?)',
+          [arg.password, arg.email, arg.userType, employee_id], (err, results) => {
+            if (err) {
+              console.log(err);
+              reject(err)
+            }
+            console.log(results);
+            resolve(results);
+        });
       }
     });
   });

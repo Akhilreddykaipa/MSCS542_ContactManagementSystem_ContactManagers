@@ -22,3 +22,7 @@ button a {
   color: #fff;
   text-decoration: none;
 }
+
+.row {
+  margin-bottom: 32px;
+}

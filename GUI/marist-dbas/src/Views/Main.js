@@ -1,4 +1,5 @@
 import Login from "./Login";
+import EditUser from "./EditUser";
 import SideNav from "../Components/SideNav";
 import Dashboard from "./Dashboard";
 import Messages from "./Messages";
@@ -70,6 +71,7 @@ const Main = (props) => {
             <Route path="/settings" element={<Settings/>}/>
             <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/admin" element={<Admin admin={props.admin}/>}/>
+            <Route path="/editUser" element={<EditUser/>}/>
             <Route render={
               ()=>(<Navigate to="/login"/>)}
             />

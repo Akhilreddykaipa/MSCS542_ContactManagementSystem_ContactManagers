@@ -8,10 +8,19 @@ const Admin = (props) => {
       <div id="admin" className="container">
         <h2>Admin</h2>
         <hr/>
-        <div>
-          <button className="btn btn-primary">
-            <Link to="/createAccount">Create new user</Link>
-          </button>
+        <div className="row">
+          <div className="col">
+            <button className="btn btn-primary">
+              <Link to="/createAccount">Create new user</Link>
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <button className="btn btn-primary">
+              <Link to="/editUser">Edit user</Link>
+            </button>
+          </div>
         </div>
       </div>
     </>

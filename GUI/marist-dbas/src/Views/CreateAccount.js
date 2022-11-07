@@ -14,6 +14,7 @@ const CreateAccount = (props) => {
   const [depData, setDepData] = useState(DepartmentData);
   const [depValue, setDepValue] = useState(null);
   const [supValue, setSupValue] = useState(null);
+  const [userType, setUserType] = useState("employee");
 
   useEffect(() => {
     if (firstRun) {
@@ -43,11 +44,12 @@ const CreateAccount = (props) => {
     window.dbConnection.createAccount({
       Fname: $("#firstName").val(),
       Lname: $("#lastName").val(),
+      password: $("#password").val(),
       email: $("#userEmail").val(),
+      userType: $("#userType").val(),
       phoneNum: $("#phoneNum").val(),
       gender: $("#gender").val(),
       age: $("#age").val(),
-      password: $("#password").val(),
       Department_ID: $("#department").val(),
       Supervisor_ID: $("#department option[value='" + $("#department").val() + "']")[0].id
     }).then((result) => {
@@ -115,10 +117,28 @@ const CreateAccount = (props) => {
                 <input id="lastName" name="lastName" className="fullWidth mb-3" type="text" required></input>
               </div>
               <div>
+                <label>Password</label>
+              </div>
+              <div>
+                <input id="password" name="password" className="fullWidth mb-3" type="password" required></input>
+              </div>
+              <div>
+                <input type="checkbox" onClick={togglePassword}></input>
+                <label className="password-helper">Show password</label>
+              </div>
+              <div>
                 <label>User Email</label>
               </div>
               <div>
                 <input id="userEmail" name="userEmail" className="fullWidth mb-3" type="email" required></input>
+              </div>
+              <div>
+                <label>User Type</label>
+                <select id="userType" name="userType" className="fullWidth mb-3" onChange={(e) => setUserType(e.target.value)} required>
+                  <option value="employee">Employee</option>
+                  <option value="supervisor">Supervisor</option>
+                  <option value="admin">Admin</option>
+                </select>
               </div>
               <div>
                 <label>Phone Number</label>
@@ -143,16 +163,6 @@ const CreateAccount = (props) => {
                 <select id="department" name="department" className="fullWidth mb-3" onChange={(e) => setDepValue(e.target.value)} required>
                   <DepartmentOption departmentData={depData} />
                 </select>
-              </div>
-              <div>
-                <label>Password</label>
-              </div>
-              <div>
-                <input id="password" name="password" className="fullWidth mb-3" type="password" required></input>
-              </div>
-              <div>
-                <input type="checkbox" onClick={togglePassword}></input>
-                <label className="password-helper">Show password</label>
               </div>
             </div>
             <div>
