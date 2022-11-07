@@ -10,49 +10,33 @@ function formatDate(date) {
   return m + "/" + d + "/" + y;
 }
 
-class CaesarCipher {
-  constructor(str, offset) {
-    this.str = str;
-    this.offset = offset;
-    this.encrypted = this.encrypt(str, offset);
-  }
-
-  encrypt() {
-    let res = "";
-    for (let i = 0; i < this.str.length; i++) {
-      let code = this.str.charCodeAt(i);
-      // Capital letter codes
-      if ((code >= 65) && (code <= 90)) {
-        res += String.fromCharCode(((code - 65 + this.offset) % 26) + 65);
-      // Lowercase letter codes
-      } else if ((code >= 97) && (code <= 122)) {
-        res += String.fromCharCode(((code - 97 + this.offset) % 26) + 97);
+function caesarEncrypt(str, shift) {
+  let encrypted = "";
+  console.log("utils str: " + str);
+  console.log(typeof str);
+    for (var i = 0; i < str.length; i++) {
+      let code = str.charCodeAt(i);
+      if (code >= 65 && code <= 90) {
+        encrypted += String.fromCharCode(((code - 65 + shift) % 26) + 65);
+      } else if (code >= 97 && code <= 122) {
+        encrypted += String.fromCharCode(((code - 97 + shift) % 26) + 97);
+      } else {
+        encrypted += str.charAt(i).toString();
       }
     }
-    return res;
-  }
-
-  decrypt() {
-    let res = "";
-    for (let i = 0; i < this.encrypted.length; i++) {
-      let code = this.encrypted.charCodeAt(i);
-      // Capital letter codes
-      if ((code >= 65) && (code <= 90)) {
-        res += String.fromCharCode(((code - 65 - this.offset) % 26) + 65);
-      // Lowercase letter codes
-      } else if ((code >= 97) && (code <= 122)) {
-        res += String.fromCharCode(((code - 97 - this.offset) % 26) + 97);
-      }
-    }
-    return res;
-  }
+    return String(encrypted);
 }
 
-let ces = new CaesarCipher("testString", 12);
-ces.decrypt();
+function caesarDecrypt(str, shift) {
+    let plain = '';
+    shift = (26 - shift) % 26;
+    plain = caesarEncrypt(str, shift);
+    return plain;
+}
 
 module.exports = {
   newID,
   formatDate,
-  CaesarCipher,
+  caesarEncrypt,
+  caesarDecrypt,
 };

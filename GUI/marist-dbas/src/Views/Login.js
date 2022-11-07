@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import "../css/Login.css";
+const utils = require('../utils/utils.js');
 
 const Login = (props) => {
   function handleSubmit(e) {

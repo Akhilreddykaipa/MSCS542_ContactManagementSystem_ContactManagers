@@ -88,15 +88,19 @@ ipcMain.handle('check-login', async (e, arg) => {
       }
 
       results.some((el, i) => {
-        if (el.useremail === arg.userEmail && el.userpassword === arg.password) {
+        let decrypted = utils.caesarDecrypt(el.userpassword, 12);
+        console.log("decrypted:");
+        console.log(decrypted);
+        if (el.useremail === arg.userEmail && decrypted === arg.password) {
+          console.log(decrypted);
           if (el.usertype === "admin") admin = true;
-            console.log("USER AUTHENTICATED");
-            resolve({
-              authenticated: true,
-              email: el.useremail,
-              admin: admin
-            });
-            return true;
+          console.log("USER AUTHENTICATED");
+          resolve({
+            authenticated: true,
+            email: el.useremail,
+            admin: admin
+          });
+          return true;
         }
       });
       resolve({
@@ -108,8 +112,28 @@ ipcMain.handle('check-login', async (e, arg) => {
   });
 });
 
+function caesarEncrypt(str, shift) {
+  let encrypted = "";
+  console.log("utils str: " + str);
+  console.log(typeof str);
+  for (var i = 0; i < str.length; i++) {
+    let code = str.charCodeAt(i);
+    if (code >= 65 && code <= 90) {
+      encrypted += String.fromCharCode(((code - 65 + shift) % 26) + 65);
+    } else if (code >= 97 && code <= 122) {
+      encrypted += String.fromCharCode(((code - 97 + shift) % 26) + 97);
+    } else {
+      encrypted += str.charAt(i).toString();
+    }
+    console.log(encrypted);
+  }
+  return String(encrypted);
+}
+
 ipcMain.handle('create-account', async (e, arg) => {
   e.preventDefault();
+  console.log("password type: " + typeof arg.password);
+  let pass = caesarEncrypt((arg.password).toString(), 12);
   return new Promise((resolve, reject) => {
     let duplicateAccount = false;
     db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
@@ -138,12 +162,14 @@ ipcMain.handle('create-account', async (e, arg) => {
             console.log(results);
         });
 
-        db.con.query('SELECT LAST_INSERT_ID()', [], (err, results) => {
+        db.con.query('SELECT LAST_INSERT_ID()', [], async (err, results) => {
           let employee_id = Number(Object.values(results[0])[0]);
+          console.log("PASS: " + pass);
+          console.log(typeof pass);
 
           console.log("employee id");
           db.con.query('insert into users (userPassword, useremail, usertype, Employees_ID) values(?, ?, ?, ?)',
-            [arg.password, arg.email, arg.userType, employee_id], (err, results) => {
+            [pass, arg.email, arg.userType, employee_id], (err, results) => {
               if (err) {
                 console.log(err);
                 resolve(err)
