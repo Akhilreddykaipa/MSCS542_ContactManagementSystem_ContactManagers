@@ -19,7 +19,7 @@ CREATE TABLE Department (
 
 -- Creates Employees Table
  CREATE TABLE Employees (
-  ID INT NOT NULL PRIMARY KEY auto_increment,
+  ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Fname VARCHAR(45),
   Lname VARCHAR(45),
   email VARCHAR(45),
