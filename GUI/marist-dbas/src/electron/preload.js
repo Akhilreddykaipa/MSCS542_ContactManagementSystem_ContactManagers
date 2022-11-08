@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('dbConnection', {
   checkLogin: (args) => ipcRenderer.invoke('check-login', (args)).then((result) => {
+    // console.log(result);
     return result;
   }),
   createAccount: (args) => ipcRenderer.invoke('create-account', (args)).then((result, reject) => {
@@ -22,7 +23,7 @@ contextBridge.exposeInMainWorld('dbConnection', {
     return result;
   }),
   getEmployees: () => ipcRenderer.invoke('get-employees').then((result) => {
-    console.log(result);
+    // console.log(result);
     return result;
   }),
   getEmployeeIDs: (args) => ipcRenderer.invoke('get-employee-ids', (args)).then((result) => {
@@ -34,12 +35,15 @@ contextBridge.exposeInMainWorld('dbConnection', {
     return result;
   }),
   getMessages: (args) => ipcRenderer.invoke('get-messages', (args)).then((result) => {
+    // console.log(result);
     return result;
   }),
   setLastLogin: (args) => ipcRenderer.invoke('set-last-login', (args)).then((result) => {
+    // console.log(result);
     return result;
   }),
   newPassword: (args) => ipcRenderer.invoke('set-new-password', (args)).then((result) => {
+    // console.log(result);
     return result;
   })
 });

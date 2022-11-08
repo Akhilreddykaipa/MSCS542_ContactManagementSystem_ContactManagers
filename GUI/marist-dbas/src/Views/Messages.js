@@ -5,41 +5,38 @@ const utils = require('../utils/utils.js');
 
 const Messages = (props) => {
   const [messages, setMessages] = useState([]);
-  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
-    getMessages();
-  }, []);
-
-  function getMessages(e) {
     window.dbConnection.getMessages().then((result) => {
       setMessages([...result]);
     });
     window.dbConnection.getEmployees().then((result) => {
-      console.log(result);
       let employeeData = result;
-      setEmployees(result);
-
       window.dbConnection.getEmployeeIDs({
         email: $("#userProfile .userName").text()
       }).then((result) => {
         $(document).ready(() => {
-          console.log(employeeData);
           $("#messagesBody tr").each((i, el) => {
             let sender = $(el).find(".sender");
             let receiver = $(el).find(".receiver");
-            console.log($(sender).text(), $(receiver).text());
-
             if (sender.text() == result[0].ID) {
               sender.text(result[0].Fname + " " + result[0].Lname);
               employeeData.forEach((item, i) => {
-                if (receiver.text() == item.ID) {
-                  receiver.text(item.Fname + " " + item.Lname);
+                for (let i = 0; i < Object.keys(item).length; i++) {
+                  let key = Object.keys(item)[i];
+                  if (item[key] === null) item[key] = "";
                 }
+                if (receiver.text() == item.ID) receiver.text(item.Fname + " " + item.Lname);
               });
             } else if (receiver.text() == result[0].ID) {
               receiver.text(result[0].Fname + " " + result[0].Lname);
-
+              employeeData.forEach((item, i) => {
+                for (let i = 0; i < Object.keys(item).length; i++) {
+                  let key = Object.keys(item)[i];
+                  if (item[key] === null) item[key] = "";
+                }
+                if (sender.text() == item.ID) sender.text(item.Fname + " " + item.Lname);
+              });
             } else {
               $(el).remove();
             }
@@ -47,11 +44,7 @@ const Messages = (props) => {
         });
       });
     });
-  }
-
-  const setSenderVal = (res) => {
-    console.log("got", res);
-  }
+  }, []);
 
   return (
     <>
