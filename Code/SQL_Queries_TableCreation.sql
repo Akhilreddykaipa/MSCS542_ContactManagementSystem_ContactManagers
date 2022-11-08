@@ -19,7 +19,7 @@ CREATE TABLE Department (
 
 -- Creates Employees Table
  CREATE TABLE Employees (
-  ID INT NOT NULL PRIMARY KEY auto_increment,
+  ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Fname VARCHAR(45),
   Lname VARCHAR(45),
   email VARCHAR(45),
@@ -160,38 +160,39 @@ CREATE TABLE Certified (
 -- Loads data in Employee
  Insert into Employees(FName,LName,email,phonenum,worknum,gender,age,department_ID,Supervisor_ID)values
 	('Ariana',	 'Grande',		       'agran@cms.com',0000000000,0000000001,'F',30,0,0),
-    ('Dwayne',	 'TheRockJohnson',     'dther@cms.com',0000000002,0000000003,'M',50,1,0),
-    ('Barak',     'Obama',		       'bobam@cms.com',0000000004,0000000005,'M',56,2,0),
-    ('Abraham',   'Lincoln',		       'alinc@cms.com',0000000006,0000000007,'M',200,3,0),
-    ('Michael',   'Jackson',		   	   'mjack@cms.com',0000000008,0000000009,'M',43,0,0),
-    ('Magic',     'Johnson',		       'mjohn@cms.com',0000000010,0000000011,'M',54,0,1),
-    ('Jennifer',  'Lawrence',	       'jlawr@cms.com',0000000012,0000000013,'F',36,6,2),
-    ('Taylor',    'Swift',		       'tswif@cms.com',0000000014,0000000015,'F',27,7,3),
-    ('King',      'George III',		   'kgeor@cms.com',0000000016,0000000017,'M',300,8,0),
-    ('Queen',     'Elizabeth',		   'qeliz@cms.com',0000000018,0000000019,'F',96,1,0),
-    ('Megan',     'Markel',		   	   'mmark@cms.com',0000000020,0000000021,'F',29,5,1),
-    ('Derek',     'Jeter',		       'djete@cms.com',0000000022,0000000023,'M',42,4,3),
-    ('Will',      'Smith',		 	   'wsmit@cms.com',0000000024,0000000025,'M',55,3,3),
-    ('Meryl',     'Streep',		       'mstre@cms.com',0000000026,0000000027,'F',64,2,2),
-    ('Lizzo',      Null,		 	       'lizzo@cms.com',0000000028,0000000029,'F',28,9,2);
+  ('Dwayne',	 'TheRockJohnson',     'dther@cms.com',0000000002,0000000003,'M',50,1,0),
+  ('Barak',     'Obama',		       'bobam@cms.com',0000000004,0000000005,'M',56,2,0),
+  ('Abraham',   'Lincoln',		       'alinc@cms.com',0000000006,0000000007,'M',200,3,0),
+  ('Michael',   'Jackson',		   	   'mjack@cms.com',0000000008,0000000009,'M',43,0,0),
+  ('Magic',     'Johnson',		       'mjohn@cms.com',0000000010,0000000011,'M',54,0,1),
+  ('Jennifer',  'Lawrence',	       'jlawr@cms.com',0000000012,0000000013,'F',36,6,2),
+  ('Taylor',    'Swift',		       'tswif@cms.com',0000000014,0000000015,'F',27,7,3),
+  ('King',      'George III',		   'kgeor@cms.com',0000000016,0000000017,'M',300,8,0),
+  ('Queen',     'Elizabeth',		   'qeliz@cms.com',0000000018,0000000019,'F',96,1,0),
+  ('Megan',     'Markel',		   	   'mmark@cms.com',0000000020,0000000021,'F',29,5,1),
+  ('Derek',     'Jeter',		       'djete@cms.com',0000000022,0000000023,'M',42,4,3),
+  ('Will',      'Smith',		 	   'wsmit@cms.com',0000000024,0000000025,'M',55,3,3),
+  ('Meryl',     'Streep',		       'mstre@cms.com',0000000026,0000000027,'F',64,2,2),
+  ('Lizzo',      Null,		 	       'lizzo@cms.com',0000000028,0000000029,'F',28,9,2);
 
 -- Loads data in Users
+-- Passwords: mpyuz = admin , qybxakqq = employee
 Insert into users(userlogin,userpassword,useremail,usertype,loginkey,employees_ID)values
-	(100,'admin','agran@cms.com','admin','12345',0),
-    (101,'admin1','dther@cms.com','admin','13345',1),
-    (102,'admin2','bobam@cms.com','admin','14345',2),
-    (103,'admin3','alinc@cms.com','admin','15345',3),
-    (104,'employee0','mjack@cms.com','employee','16345',4),
-    (105,'employee1','mjohn@cms.com','employee','17345',5),
-    (106,'employee2','jlawr@cms.com','employee','18345',6),
-    (107,'employee3','tswif@cms.com','employee','19345',7),
-    (108,'employee4','kgeor@cms.com','employee','20345',8),
-    (109,'employee5','qeliz@cms.com','employee','21345',9),
-    (110,'employee6','mmark@cms.com','employee','22345',10),
-    (111,'employee7','djete@cms.com','employee','23345',11),
-    (112,'employee8','wsmit@cms.com','employee','24345',12),
-    (113,'employee9','mstre@cms.com','employee','25345',13),
-    (114,'employee10','lizzo@cms.com','employee','26345',14);
+	(100,'mpyuz','agran@cms.com','admin','12345',1),
+    (101,'mpyuz1','dther@cms.com','admin','13345',2),
+    (102,'mpyuz2','bobam@cms.com','admin','14345',3),
+    (103,'mpyuz3','alinc@cms.com','admin','15345',4),
+    (104,'qybxakqq0','mjack@cms.com','employee','16345',5),
+    (105,'qybxakqq1','mjohn@cms.com','employee','17345',6),
+    (106,'qybxakqq2','jlawr@cms.com','employee','18345',7),
+    (107,'qybxakqq3','tswif@cms.com','employee','19345',8),
+    (108,'qybxakqq4','kgeor@cms.com','employee','20345',9),
+    (109,'qybxakqq5','qeliz@cms.com','employee','21345',10),
+    (110,'qybxakqq6','mmark@cms.com','employee','22345',11),
+    (111,'qybxakqq7','djete@cms.com','employee','23345',12),
+    (112,'qybxakqq8','wsmit@cms.com','employee','24345',13),
+    (113,'qybxakqq9','mstre@cms.com','employee','25345',14),
+    (114,'qybxakqq10','lizzo@cms.com','employee','26345',15);
 
 -- Loads data in Certification
 Insert into Certification(ID,name,type,certified_ID)values
