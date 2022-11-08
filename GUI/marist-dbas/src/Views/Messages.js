@@ -15,36 +15,42 @@ const Messages = (props) => {
     window.dbConnection.getMessages().then((result) => {
       setMessages([...result]);
     });
-    window.dbConnection.getEmployeeIDs({
-      email: $("#userProfile .userName").text()
-    }).then((result) => {
+    window.dbConnection.getEmployees().then((result) => {
       console.log(result);
-      // setEmployees([...result]);
-      console.log("parsing table");
+      let employeeData = result;
+      setEmployees(result);
 
-      setSenderVal(result);
+      window.dbConnection.getEmployeeIDs({
+        email: $("#userProfile .userName").text()
+      }).then((result) => {
+        $(document).ready(() => {
+          console.log(employeeData);
+          $("#messagesBody tr").each((i, el) => {
+            let sender = $(el).find(".sender");
+            let receiver = $(el).find(".receiver");
+            console.log($(sender).text(), $(receiver).text());
+
+            if (sender.text() == result[0].ID) {
+              sender.text(result[0].Fname + " " + result[0].Lname);
+              employeeData.forEach((item, i) => {
+                if (receiver.text() == item.ID) {
+                  receiver.text(item.Fname + " " + item.Lname);
+                }
+              });
+            } else if (receiver.text() == result[0].ID) {
+              receiver.text(result[0].Fname + " " + result[0].Lname);
+
+            } else {
+              $(el).remove();
+            }
+          });
+        });
+      });
     });
   }
 
   const setSenderVal = (res) => {
     console.log("got", res);
-    $(document).ready(() => {
-      $("#messagesBody tr").each((i, el) => {
-        let sender = $(el).find(".sender");
-        let receiver = $(el).find(".receiver");
-        console.log($(sender).text(), $(receiver).text());
-
-        if (sender.text() == res[0].ID) {
-          sender.text(res[0].Fname + " " + res[0].Lname);
-        } else if (receiver.text() == res[0].ID) {
-          receiver.text(res[0].Fname + " " + res[0].Lname);
-
-        } else {
-          $(el).remove();
-        }
-      });
-
-    });
   }
 
   return (

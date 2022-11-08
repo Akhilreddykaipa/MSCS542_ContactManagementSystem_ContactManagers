@@ -231,6 +231,7 @@ ipcMain.handle('set-users', async (e, arg) => {
 
 ipcMain.handle('get-employees', async (e) => {
   e.preventDefault();
+  
   return new Promise((resolve, reject) => {
     db.con.query('select * from employees', [], (err, results) => {
       if (err) {
@@ -244,7 +245,7 @@ ipcMain.handle('get-employees', async (e) => {
 
 ipcMain.handle('get-employee-ids', async (e, arg) => {
   e.preventDefault();
-  console.log(arg);
+
   return new Promise((resolve, reject) => {
     db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
       if (err) {
