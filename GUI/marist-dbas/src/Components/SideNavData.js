@@ -10,7 +10,7 @@ export const SideNavData = [
       icon: <RiIcons.RiContactsBook2Fill />,
       title: "Contacts",
       path: '/contacts',
-      toggleClass: ''
+      toggleClass: 'active'
     },
     { id: utils.newID(),
       icon: <MdIcons.MdGroups />,
@@ -34,7 +34,7 @@ export const SideNavData = [
       icon: <MdIcons.MdSpaceDashboard />,
       title: "Departments",
       path: '/Department',
-      toggleClass: 'active'
+      toggleClass: ''
     },
     { id: utils.newID(),
       icon: <MdIcons.MdAccountCircle />,

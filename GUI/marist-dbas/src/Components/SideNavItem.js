@@ -9,6 +9,7 @@ const SideNavItem = (props) => {
       <Link
         to={props.path}
         className={`sideNavButton ${props.toggleClass}`}
+        title={props.title}
         onClick={setAsActive}
       >
         <div>

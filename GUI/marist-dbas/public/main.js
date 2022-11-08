@@ -231,7 +231,7 @@ ipcMain.handle('set-users', async (e, arg) => {
 
 ipcMain.handle('get-employees', async (e) => {
   e.preventDefault();
-  
+
   return new Promise((resolve, reject) => {
     db.con.query('select * from employees', [], (err, results) => {
       if (err) {
@@ -281,6 +281,26 @@ ipcMain.handle('get-messages', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
     db.con.query('select * from messages', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-messages', async (e, arg) => {
+  e.preventDefault();
+  Object.keys(arg).forEach((item, i) => {
+    if (String(arg[item]).length === 0) {
+      arg[item] = null;
+    }
+  });
+
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Messages SET Fname=?, Lname=?, email=?, phoneNum=?, WorkNum=?, gender=?, age=?, Department_ID=?, Supervisor_ID=? WHERE ID =?',
+      [arg.Fname, arg.Lname, arg.email, arg.phoneNum, arg.WorkNum, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID, arg.ID], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)

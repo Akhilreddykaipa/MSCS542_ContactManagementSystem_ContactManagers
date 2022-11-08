@@ -3,7 +3,7 @@ import "../css/Department.css";
 const Department = (props) => {
   return (
     <>
-      <div id="dashboard" className="container">
+      <div id="department" className="container">
         <h2>Department</h2>
         <hr/>
       </div>

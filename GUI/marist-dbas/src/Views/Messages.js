@@ -40,6 +40,7 @@ const Messages = (props) => {
             } else {
               $(el).remove();
             }
+            $("#messagesBody").show();
           });
         });
       });

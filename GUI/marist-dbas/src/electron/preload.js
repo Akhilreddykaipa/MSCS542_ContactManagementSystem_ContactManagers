@@ -38,6 +38,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  setMessages: (args) => ipcRenderer.invoke('set-messages', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   setLastLogin: (args) => ipcRenderer.invoke('set-last-login', (args)).then((result) => {
     // console.log(result);
     return result;

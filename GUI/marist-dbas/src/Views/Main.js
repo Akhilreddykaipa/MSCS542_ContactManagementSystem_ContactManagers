@@ -2,6 +2,7 @@ import SideNav from "../Components/SideNav";
 import Login from "./Login";
 import EditEmployeeTable from "./EditEmployeeTable";
 import EditUserTable from "./EditUserTable";
+import EditMessageTable from "./EditMessageTable";
 import ChangePassword from "./ChangePassword";
 import Department from "./Department";
 import Messages from "./Messages";
@@ -63,6 +64,7 @@ const Main = (props) => {
             <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/editEmployeeTable" element={<EditEmployeeTable/>}/>
             <Route path="/editUserTable" element={<EditUserTable/>}/>
+            <Route path="/editMessageTable" element={<EditMessageTable/>}/>
             <Route path="/changePassword" element={<ChangePassword/>}/>
             <Route render={
               ()=>(<Navigate to="/login"/>)}
