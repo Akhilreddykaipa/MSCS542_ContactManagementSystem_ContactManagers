@@ -4,8 +4,6 @@ import $ from 'jquery';
 // import validate from 'jquery-validation';
 import "../css/EditUserTable.css";
 const utils = require('../utils/utils.js');
-let newID = Math.floor(utils.newID());
-console.log(newID);
 
 const EditUserTable = (props) => {
   const [users, setUsers] = useState([]);
@@ -30,18 +28,13 @@ const EditUserTable = (props) => {
   }
 
   const submitUserEdit = (e) => {
-    console.log($("#userInsertValues .insert.userlogin input").val());
-    window.dbConnection.setUserData({
+    window.dbConnection.setUsers({
       userlogin: $("#userInsertValues .insert.userlogin input").val(),
-      Fname: $("#userInsertValues .insert.Fname input").val(),
-      Lname: $("#userInsertValues .insert.Lname input").val(),
-      email: $("#userInsertValues .insert.email input").val(),
-      phoneNum: $("#userInsertValues .insert.phoneNum input").val(),
-      WorkNum: $("#userInsertValues .insert.WorkNum input").val(),
-      gender: $("#userInsertValues .insert.gender input").val(),
-      age: $("#userInsertValues .insert.age input").val(),
-      Department_ID: $("#userInsertValues .insert.Department_ID input").val(),
-      Supervisor_ID: $("#userInsertValues .insert.Supervisor_ID input").val()
+      userpassword: $("#userInsertValues .insert.userpassword input").val(),
+      useremail: $("#userInsertValues .insert.useremail input").val(),
+      usertype: $("#userInsertValues .insert.usertype input").val(),
+      loginkey: $("#userInsertValues .insert.loginkey input").val(),
+      Employees_ID: $("#userInsertValues .insert.Employees_ID input").val()
     }).then((result) => {
       console.log(result);
       $("#userEditContainer .successMessage").addClass("active");
@@ -56,15 +49,15 @@ const EditUserTable = (props) => {
   return (
     <>
       <div className="container">
-        <button userlogin="backButton" className="btn btn-warning">
+        <button id="backButton" className="btn btn-warning">
           <Link to="/admin">&lt; Back</Link>
         </button>
       </div>
-      <div userlogin="EditUserTable" className="container">
+      <div id="EditUserTable" className="container">
         <h1>Edit Users Table</h1>
         <hr/>
-        <div userlogin="UserTable">
-          <div userlogin="userEditContainer" className="container">
+        <div id="UserTable">
+          <div id="userEditContainer" className="container">
             <div>
               <div className="close">
                 <div className="">
@@ -85,46 +78,30 @@ const EditUserTable = (props) => {
                       <hr/>
                       <div>userlogin</div><span>:</span>
                       <hr/>
-                      <div>Fname</div><span>:</span>
+                      <div>userpassword</div><span>:</span>
                       <hr/>
-                      <div>Lname</div><span>:</span>
+                      <div>useremail</div><span>:</span>
                       <hr/>
-                      <div>email</div><span>:</span>
+                      <div>usertype</div><span>:</span>
                       <hr/>
-                      <div>phoneNum</div><span>:</span>
+                      <div>loginkey</div><span>:</span>
                       <hr/>
-                      <div>WorkNum</div><span>:</span>
-                      <hr/>
-                      <div>gender</div><span>:</span>
-                      <hr/>
-                      <div>age</div><span>:</span>
-                      <hr/>
-                      <div>Department_ID</div><span>:</span>
-                      <hr/>
-                      <div>Supervisor_ID</div><span>:</span>
+                      <div>Employees_ID</div><span>:</span>
                       <hr/>
                     </div>
-                    <div userlogin="userEditValues" className="col-8">
+                    <div id="userEditValues" className="col-8">
                       <hr/>
                       <div className="init userlogin"></div>
                       <hr/>
-                      <div className="init Fname"></div>
+                      <div className="init userpassword"></div>
                       <hr/>
-                      <div className="init Lname"></div>
+                      <div className="init useremail"></div>
                       <hr/>
-                      <div className="init email"></div>
+                      <div className="init usertype"></div>
                       <hr/>
-                      <div className="init phoneNum"></div>
+                      <div className="init loginkey"></div>
                       <hr/>
-                      <div className="init WorkNum"></div>
-                      <hr/>
-                      <div className="init gender"></div>
-                      <hr/>
-                      <div className="init age"></div>
-                      <hr/>
-                      <div className="init Department_ID"></div>
-                      <hr/>
-                      <div className="init Supervisor_ID"></div>
+                      <div className="init Employees_ID"></div>
                       <hr/>
                     </div>
                   </div>
@@ -136,46 +113,30 @@ const EditUserTable = (props) => {
                       <hr/>
                       <div>userlogin</div><span>:</span>
                       <hr/>
-                      <div>Fname</div><span>:</span>
+                      <div>userpassword</div><span>:</span>
                       <hr/>
-                      <div>Lname</div><span>:</span>
+                      <div>useremail</div><span>:</span>
                       <hr/>
-                      <div>email</div><span>:</span>
+                      <div>usertype</div><span>:</span>
                       <hr/>
-                      <div>phoneNum</div><span>:</span>
+                      <div>loginkey</div><span>:</span>
                       <hr/>
-                      <div>WorkNum</div><span>:</span>
-                      <hr/>
-                      <div>gender</div><span>:</span>
-                      <hr/>
-                      <div>age</div><span>:</span>
-                      <hr/>
-                      <div>Department_ID</div><span>:</span>
-                      <hr/>
-                      <div>Supervisor_ID</div><span>:</span>
+                      <div>Employees_ID</div><span>:</span>
                       <hr/>
                     </div>
                     <div id="userInsertValues" className="col-8">
                       <hr/>
                       <div className="insert userlogin"><input type="text" readOnly={true}></input></div>
                       <hr/>
-                      <div className="insert Fname"><input type="text"></input></div>
+                      <div className="insert userpassword"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert Lname"><input type="text"></input></div>
+                      <div className="insert useremail"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert email"><input type="text"></input></div>
+                      <div className="insert usertype"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert phoneNum"><input type="text"></input></div>
+                      <div className="insert loginkey"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert WorkNum"><input type="text"></input></div>
-                      <hr/>
-                      <div className="insert gender"><input type="text"></input></div>
-                      <hr/>
-                      <div className="insert age"><input type="text"></input></div>
-                      <hr/>
-                      <div className="insert Department_ID"><input type="text"></input></div>
-                      <hr/>
-                      <div className="insert Supervisor_ID"><input type="text"></input></div>
+                      <div className="insert Employees_ID"><input type="text"></input></div>
                       <hr/>
                     </div>
                   </div>
@@ -194,21 +155,17 @@ const EditUserTable = (props) => {
             <thead>
               <tr>
                 <th scope="col">userlogin</th>
-                <th scope="col">Fname</th>
-                <th scope="col">Lname</th>
-                <th scope="col">email</th>
-                <th scope="col">phoneNum</th>
-                <th scope="col">WorkNum</th>
-                <th scope="col">gender</th>
-                <th scope="col">age</th>
-                <th scope="col">Department_ID</th>
-                <th scope="col">Supervisor_ID</th>
+                <th scope="col">userpassword</th>
+                <th scope="col">useremail</th>
+                <th scope="col">usertype</th>
+                <th scope="col">loginkey</th>
+                <th scope="col">Employees_ID</th>
                 <th scope="col">Edit</th>
               </tr>
             </thead>
             <tbody>
               {users.map((attr) => {
-                return <User userData={attr}/>
+                return <User key={utils.newID()} userData={attr}/>
               })}
             </tbody>
           </table>
@@ -227,7 +184,6 @@ const User = (props) => {
     });
     for (let i = 0; i < Object.keys(data).length; i++) {
       let key = Object.keys(data)[i];
-      console.log(key, typeof data[key]);
       $("#userEditValues .init." + key).text(data[key]);
       $("#userInsertValues .insert." + key + " input").val(data[key]);
     }
@@ -235,17 +191,13 @@ const User = (props) => {
 
   return (
     <>
-      <tr userlogin={usr.userlogin}>
+      <tr id={usr.userlogin}>
         <td>{usr.userlogin}</td>
-        <td>{usr.Fname}</td>
-        <td>{usr.Lname}</td>
-        <td>{usr.email}</td>
-        <td>{usr.phoneNum}</td>
-        <td>{usr.WorkNum}</td>
-        <td>{usr.gender}</td>
-        <td>{usr.age}</td>
-        <td>{usr.Department_ID}</td>
-        <td>{usr.Supervisor_ID}</td>
+        <td>{usr.userpassword}</td>
+        <td>{usr.useremail}</td>
+        <td>{usr.usertype}</td>
+        <td>{usr.loginkey}</td>
+        <td>{usr.Employees_ID}</td>
         <td><button className="btn btn-warning" onClick={() => handleUserEdit(usr)}>Edit</button></td>
       </tr>
     </>

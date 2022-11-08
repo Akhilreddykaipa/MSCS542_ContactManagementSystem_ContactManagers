@@ -73,6 +73,8 @@ app.on('browser-window-blur', function () {
     globalShortcut.unregister('F5');
 });
 
+//
+//
 // Received from ipcRenderer
 ipcMain.on('app-start', (e, args) => {
   console.log("received from preload: ", args);
@@ -208,6 +210,25 @@ ipcMain.handle('get-users', async (e) => {
   });
 });
 
+ipcMain.handle('set-users', async (e, arg) => {
+  e.preventDefault();
+  Object.keys(arg).forEach((item, i) => {
+    if (String(arg[item]).length === 0) {
+      arg[item] = null;
+    }
+  });
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE users SET userpassword=?, useremail=?, usertype=?, loginkey=? WHERE userlogin =?',
+      [arg.userpassword, arg.useremail, arg.usertype, arg.loginkey, Number(arg.userlogin)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-employees', async (e) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
@@ -221,9 +242,28 @@ ipcMain.handle('get-employees', async (e) => {
   });
 });
 
-ipcMain.handle('set-employees', async (e, arg) => {
-  console.log(arg);
+ipcMain.handle('get-employee-ids', async (e, arg) => {
   e.preventDefault();
+  console.log(arg);
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-employees', async (e, arg) => {
+  e.preventDefault();
+  Object.keys(arg).forEach((item, i) => {
+    if (String(arg[item]).length === 0) {
+      arg[item] = null;
+    }
+  });
+
   return new Promise((resolve, reject) => {
     db.con.query('UPDATE Employees SET Fname=?, Lname=?, email=?, phoneNum=?, WorkNum=?, gender=?, age=?, Department_ID=?, Supervisor_ID=? WHERE ID =?',
       [arg.Fname, arg.Lname, arg.email, arg.phoneNum, arg.WorkNum, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID, arg.ID], (err, results) => {

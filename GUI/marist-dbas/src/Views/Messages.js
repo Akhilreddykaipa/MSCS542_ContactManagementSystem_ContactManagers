@@ -3,57 +3,47 @@ import $ from 'jquery';
 import "../css/Messages.css";
 const utils = require('../utils/utils.js');
 
-const MessagesCells = (props) => {
-  let sender, receiver, group, message, timstamp;
-  return (
-    <>
-      <tr>
-        <th scope="row"></th>
-        {console.log(props.rows)}
-        <td>{props.rows}</td>
-        <td>
-          <button className="btn btn-warning">
-            Edit
-          </button>
-        </td>
-        <td>
-          <button className="btn btn-danger">
-            Delete
-          </button>
-        </td>
-      </tr>
-    </>
-  );
-}
-
 const Messages = (props) => {
-  const [messages, setMessages] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   useEffect(() => {
     getMessages();
   }, []);
 
   function getMessages(e) {
-    // e.preventDefault();
     window.dbConnection.getMessages().then((result) => {
-    // console.log(result);
       setMessages([...result]);
+    });
+    window.dbConnection.getEmployeeIDs({
+      email: $("#userProfile .userName").text()
+    }).then((result) => {
+      console.log(result);
+      // setEmployees([...result]);
+      console.log("parsing table");
 
-      result.forEach((item, i) => {
-        // console.log(item);
-        let message = item.Messagedate;
-        let messageDate = utils.formatDate(message);
-        // let messageDate = new Date(item.Messagedate);
-        // let newDate = messageDate.getMonth() + "/" + messageDate.getDay() + "/" + messageDate.getYear() +
-                      // " " + messageDate.getHours() + ":" + messageDate.getMinutes() + " ";
-        $("#messagesBody").append('<tr>' +
-          '<td>' + item.senderID + '</td>' +
-          '<td>' + item.userID + '</td>' +
-          '<td>' + item.groupID + '</td>' +
-          '<td>' + item.Message + '</td>' +
-          '<td>' + messageDate + '</td>' +
-          '</tr>');
-      })
+      setSenderVal(result);
+    });
+  }
+
+  const setSenderVal = (res) => {
+    console.log("got", res);
+    $(document).ready(() => {
+      $("#messagesBody tr").each((i, el) => {
+        let sender = $(el).find(".sender");
+        let receiver = $(el).find(".receiver");
+        console.log($(sender).text(), $(receiver).text());
+
+        if (sender.text() == res[0].ID) {
+          sender.text(res[0].Fname + " " + res[0].Lname);
+        } else if (receiver.text() == res[0].ID) {
+          receiver.text(res[0].Fname + " " + res[0].Lname);
+
+        } else {
+          $(el).remove();
+        }
+      });
+
     });
   }
 
@@ -61,9 +51,7 @@ const Messages = (props) => {
     <>
       <div id="contacts" className="container">
         <h2>Messages</h2>
-
         <hr/>
-
         <table className="table table-dark table-hover">
           <thead>
             <tr>
@@ -71,16 +59,35 @@ const Messages = (props) => {
               <th scope="col">Receiver</th>
               <th scope="col">Group</th>
               <th scope="col">Message</th>
-              <th scope="col">Timestamp</th>
+              <th scope="col">Message Date</th>
             </tr>
           </thead>
           <tbody id="messagesBody">
-
+            {messages.map((item, i) => {
+              return <MessageCell key={utils.newID() + Math.random()} messageData={item} />
+            })}
           </tbody>
         </table>
       </div>
     </>
   );
 };
+
+const MessageCell = (props) => {
+  let dat = props.messageData;
+  let messageDate = utils.formatDate(dat.Messagedate);
+
+  return (
+    <>
+      <tr>
+        <td className="sender">{dat.senderID}</td>
+        <td className="receiver">{dat.userID}</td>
+        <td>{dat.groupID}</td>
+        <td>{dat.Message}</td>
+        <td>{messageDate}</td>
+      </tr>
+    </>
+  );
+}
 
 export default Messages;
