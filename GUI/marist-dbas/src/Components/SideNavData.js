@@ -7,33 +7,9 @@ const utils = require('../utils/utils.js');
 
 export const SideNavData = [
     { id: utils.newID(),
-      icon: <MdIcons.MdSpaceDashboard />,
-      title: "Dashboard",
-      path: '/dashboard',
-      toggleClass: 'active'
-    },
-    { id: utils.newID(),
-      icon: <SiIcons.SiGooglemessages />,
-      title: "Messages",
-      path: '/messages',
-      toggleClass: ''
-    },
-    { id: utils.newID(),
-      icon: <RiIcons.RiUserStarFill />,
-      title: "Employees",
-      path: '/employees',
-      toggleClass: ''
-    },
-    { id: utils.newID(),
-      icon: <FaIcons.FaUserCheck />,
-      title: "Users",
-      path: '/users',
-      toggleClass: ''
-    },
-    { id: utils.newID(),
-      icon: <MdIcons.MdEmail />,
-      title: "Email History",
-      path: '/emailHistory',
+      icon: <RiIcons.RiContactsBook2Fill />,
+      title: "Contacts",
+      path: '/contacts',
       toggleClass: ''
     },
     { id: utils.newID(),
@@ -43,15 +19,21 @@ export const SideNavData = [
       toggleClass: ''
     },
     { id: utils.newID(),
-      icon: <MdIcons.MdAccountCircle />,
-      title: "Account",
-      path: '/account',
+      icon: <SiIcons.SiGooglemessages />,
+      title: "Messages",
+      path: '/messages',
       toggleClass: ''
     },
     { id: utils.newID(),
-      icon: <RiIcons.RiContactsBook2Fill />,
-      title: "Contacts",
-      path: '/contacts',
+      icon: <MdIcons.MdEmail />,
+      title: "Email History",
+      path: '/emailHistory',
+      toggleClass: ''
+    },
+    { id: utils.newID(),
+      icon: <MdIcons.MdAccountCircle />,
+      title: "Profile",
+      path: '/profile',
       toggleClass: ''
     },
     { id: utils.newID(),
@@ -59,5 +41,23 @@ export const SideNavData = [
       title: "Settings",
       path: '/settings',
       toggleClass: ''
-    }
+    },
+    // { id: utils.newID(),
+    //   icon: <MdIcons.MdSpaceDashboard />,
+    //   title: "Dashboard",
+    //   path: '/dashboard',
+    //   toggleClass: 'active'
+    // },
+    // { id: utils.newID(),
+    //   icon: <RiIcons.RiUserStarFill />,
+    //   title: "Employees",
+    //   path: '/employees',
+    //   toggleClass: ''
+    // },
+    // { id: utils.newID(),
+    //   icon: <FaIcons.FaUserCheck />,
+    //   title: "Users",
+    //   path: '/users',
+    //   toggleClass: ''
+    // },
 ];

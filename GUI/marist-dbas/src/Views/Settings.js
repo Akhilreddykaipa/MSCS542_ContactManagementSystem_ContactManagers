@@ -1,4 +1,4 @@
-import { browserHistory } from 'react-router'
+import { Link } from "react-router-dom";
 import "../css/Settings.css";
 
 const Settings = (props) => {
@@ -14,8 +14,17 @@ const Settings = (props) => {
         <h2>Settings</h2>
         <hr/>
         <div>
+          <p>Change your password</p>
+          <Link to="/changePassword">
+            <button className="btn btn-danger">Change Password</button>
+          </Link>
+        </div>
+        <hr/>
+        <div>
+          <p>Log out of system</p>
           <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
         </div>
+        <hr/>
       </div>
     </>
   );

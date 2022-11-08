@@ -49,3 +49,7 @@ hr {
 #routes button a {
   color: #000;
 }
+
+#adminSeperator {
+  margin: 0px 4px;
+}

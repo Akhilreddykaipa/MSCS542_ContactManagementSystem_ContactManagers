@@ -12,8 +12,6 @@ function formatDate(date) {
 
 function caesarEncrypt(str, shift) {
   let encrypted = "";
-  console.log("utils str: " + str);
-  console.log(typeof str);
     for (var i = 0; i < str.length; i++) {
       let code = str.charCodeAt(i);
       if (code >= 65 && code <= 90) {

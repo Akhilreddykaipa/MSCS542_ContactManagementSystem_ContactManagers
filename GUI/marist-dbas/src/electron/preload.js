@@ -18,6 +18,9 @@ contextBridge.exposeInMainWorld('dbConnection', {
   }),
   setLastLogin: (args) => ipcRenderer.invoke('set-last-login', (args)).then((result) => {
     return result;
+  }),
+  newPassword: (args) => ipcRenderer.invoke('set-new-password', (args)).then((result) => {
+    return result;
   })
 });
 

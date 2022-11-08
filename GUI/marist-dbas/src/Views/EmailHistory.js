@@ -5,6 +5,7 @@ const EmailHistory = (props) => {
     <>
       <div id="contacts" className="container">
         <h2>Email History</h2>
+        <hr/>
       </div>
     </>
   );

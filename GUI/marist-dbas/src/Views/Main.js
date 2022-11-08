@@ -1,14 +1,15 @@
+import SideNav from "../Components/SideNav";
 import Login from "./Login";
 import EditUser from "./EditUser";
-import SideNav from "../Components/SideNav";
-import Dashboard from "./Dashboard";
+import ChangePassword from "./ChangePassword";
+import Department from "./Department";
 import Messages from "./Messages";
 import Employees from "./Employees";
 import Users from "./Users";
 import EmailHistory from "./EmailHistory";
 import Groups from "./Groups";
 import Contacts from "./Contacts";
-import Account from "./Account";
+import Profile from "./Profile";
 import Settings from "./Settings";
 import CreateAccount from "../Views/CreateAccount.js"
 import Admin from "../Views/Admin.js"
@@ -33,16 +34,6 @@ const Main = (props) => {
       $("body").append("<style>.rngColor{background:" + finalNum + "!important;}</style>");
       setFirstRun(false);
     }
-
-    const script = document.createElement('script');
-    script.src = "../electron/renderer.js";
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    }
   }, []);
 
   return (
@@ -52,29 +43,30 @@ const Main = (props) => {
           <SideNav setActive={setClass} admin={props.admin}/>
         </nav>
         <div id="userProfile" className="rngColor">
-          <p>{props.name}</p>
+          <p className="userName">{props.name}</p>
           { props.admin ? <AdminView /> : null }
         </div>
 
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/login" exact element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard/>}/>
-            <Route path="/messages" element={<Messages/>}/>
-            <Route path="/employees" element={<Employees/>}/>
-            <Route path="/users" element={<Users/>}/>
-            <Route path="/emailHistory" element={<EmailHistory/>}/>
-            <Route path="/groups" element={<Groups/>}/>
+            <Route path="/" exact element={<Contacts />} />
             <Route path="/contacts" element={<Contacts/>}/>
-            <Route path="/account" element={<Account/>}/>
+            <Route path="/groups" element={<Groups/>}/>
+            <Route path="/messages" element={<Messages/>}/>
+            <Route path="/emailHistory" element={<EmailHistory/>}/>
+            <Route path="/department" element={<Department/>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/settings" element={<Settings/>}/>
-            <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/admin" element={<Admin admin={props.admin}/>}/>
+            <Route path="/login" exact element={<Login />} />
+            <Route path="/createAccount" element={<CreateAccount/>}/>
             <Route path="/editUser" element={<EditUser/>}/>
+            <Route path="/changePassword" element={<ChangePassword/>}/>
             <Route render={
               ()=>(<Navigate to="/login"/>)}
             />
+            // <Route path="/employees" element={<Employees/>}/>
+            // <Route path="/users" element={<Users/>}/>
           </Routes>
         </div>
       </div>
@@ -85,6 +77,7 @@ const Main = (props) => {
 const AdminView = (props) => {
   return (
     <>
+      <hr id="adminSeperator"/>
       <p className="admin">admin mode</p>
     </>
   );
