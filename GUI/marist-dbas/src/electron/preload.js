@@ -13,6 +13,18 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  getUsers: () => ipcRenderer.invoke('get-users').then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  getEmployees: () => ipcRenderer.invoke('get-employees').then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  setEmployeeData: (args) => ipcRenderer.invoke('set-employees', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getMessages: (args) => ipcRenderer.invoke('get-messages', (args)).then((result) => {
     return result;
   }),

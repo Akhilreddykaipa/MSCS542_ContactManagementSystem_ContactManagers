@@ -136,7 +136,6 @@ const CreateAccount = (props) => {
                 <label>User Type</label>
                 <select id="userType" name="userType" className="fullWidth mb-3" onChange={(e) => setUserType(e.target.value)} required>
                   <option value="employee">Employee</option>
-                  <option value="supervisor">Supervisor</option>
                   <option value="admin">Admin</option>
                 </select>
               </div>

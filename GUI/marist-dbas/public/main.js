@@ -195,6 +195,47 @@ ipcMain.handle('get-departments', async (e) => {
   });
 });
 
+ipcMain.handle('get-users', async (e) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from users', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-employees', async (e) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from employees', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-employees', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Employees SET Fname=?, Lname=?, email=?, phoneNum=?, WorkNum=?, gender=?, age=?, Department_ID=?, Supervisor_ID=? WHERE ID =?',
+      [arg.Fname, arg.Lname, arg.email, arg.phoneNum, arg.WorkNum, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-messages', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {

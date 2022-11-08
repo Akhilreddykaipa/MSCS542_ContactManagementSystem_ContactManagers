@@ -13,7 +13,6 @@ const ChangePassword = (props) => {
         email: email,
         pass: passes[0]
       }).then((result) => {
-
         $("#changePassword .successMessage").addClass("active");
         setTimeout(() => {
           $("#changePassword .successMessage").removeClass("active");

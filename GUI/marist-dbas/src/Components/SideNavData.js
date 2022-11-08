@@ -31,6 +31,12 @@ export const SideNavData = [
       toggleClass: ''
     },
     { id: utils.newID(),
+      icon: <MdIcons.MdSpaceDashboard />,
+      title: "Departments",
+      path: '/Department',
+      toggleClass: 'active'
+    },
+    { id: utils.newID(),
       icon: <MdIcons.MdAccountCircle />,
       title: "Profile",
       path: '/profile',
@@ -42,12 +48,6 @@ export const SideNavData = [
       path: '/settings',
       toggleClass: ''
     },
-    // { id: utils.newID(),
-    //   icon: <MdIcons.MdSpaceDashboard />,
-    //   title: "Dashboard",
-    //   path: '/dashboard',
-    //   toggleClass: 'active'
-    // },
     // { id: utils.newID(),
     //   icon: <RiIcons.RiUserStarFill />,
     //   title: "Employees",
