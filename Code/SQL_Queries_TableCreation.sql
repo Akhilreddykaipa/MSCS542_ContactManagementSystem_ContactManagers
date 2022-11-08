@@ -178,21 +178,21 @@ CREATE TABLE Certified (
 -- Loads data in Users
 -- Passwords: mpyuz = admin , qybxakqq = employee
 Insert into users(userlogin,userpassword,useremail,usertype,loginkey,employees_ID)values
-	(100,'mpyuz','agran@cms.com','admin','12345',0),
-    (101,'mpyuz1','dther@cms.com','admin','13345',1),
-    (102,'mpyuz2','bobam@cms.com','admin','14345',2),
-    (103,'mpyuz3','alinc@cms.com','admin','15345',3),
-    (104,'qybxakqq0','mjack@cms.com','employee','16345',4),
-    (105,'qybxakqq1','mjohn@cms.com','employee','17345',5),
-    (106,'qybxakqq2','jlawr@cms.com','employee','18345',6),
-    (107,'qybxakqq3','tswif@cms.com','employee','19345',7),
-    (108,'qybxakqq4','kgeor@cms.com','employee','20345',8),
-    (109,'qybxakqq5','qeliz@cms.com','employee','21345',9),
-    (110,'qybxakqq6','mmark@cms.com','employee','22345',10),
-    (111,'qybxakqq7','djete@cms.com','employee','23345',11),
-    (112,'qybxakqq8','wsmit@cms.com','employee','24345',12),
-    (113,'qybxakqq9','mstre@cms.com','employee','25345',13),
-    (114,'qybxakqq10','lizzo@cms.com','employee','26345',14);
+	(100,'mpyuz','agran@cms.com','admin','12345',1),
+    (101,'mpyuz1','dther@cms.com','admin','13345',2),
+    (102,'mpyuz2','bobam@cms.com','admin','14345',3),
+    (103,'mpyuz3','alinc@cms.com','admin','15345',4),
+    (104,'qybxakqq0','mjack@cms.com','employee','16345',5),
+    (105,'qybxakqq1','mjohn@cms.com','employee','17345',6),
+    (106,'qybxakqq2','jlawr@cms.com','employee','18345',7),
+    (107,'qybxakqq3','tswif@cms.com','employee','19345',8),
+    (108,'qybxakqq4','kgeor@cms.com','employee','20345',9),
+    (109,'qybxakqq5','qeliz@cms.com','employee','21345',10),
+    (110,'qybxakqq6','mmark@cms.com','employee','22345',11),
+    (111,'qybxakqq7','djete@cms.com','employee','23345',12),
+    (112,'qybxakqq8','wsmit@cms.com','employee','24345',13),
+    (113,'qybxakqq9','mstre@cms.com','employee','25345',14),
+    (114,'qybxakqq10','lizzo@cms.com','employee','26345',15);
 
 -- Loads data in Certification
 Insert into Certification(ID,name,type,certified_ID)values
