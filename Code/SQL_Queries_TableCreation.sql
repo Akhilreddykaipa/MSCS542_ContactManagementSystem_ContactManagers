@@ -176,22 +176,23 @@ CREATE TABLE Certified (
     ('Lizzo',      Null,		 	       'lizzo@cms.com',0000000028,0000000029,'F',28,9,2);
 
 -- Loads data in Users
+-- Passwords: mpyuz = admin , qybxakqq = employee
 Insert into users(userlogin,userpassword,useremail,usertype,loginkey,employees_ID)values
-	(100,'admin','agran@cms.com','admin','12345',0),
-    (101,'admin1','dther@cms.com','admin','13345',1),
-    (102,'admin2','bobam@cms.com','admin','14345',2),
-    (103,'admin3','alinc@cms.com','admin','15345',3),
-    (104,'employee0','mjack@cms.com','employee','16345',4),
-    (105,'employee1','mjohn@cms.com','employee','17345',5),
-    (106,'employee2','jlawr@cms.com','employee','18345',6),
-    (107,'employee3','tswif@cms.com','employee','19345',7),
-    (108,'employee4','kgeor@cms.com','employee','20345',8),
-    (109,'employee5','qeliz@cms.com','employee','21345',9),
-    (110,'employee6','mmark@cms.com','employee','22345',10),
-    (111,'employee7','djete@cms.com','employee','23345',11),
-    (112,'employee8','wsmit@cms.com','employee','24345',12),
-    (113,'employee9','mstre@cms.com','employee','25345',13),
-    (114,'employee10','lizzo@cms.com','employee','26345',14);
+	(100,'mpyuz','agran@cms.com','admin','12345',0),
+    (101,'mpyuz1','dther@cms.com','admin','13345',1),
+    (102,'mpyuz2','bobam@cms.com','admin','14345',2),
+    (103,'mpyuz3','alinc@cms.com','admin','15345',3),
+    (104,'qybxakqq0','mjack@cms.com','employee','16345',4),
+    (105,'qybxakqq1','mjohn@cms.com','employee','17345',5),
+    (106,'qybxakqq2','jlawr@cms.com','employee','18345',6),
+    (107,'qybxakqq3','tswif@cms.com','employee','19345',7),
+    (108,'qybxakqq4','kgeor@cms.com','employee','20345',8),
+    (109,'qybxakqq5','qeliz@cms.com','employee','21345',9),
+    (110,'qybxakqq6','mmark@cms.com','employee','22345',10),
+    (111,'qybxakqq7','djete@cms.com','employee','23345',11),
+    (112,'qybxakqq8','wsmit@cms.com','employee','24345',12),
+    (113,'qybxakqq9','mstre@cms.com','employee','25345',13),
+    (114,'qybxakqq10','lizzo@cms.com','employee','26345',14);
 
 -- Loads data in Certification
 Insert into Certification(ID,name,type,certified_ID)values
