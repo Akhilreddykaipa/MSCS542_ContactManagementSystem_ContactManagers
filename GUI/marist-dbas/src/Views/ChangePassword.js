@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import $ from 'jquery';
 import "../css/ChangePassword.css";
 
@@ -46,6 +47,9 @@ const ChangePassword = (props) => {
   return (
     <>
       <div id="changePassword" className="container">
+        <button id="backButton" className="btn btn-warning">
+          <Link to="/settings">&lt; Back</Link>
+        </button>
         <h2>Change Password</h2>
         <div className="resultMessages">
           <p className="successMessage">Successfully changed password</p>
