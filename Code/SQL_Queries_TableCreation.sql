@@ -222,23 +222,23 @@ Insert into Certified(ID,userID,certificationID, certdate,employees_ID)values
 
 -- Loads data in Department
 Insert into Department(ID, DName, Supervisor_ID)values
-	(0, 'Administration', 0),
-    (1, 'Human Resources', 0),
-    (2, 'Information Technology', 1),
-    (3, 'Quality Control',2),
-    (4, 'Marketing',2),
-    (5, 'Telecommunications',1),
-    (6, 'Programming', 1),
-    (7, 'Customer Service',2),
-    (8, 'General Services',3),
-    (9, 'Maintenance',3);
+	(0, 'Administration', 1),
+    (1, 'Human Resources', 1),
+    (2, 'Information Technology', 2),
+    (3, 'Quality Control',3),
+    (4, 'Marketing',3),
+    (5, 'Telecommunications',2),
+    (6, 'Programming', 2),
+    (7, 'Customer Service',3),
+    (8, 'General Services',4),
+    (9, 'Maintenance',4);
 
 -- Loads data in Supervisor
 	Insert into Supervisor(ID, UserID, DepartmentID) values
-		(0,0,0),
-        (1,1,2),
-        (2,2,3),
-        (3,3,8);
+		(1,1,0),
+        (2,2,2),
+        (3,3,3),
+        (4,4,8);
 
 -- Loads data into Messages
 	Insert into Messages(ID,senderID,userID,groupID,message,messagedate)values
