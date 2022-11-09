@@ -46,6 +46,14 @@ const EditUserTable = (props) => {
     });
   }
 
+  // const setFields = (data) => {    
+  //   for (let i = 0; i < Object.keys(data).length; i++) {
+  //     let key = Object.keys(data)[i];
+  //     $("#userEditValues .init." + key).text(data[key]);
+  //     $("#userInsertValues .insert." + key + " input").val(data[key]);
+  //   }
+  // }
+
   return (
     <>
       <div className="container">

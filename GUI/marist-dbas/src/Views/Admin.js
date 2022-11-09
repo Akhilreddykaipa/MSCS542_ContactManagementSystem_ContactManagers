@@ -44,6 +44,15 @@ const Admin = (props) => {
           </div>
         </div>
         <hr/>
+        <div className="row">
+          <div className="col">
+            <p>table editor</p>
+            <button className="btn btn-primary">
+              <Link to="/test">table editor</Link>
+            </button>
+          </div>
+        </div>
+        <hr/>
       </div>
     </>
   );

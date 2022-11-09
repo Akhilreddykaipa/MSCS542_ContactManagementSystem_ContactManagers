@@ -1,4 +1,4 @@
-#messageEditContainer {
+#editContainer {
   display: none;
   position: absolute;
   color: #fff;
@@ -8,7 +8,11 @@
   padding: 32px 48px!important;
 }
 
-#messageEditContainer h2 {
+.rel {
+  position: relative;
+}
+
+#editContainer h2 {
   margin: 32px 0px;
 }
 
@@ -22,24 +26,12 @@
   top: -24px;
 }
 
-#MessageTable {
-  position: relative;
-}
-
-#MessageTable .action > div {
-  float: right;
-}
-
-#MessageTable .action .cancel {
-  margin-right: 16px;
-}
-
 #newData {
   border-left: 1px solid #fff;
   padding-left: 32px;
 }
 
-#messageInsertValues input {
+#insertValues input {
   height: 24px;
   width: 100%;
   color-scheme: dark;
@@ -48,32 +40,40 @@
   border-style: solid;
 }
 
-#messageEditValues .init {
+#editValues .init {
   min-height: 24px;
 }
 
-#messageEditContainer .close {
+#editContainer .action > div {
+  float: right;
+}
+
+#editContainer .action .cancel {
+  margin-right: 16px;
+}
+
+#editContainer .close {
   position: relative;
 }
 
-#messageEditContainer .close > div {
+#editContainer .close > div {
   position: absolute;
   width: 100%;
 }
 
-#messageEditContainer .close button {
+#editContainer .close button {
   float: right;
   border-radius: 100%;
   width: 38px;
   height: 38px;
 }
 
-#messageEditContainer .resultMessages {
+#editContainer .resultMessages {
   position: relative;
   display: grid;
 }
 
-#messageEditContainer .successMessage, #messageEditContainer .errorMessage {
+#editContainer .successMessage, #editContainer .errorMessage {
   opacity: 0%;
   justify-self: center;
   font-size: 24px;
@@ -83,15 +83,15 @@
   transition: opacity 0.2s;
 }
 
-#messageEditContainer .successMessage {
+#editContainer .successMessage {
   background: green;
 }
 
-#messageEditContainer .errorMessage {
+#editContainer .errorMessage {
   background: red;
 }
 
-#messageEditContainer .successMessage.active, #messageEditContainer .errorMessage.active {
+#editContainer .successMessage.active, #editContainer .errorMessage.active {
   opacity: 100%;
   transition: opacity 0.4s;
 }

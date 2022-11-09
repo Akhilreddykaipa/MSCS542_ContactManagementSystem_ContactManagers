@@ -13,13 +13,14 @@ const EditMessagesTable = (props) => {
     if (firstRun) {
       getMessageData();
     }
-  });
+  }, []);
 
   const getMessageData = () => {
-    window.dbConnection.getUsers().then((result) => {
+    window.dbConnection.getMessages().then((result) => {
       console.log(result);
       setMessages([...result]);
       setFirstRun(false);
+      $("#messagesBody").show();
     });
   }
 
@@ -29,11 +30,11 @@ const EditMessagesTable = (props) => {
 
   const submitMessageEdit = (e) => {
     window.dbConnection.setMessages({
-      userlogin: $("#userInsertValues .insert.userlogin input").val(),
-      userpassword: $("#userInsertValues .insert.userpassword input").val(),
-      useremail: $("#userInsertValues .insert.useremail input").val(),
-      usertype: $("#userInsertValues .insert.usertype input").val(),
-      loginkey: $("#userInsertValues .insert.loginkey input").val(),
+      senderID: $("#userInsertValues .insert.senderID input").val(),
+      userID: $("#userInsertValues .insert.userID input").val(),
+      groupID: $("#userInsertValues .insert.groupID input").val(),
+      Message: $("#userInsertValues .insert.Message input").val(),
+      Messagedate: $("#userInsertValues .insert.Messagedate input").val(),
       Employees_ID: $("#userInsertValues .insert.Employees_ID input").val()
     }).then((result) => {
       console.log(result);
@@ -54,10 +55,10 @@ const EditMessagesTable = (props) => {
         </button>
       </div>
       <div id="EditMessagesTable" className="container">
-        <h1>Edit Users Table</h1>
+        <h1>Edit Messages Table</h1>
         <hr/>
-        <div id="UserTable">
-          <div id="userEditContainer" className="container">
+        <div id="MessagesTable">
+          <div id="messageEditContainer" className="container">
             <div>
               <div className="close">
                 <div className="">
@@ -65,7 +66,7 @@ const EditMessagesTable = (props) => {
                 </div>
               </div>
               <div className="row">
-                <h2>Update data in Users table</h2>
+                <h2>Update data in Messages table</h2>
                 <div className="resultMessages">
                   <p className="successMessage">Successfully updated data</p>
                   <p className="errorMessage"></p>
@@ -76,32 +77,28 @@ const EditMessagesTable = (props) => {
                   <div className="row">
                     <div className="col-3">
                       <hr/>
-                      <div>userlogin</div><span>:</span>
+                      <div>senderID</div><span>:</span>
                       <hr/>
-                      <div>userpassword</div><span>:</span>
+                      <div>userID</div><span>:</span>
                       <hr/>
-                      <div>useremail</div><span>:</span>
+                      <div>groupID</div><span>:</span>
                       <hr/>
-                      <div>usertype</div><span>:</span>
+                      <div>Message</div><span>:</span>
                       <hr/>
-                      <div>loginkey</div><span>:</span>
-                      <hr/>
-                      <div>Employees_ID</div><span>:</span>
+                      <div>Messagedate</div><span>:</span>
                       <hr/>
                     </div>
                     <div id="userEditValues" className="col-8">
                       <hr/>
-                      <div className="init userlogin"></div>
+                      <div className="init senderID"></div>
                       <hr/>
-                      <div className="init userpassword"></div>
+                      <div className="init userID"></div>
                       <hr/>
-                      <div className="init useremail"></div>
+                      <div className="init groupID"></div>
                       <hr/>
-                      <div className="init usertype"></div>
+                      <div className="init Message"></div>
                       <hr/>
-                      <div className="init loginkey"></div>
-                      <hr/>
-                      <div className="init Employees_ID"></div>
+                      <div className="init Messagedate"></div>
                       <hr/>
                     </div>
                   </div>
@@ -111,32 +108,28 @@ const EditMessagesTable = (props) => {
                   <div className="row">
                     <div className="col-3">
                       <hr/>
-                      <div>userlogin</div><span>:</span>
+                      <div>senderID</div><span>:</span>
                       <hr/>
-                      <div>userpassword</div><span>:</span>
+                      <div>userID</div><span>:</span>
                       <hr/>
-                      <div>useremail</div><span>:</span>
+                      <div>groupID</div><span>:</span>
                       <hr/>
-                      <div>usertype</div><span>:</span>
+                      <div>Message</div><span>:</span>
                       <hr/>
-                      <div>loginkey</div><span>:</span>
-                      <hr/>
-                      <div>Employees_ID</div><span>:</span>
+                      <div>Messagedate</div><span>:</span>
                       <hr/>
                     </div>
                     <div id="userInsertValues" className="col-8">
                       <hr/>
-                      <div className="insert userlogin"><input type="text" readOnly={true}></input></div>
+                      <div className="insert senderID"><input type="text" readOnly={true}></input></div>
                       <hr/>
-                      <div className="insert userpassword"><input type="text"></input></div>
+                      <div className="insert userID"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert useremail"><input type="text"></input></div>
+                      <div className="insert groupID"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert usertype"><input type="text"></input></div>
+                      <div className="insert Message"><input type="text"></input></div>
                       <hr/>
-                      <div className="insert loginkey"><input type="text"></input></div>
-                      <hr/>
-                      <div className="insert Employees_ID"><input type="text"></input></div>
+                      <div className="insert Messagedate"><input type="text"></input></div>
                       <hr/>
                     </div>
                   </div>
@@ -154,18 +147,18 @@ const EditMessagesTable = (props) => {
           <table className="table table-dark table-hover">
             <thead>
               <tr>
-                <th scope="col">userlogin</th>
-                <th scope="col">userpassword</th>
-                <th scope="col">useremail</th>
-                <th scope="col">usertype</th>
-                <th scope="col">loginkey</th>
-                <th scope="col">Employees_ID</th>
+                <th scope="col">senderID</th>
+                <th scope="col">userID</th>
+                <th scope="col">groupID</th>
+                <th scope="col">Message</th>
+                <th scope="col">Messagedate</th>
                 <th scope="col">Edit</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="messagesBody">
               {messages.map((attr) => {
-                return <Message key={utils.newID()} userData={attr}/>
+                console.log(attr);
+                return <Message key={utils.newID() + Math.random()} userData={attr}/>
               })}
             </tbody>
           </table>
@@ -176,29 +169,32 @@ const EditMessagesTable = (props) => {
 };
 
 const Message = (props) => {
-  const usr = props.userData;
-  const handleUserEdit = (data) => {
-    $("#userEditContainer").show();
+  const handleMessageEdit = (data) => {
+    console.log(data);
+    $("#messageEditContainer").show();
     $("html").animate({
         scrollTop: $("#EditMessagesTable").offset().top
     });
     for (let i = 0; i < Object.keys(data).length; i++) {
       let key = Object.keys(data)[i];
-      $("#userEditValues .init." + key).text(data[key]);
-      $("#userInsertValues .insert." + key + " input").val(data[key]);
+      $("#messageEditValues .init." + key).text(data[key]);
+      $("#messageInsertValues .insert." + key + " input").val(data[key]);
     }
   }
 
+  const usr = props.userData;
+  let messageDate = utils.formatDate(usr.Messagedate);
+  console.log(messageDate);
+
   return (
     <>
-      <tr id={usr.userlogin}>
-        <td>{usr.userlogin}</td>
-        <td>{usr.userpassword}</td>
-        <td>{usr.useremail}</td>
-        <td>{usr.usertype}</td>
-        <td>{usr.loginkey}</td>
-        <td>{usr.Employees_ID}</td>
-        <td><button className="btn btn-warning" onClick={() => handleUserEdit(usr)}>Edit</button></td>
+      <tr id={usr.ID}>
+        <td>{usr.senderID}</td>
+        <td>{usr.userID}</td>
+        <td>{usr.groupID}</td>
+        <td>{usr.Message}</td>
+        <td>{messageDate}</td>
+        <td><button className="btn btn-warning" onClick={() => handleMessageEdit(usr)}>Edit</button></td>
       </tr>
     </>
   )

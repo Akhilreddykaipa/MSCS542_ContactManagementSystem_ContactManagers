@@ -291,16 +291,18 @@ ipcMain.handle('get-messages', async (e, arg) => {
 });
 
 ipcMain.handle('set-messages', async (e, arg) => {
+  console.log(arg);
   e.preventDefault();
   Object.keys(arg).forEach((item, i) => {
     if (String(arg[item]).length === 0) {
       arg[item] = null;
     }
   });
+  console.log(arg);
 
   return new Promise((resolve, reject) => {
-    db.con.query('UPDATE Messages SET Fname=?, Lname=?, email=?, phoneNum=?, WorkNum=?, gender=?, age=?, Department_ID=?, Supervisor_ID=? WHERE ID =?',
-      [arg.Fname, arg.Lname, arg.email, arg.phoneNum, arg.WorkNum, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID, arg.ID], (err, results) => {
+    db.con.query('UPDATE Messages SET senderID=?, userID=?, groupID=?, Message=?, Messagedate=? WHERE ID =?',
+      [arg.senderID, arg.userID, arg.groupID, arg.Message, arg.Messagedate, arg.ID], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
