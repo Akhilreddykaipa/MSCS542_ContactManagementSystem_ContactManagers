@@ -1,5 +1,4 @@
 const mysql = require('mysql');
-const { promisify } = require('util');
 
 const con = mysql.createConnection({
   host: 'localhost',
