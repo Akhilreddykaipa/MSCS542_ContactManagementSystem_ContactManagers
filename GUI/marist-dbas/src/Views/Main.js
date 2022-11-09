@@ -71,8 +71,6 @@ const Main = (props) => {
             <Route render={
               ()=>(<Navigate to="/login"/>)}
             />
-            // <Route path="/employees" element={<Employees/>}/>
-            // <Route path="/users" element={<Users/>}/>
           </Routes>
         </div>
       </div>
