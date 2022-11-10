@@ -116,7 +116,7 @@ ipcMain.handle('create-account', async (e, arg) => {
   let pass = utils.caesarEncrypt(arg.password, 12);
   return new Promise((resolve, reject) => {
     let duplicateAccount = false;
-    db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
+    db.con.query('select * from Employees where email = ?', [arg.email], (err, results) => {
       if (err) {
         console.log("error:", err);
       }
@@ -130,7 +130,7 @@ ipcMain.handle('create-account', async (e, arg) => {
       });
 
       if (!duplicateAccount) {
-        db.con.query('insert into employees (Fname, Lname, email, phoneNum, WorkNum, gender, age, Department_ID, Supervisor_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+        db.con.query('insert into Employees (Fname, Lname, email, phoneNum, WorkNum, gender, age, Department_ID, Supervisor_ID) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
           [arg.Fname, arg.Lname, arg.email, arg.phoneNum, null, arg.gender, arg.age, arg.Department_ID, arg.Supervisor_ID], (err, results) => {
             if (err) {
               console.log(err);
@@ -174,7 +174,7 @@ ipcMain.handle('set-new-password', async (e, arg) => {
 ipcMain.handle('set-last-login', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from department', [], (err, results) => {
+    db.con.query('select * from Department', [], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
@@ -187,7 +187,7 @@ ipcMain.handle('set-last-login', async (e, arg) => {
 ipcMain.handle('get-departments', async (e) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from department', [], (err, results) => {
+    db.con.query('select * from Department', [], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
@@ -233,7 +233,7 @@ ipcMain.handle('get-employees', async (e) => {
   e.preventDefault();
 
   return new Promise((resolve, reject) => {
-    db.con.query('select * from employees', [], (err, results) => {
+    db.con.query('select * from Employees', [], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
@@ -247,7 +247,7 @@ ipcMain.handle('get-employee-ids', async (e, arg) => {
   e.preventDefault();
 
   return new Promise((resolve, reject) => {
-    db.con.query('select * from employees where email = ?', [arg.email], (err, results) => {
+    db.con.query('select * from Employees where email = ?', [arg.email], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
@@ -280,7 +280,7 @@ ipcMain.handle('set-employees', async (e, arg) => {
 ipcMain.handle('get-messages', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
-    db.con.query('select * from messages', [], (err, results) => {
+    db.con.query('select * from Messages', [], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
