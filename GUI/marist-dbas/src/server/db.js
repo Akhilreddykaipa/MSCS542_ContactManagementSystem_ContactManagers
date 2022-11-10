@@ -1,13 +1,13 @@
 const mysql = require('mysql');
 
-const dbConnection = mysql.createConnection({
-  host: '127.0.0.1',
-  user:'root',
-  password:'root',
-  database:'myCms'
+const con = mysql.createConnection({
+  host: 'localhost',
+  user:'marist_dbas',
+  password:'rootroot',
+  database: 'myCms'
 });
 
-dbConnection.connect(function(err) {
+con.connect(function(err) {
   if (err) {
     console.log("failed connection.");
     console.log(err);
@@ -16,14 +16,6 @@ dbConnection.connect(function(err) {
   }
 });
 
-dbConnection.query('show tables', (err, result) => {
-  if(err) {
-    console.log("failed conenction.");
-    console.log(err);
-  }
-  console.log("Query result:", result);
-});
-
 module.exports = {
-  dbConnection
+  con,
 }

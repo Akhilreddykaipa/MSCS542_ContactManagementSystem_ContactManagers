@@ -1,31 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from "./Login";
 import Main from "./Main";
-import CreateAccount from "./CreateAccount";
 import "../css/App.css";
 
 function App() {
   const [loggedIn, setLogin] = useState(false);
-  const [createAccount, setCreateAccount] = useState(false);
-  const [page, setPage] = useState("login");
   const [username, setUserName] = useState("");
+  const [admin, setAdmin] = useState(false);
+
+
+  useEffect(() => {
+    window.addEventListener('beforeunload', (e) => {
+      e.preventDefault();
+    });
+  }, []);
 
   return (
     <>
       <div className="App">
-        { (loggedIn == true) ?
-          <Main name={username}/> :
-          (createAccount == true) ?
-            <CreateAccount
-              loggedIn={setLogin}
-              setName={setUserName}
-              setLoginView={setCreateAccount}
-            /> :
-            <Login
-              loggedIn={setLogin}
-              setName={setUserName}
-              createAccount={setCreateAccount}
-            /> }
+        { (loggedIn === true) ?
+          <>
+            <Main name={username} admin={admin}/>
+          </> :
+          <Login
+            loggedIn={setLogin}
+            setUserEmail={setUserName}
+            setAdmin={setAdmin}
+          /> }
       </div>
     </>
   );

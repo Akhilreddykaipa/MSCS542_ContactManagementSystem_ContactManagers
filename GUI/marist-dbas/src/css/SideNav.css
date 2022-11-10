@@ -22,7 +22,7 @@
 a.sideNavButton {
   font-family: Roboto_Light,sans-serif;
   width: 100%;
-  height: 42px;
+  height: 64px;
   color: #fff;
   border: 0px;
   border-radius: 6px;
@@ -80,7 +80,7 @@ a.sideNavButton.active {
   position: absolute;
   top: 14px;
   right: 0;
-  margin-right: -20px;
+  margin-right: -24px;
 }
 
 button.sidebarCollapse {

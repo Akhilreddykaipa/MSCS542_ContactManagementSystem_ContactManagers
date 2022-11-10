@@ -1,0 +1,97 @@
+#employeeEditContainer {
+  display: none;
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  background: #323232;
+  border-radius: 8px;
+  padding: 32px 48px!important;
+}
+
+#employeeEditContainer h2 {
+  margin: 32px 0px;
+}
+
+#originalData div.col {
+  color: #fff!important;
+}
+
+#originalData span, #newData span {
+  float: right;
+  position: relative;
+  top: -24px;
+}
+
+#EmployeeTable {
+  position: relative;
+}
+
+#EmployeeTable .action > div {
+  float: right;
+}
+
+#EmployeeTable .action .cancel {
+  margin-right: 16px;
+}
+
+#newData {
+  border-left: 1px solid #fff;
+  padding-left: 32px;
+}
+
+#employeeInsertValues input {
+  height: 24px;
+  width: 100%;
+  color-scheme: dark;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#employeeEditValues .init {
+  min-height: 24px;
+}
+
+#employeeEditContainer .close {
+  position: relative;
+}
+
+#employeeEditContainer .close > div {
+  position: absolute;
+  width: 100%;
+}
+
+#employeeEditContainer .close button {
+  float: right;
+  border-radius: 100%;
+  width: 38px;
+  height: 38px;
+}
+
+#employeeEditContainer .resultMessages {
+  position: relative;
+  display: grid;
+}
+
+#employeeEditContainer .successMessage, #employeeEditContainer .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#employeeEditContainer .successMessage {
+  background: green;
+}
+
+#employeeEditContainer .errorMessage {
+  background: red;
+}
+
+#employeeEditContainer .successMessage.active, #employeeEditContainer .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.4s;
+}

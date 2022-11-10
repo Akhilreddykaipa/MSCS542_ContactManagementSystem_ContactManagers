@@ -68,3 +68,11 @@
 #login #newAccount {
   margin-top: 8px;
 }
+
+#login .error {
+  margin: 0;
+  color: red;
+  font-size: 20px;
+  text-align: left;
+  width: 100%;
+}

@@ -1,0 +1,97 @@
+#editContainer {
+  display: none;
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  background: #323232;
+  border-radius: 8px;
+  padding: 32px 48px!important;
+}
+
+.rel {
+  position: relative;
+}
+
+#editContainer h2 {
+  margin: 32px 0px;
+}
+
+#originalData div.col {
+  color: #fff!important;
+}
+
+#originalData span, #newData span {
+  float: right;
+  position: relative;
+  top: -24px;
+}
+
+#newData {
+  border-left: 1px solid #fff;
+  padding-left: 32px;
+}
+
+#insertValues input {
+  height: 24px;
+  width: 100%;
+  color-scheme: dark;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#editValues .init {
+  min-height: 24px;
+}
+
+#editContainer .action > div {
+  float: right;
+}
+
+#editContainer .action .cancel {
+  margin-right: 16px;
+}
+
+#editContainer .close {
+  position: relative;
+}
+
+#editContainer .close > div {
+  position: absolute;
+  width: 100%;
+}
+
+#editContainer .close button {
+  float: right;
+  border-radius: 100%;
+  width: 38px;
+  height: 38px;
+}
+
+#editContainer .resultMessages {
+  position: relative;
+  display: grid;
+}
+
+#editContainer .successMessage, #editContainer .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#editContainer .successMessage {
+  background: green;
+}
+
+#editContainer .errorMessage {
+  background: red;
+}
+
+#editContainer .successMessage.active, #editContainer .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.4s;
+}

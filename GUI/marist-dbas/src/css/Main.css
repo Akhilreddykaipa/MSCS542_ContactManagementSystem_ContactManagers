@@ -2,9 +2,13 @@
   --transition-time2: 0.6s;
 }
 
+hr {
+  color: #fff!important;
+}
+
 #main #userProfile {
   position: absolute;
-  display: flex;
+  display: table;
   color: #fff;
   top: 24px;
   right: 24px;
@@ -23,10 +27,13 @@
   white-space: nowrap;
 }
 
+#main #userProfile p.admin {
+  float: right;
+}
+
 #main #userProfile {
-  background: #000;
   height: 32px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 #main #routes .container {
@@ -39,5 +46,10 @@
   transition: padding-left var(--transition-time2);
 }
 
-#routes {
+#routes button a {
+  color: #000;
+}
+
+#adminSeperator {
+  margin: 0px 4px;
 }
