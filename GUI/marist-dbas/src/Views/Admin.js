@@ -20,7 +20,7 @@ const Admin = (props) => {
         <div className="row">
           <div className="col">
             <p>Delete a user entry</p>
-            <button className="btn btn-primary">
+            <button className="btn btn-danger">
               <Link to="/deleteAccount">Delete a user</Link>
             </button>
           </div>
