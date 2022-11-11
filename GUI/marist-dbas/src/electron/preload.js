@@ -53,6 +53,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
   newPassword: (args) => ipcRenderer.invoke('set-new-password', (args)).then((result) => {
     // console.log(result);
     return result;
+  }),
+  getEmailHistory: (args) => ipcRenderer.invoke('get-email-history', (args)).then((result) => {
+    // console.log(result);
+    return result;
   })
 });
 

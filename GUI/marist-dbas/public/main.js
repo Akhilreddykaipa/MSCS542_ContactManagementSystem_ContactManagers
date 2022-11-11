@@ -332,3 +332,16 @@ ipcMain.handle('set-messages', async (e, arg) => {
     });
   });
 });
+
+ipcMain.handle('get-email-history', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from EmailHistory', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
