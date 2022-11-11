@@ -20,7 +20,7 @@ const EmailHistory = (props) => {
           $(document).ready(() => {
             $("#EmailHistoryBody tr").each((i, el) => {
               let sender = $(el).find(".sender");
-              // let receiver = $(el).find(".receiver");
+              let receiver = $(el).find(".receiver");
               if (sender.text() == result[0].ID) {
                 sender.text(result[0].Fname + " " + result[0].Lname);
                 employeeData.forEach((item, i) => {
@@ -28,18 +28,18 @@ const EmailHistory = (props) => {
                     let key = Object.keys(item)[i];
                     if (item[key] === null) item[key] = "";
                   }
-                  // if (receiver.text() == item.ID) receiver.text(item.Fname + " " + item.Lname);
+                  if (receiver.text() == item.ID) receiver.text(item.Fname + " " + item.Lname);
                 });
-              } //else if (receiver.text() == result[0].ID) {
-                // receiver.text(result[0].Fname + " " + result[0].Lname);
-                // employeeData.forEach((item, i) => {
-                //   for (let i = 0; i < Object.keys(item).length; i++) {
-                //     let key = Object.keys(item)[i];
-                //     if (item[key] === null) item[key] = "";
-                //   }
-                //   if (sender.text() == item.ID) sender.text(item.Fname + " " + item.Lname);
-                // });
-              /*}*/ else {
+              } else if (receiver.text() == result[0].ID) {
+                receiver.text(result[0].Fname + " " + result[0].Lname);
+                employeeData.forEach((item, i) => {
+                  for (let i = 0; i < Object.keys(item).length; i++) {
+                    let key = Object.keys(item)[i];
+                    if (item[key] === null) item[key] = "";
+                  }
+                  if (sender.text() == item.ID) sender.text(item.Fname + " " + item.Lname);
+                });
+              } else {
                 $(el).remove();
               }
               $("#EmailHistoryBody").show();
