@@ -360,3 +360,29 @@ ipcMain.handle('get-email-history', async (e, arg) => {
     });
   });
 });
+
+ipcMain.handle('get-group-members', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from GroupMembers', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-group-details', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from GroupDetails', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});

@@ -61,6 +61,14 @@ contextBridge.exposeInMainWorld('dbConnection', {
   getEmailHistory: (args) => ipcRenderer.invoke('get-email-history', (args)).then((result) => {
     // console.log(result);
     return result;
+  }),
+  getGroupMembers: (args) => ipcRenderer.invoke('get-group-members', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  getGroupDetails: (args) => ipcRenderer.invoke('get-group-details', (args)).then((result) => {
+    // console.log(result);
+    return result;
   })
 });
 
