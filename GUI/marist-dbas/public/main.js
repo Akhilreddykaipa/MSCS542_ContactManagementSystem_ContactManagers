@@ -192,6 +192,21 @@ ipcMain.handle('get-departments', async (e) => {
         console.log(err);
         resolve(err)
       }
+      console.log(results);
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-supervisors', async (e) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Supervisor', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      console.log(results);
       resolve(results);
     });
   });
