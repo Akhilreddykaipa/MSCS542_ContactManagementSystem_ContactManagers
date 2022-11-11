@@ -229,6 +229,27 @@ ipcMain.handle('set-users', async (e, arg) => {
   });
 });
 
+ipcMain.handle('delete-user', (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('DELETE from users WHERE useremail =?',
+      [arg.email], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      db.con.query('DELETE from Employees WHERE email =?',
+        [arg.email], (err, results) => {
+        if (err) {
+          console.log(err);
+          resolve(err)
+        }
+        resolve(results);
+      });
+    });
+  });
+});
+
 ipcMain.handle('get-employees', async (e) => {
   e.preventDefault();
 

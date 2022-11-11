@@ -19,7 +19,6 @@ const Test = (props) => {
         console.log(result);
         setUsers([...result]);
         let keys = Object.keys(result[0]);
-        console.log(keys);
         setHeaders([...keys]);
         setFirstRun(false);
       });

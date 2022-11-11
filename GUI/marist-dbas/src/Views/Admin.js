@@ -19,6 +19,15 @@ const Admin = (props) => {
         <hr/>
         <div className="row">
           <div className="col">
+            <p>Delete a user entry</p>
+            <button className="btn btn-primary">
+              <Link to="/deleteAccount">Delete a user</Link>
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div className="row">
+          <div className="col">
             <p>Edit data in Employees table</p>
             <button className="btn btn-primary">
               <Link to="/editEmployeeTable">Edit Employee Table</Link>

@@ -15,6 +15,7 @@ import Contacts from "./Contacts";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import CreateAccount from "../Views/CreateAccount.js"
+import DeleteAccount from "../Views/DeleteAccount.js"
 import Admin from "../Views/Admin.js"
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -63,6 +64,7 @@ const Main = (props) => {
             <Route path="/admin" element={<Admin admin={props.admin}/>}/>
             <Route path="/login" exact element={<Login />} />
             <Route path="/createAccount" element={<CreateAccount/>}/>
+            <Route path="/deleteAccount" element={<DeleteAccount/>}/>
             <Route path="/editEmployeeTable" element={<EditEmployeeTable/>}/>
             <Route path="/editUserTable" element={<EditUserTable/>}/>
             <Route path="/editMessagesTable" element={<EditMessagesTable/>}/>

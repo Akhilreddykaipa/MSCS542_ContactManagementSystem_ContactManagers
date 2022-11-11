@@ -1,0 +1,97 @@
+#deleteAccount {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+#deleteAccount > div {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 32px 24px 32px 24px;
+  border-radius: 24px;
+  background: #1c1d1f;
+  color: #fff;
+}
+
+#deleteAccount > div > div {
+  width: 100%;
+}
+
+#deleteAccount .header {
+  text-align: left;
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+#deleteAccount label {
+  font-size: 24px;
+}
+
+#deleteAccount input, #deleteAccount select {
+  border-radius: 8px;
+}
+
+#deleteAccount input.fullWidth, #deleteAccount select {
+  width: 100%;
+  height: 48px;
+  font-size: 24px;
+}
+
+#deleteAccount .password-helper {
+  font-size: 16px;
+  margin: 0px 8px 8px 8px;
+}
+
+#deleteAccount button {
+  width: 100%;
+  height: 48px;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+#deleteAccount #deleteAccountTitle {
+  width: 100%;
+  color: #b34b4b;
+  font-size: 20px;
+}
+
+#deleteAccount form#deleteAccountForm {
+  width: 100%;
+}
+
+#deleteAccount #newAccount {
+  margin-top: 8px;
+}
+
+#backButton {
+  margin-bottom: 32px;
+}
+
+#deleteAccount .successMessage, #deleteAccount .errorMessage {
+  opacity: 0%;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  top: 64px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#deleteAccount .successMessage {
+  background: green;
+}
+
+#deleteAccount .errorMessage {
+  background: red;
+}
+
+#deleteAccount .successMessage.active, #deleteAccount .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.4s;
+}

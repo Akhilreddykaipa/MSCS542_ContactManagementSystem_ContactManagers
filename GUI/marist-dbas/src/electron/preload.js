@@ -22,6 +22,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  deleteUser: (args) => ipcRenderer.invoke('delete-user', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getEmployees: () => ipcRenderer.invoke('get-employees').then((result) => {
     // console.log(result);
     return result;
