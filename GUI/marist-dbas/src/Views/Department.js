@@ -4,24 +4,44 @@ import "../css/Department.css";
 const utils = require('../utils/utils.js');
 
 const Department = (props) => {
-  const [firstRun, setFirstRun] = useState(true);
   const [dprt, setDprt] = useState([]);
   const [sup, setSup] = useState([]);
+  const [emp, setEmp] = useState([]);
+  let supervisors;
+  let employees;
 
   useEffect(() => {
-    console.log("running effect");
-    if (firstRun) {
-      window.dbConnection.getDepartments().then((result) => {
-        setDprt([...result]);
-        console.log(result);
-      });
+    window.dbConnection.getDepartments().then((result) => {
+      setDprt([...result]);
+      console.log(result);
 
       window.dbConnection.getSupervisors().then((result) => {
-        setDprt([...result]);
+        setSup([...result]);
+        supervisors = result;
         console.log(result);
+
+        window.dbConnection.getEmployees().then((result) => {
+          console.log("res",result);
+          setEmp([...result]);
+          employees = result;
+          console.log("sup", sup);
+
+          $(document).ready(function() {
+            $("#departmentBody tr .supervisorID").each(function(i, el) {
+              supervisors.forEach((supervisor, i) => {
+                if (Number($(el).text()) === supervisor.ID) {
+                  employees.forEach((res, j) => {
+                    if (supervisor.UserID === res.ID) {
+                      $(this).text(res.Fname + " " + res.Lname);
+                    }
+                  });
+                }
+              });
+            });
+          });
+        });
       });
-      // setFirstRun(false);
-    }
+    });
   }, []);
 
   return (
@@ -36,13 +56,13 @@ const Department = (props) => {
               <th scope="col">Supervisor</th>
             </tr>
           </thead>
-          <tbody id="DepartmentBody">
+          <tbody id="departmentBody">
             {dprt.map((item, i) => {
               return (
                 <>
                   <tr>
                     <td >{item.DName}</td>
-                    <td >{item.Supervisor_ID}</td>
+                    <td className="supervisorID">{item.Supervisor_ID}</td>
                   </tr>
                 </>
               )

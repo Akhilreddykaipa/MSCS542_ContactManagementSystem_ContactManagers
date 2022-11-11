@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
-// import validate from 'jquery-validation';
 import "../css/EditEmployeeTable.css";
 const utils = require('../utils/utils.js');
 let newID = Math.floor(utils.newID());
@@ -13,10 +12,6 @@ const EditEmployeeTable = (props) => {
 
   useEffect(() => {
     if (firstRun) {
-      // window.dbConnection.getUsers().then((result) => {
-      //   console.log(result);
-      //   setUsers([...result]);
-      // });
       getEmployeeData();
     }
   });
