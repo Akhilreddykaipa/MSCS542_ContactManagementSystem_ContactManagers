@@ -11,9 +11,14 @@ const Profile = (props) => {
     window.dbConnection.getEmployeeIDs({
       email: $("#userProfile .userName").text()
     }).then((result) => {
-      setEmployees([...result]);
-      console.log(result);
-      setProfileData(result[0]);
+      let user = result[0];
+      Object.keys(user).forEach((item, i) => {
+        if (user[item] === null) {
+          user[item] = "";
+        }
+      });
+
+      setEmployees([...[user]]);
     });
   }, []);
 
@@ -23,7 +28,10 @@ const Profile = (props) => {
     keys.forEach((item, i) => {
       console.log(item);
       console.log(res[item]);
-      tmp[item] = String(res[item]).length == 0 ? null : res[item];
+      let tmpNull = res[item] == null ? "" : res[item];
+      console.log(tmpNull);
+      console.log(String(tmpNull).length);
+      tmp[item] = String(tmpNull).length === 0 ? "null" : res[item];
     });
   }
 
@@ -33,6 +41,7 @@ const Profile = (props) => {
         <h2>Profile</h2>
         <hr/>
         {employees.map((item, i) => {
+          console.log(item)
           return (
             <>
               <div className="row">

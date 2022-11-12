@@ -5,3 +5,22 @@
   padding: 16px;
   margin-bottom: 32px;
 }
+
+.group:hover {
+  cursor: pointer;
+}
+
+.collapsible {
+  /* display: none; */
+  max-height: 0px;
+  overflow: hidden;
+  /* max-height: -webkit-fill-available; */
+  transition: max-height 0.5s ease;
+}
+
+.collapsible.open {
+   /* display: block; */
+
+   max-height: 700px;
+   transition: max-height 0.5s ease;
+}

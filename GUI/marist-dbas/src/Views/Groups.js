@@ -4,53 +4,72 @@ import "../css/Groups.css";
 const utils = require('../utils/utils.js');
 
 const Groups = (props) => {
-  const [employees, setEmployees] = useState([]);
-  const [data, setData] = useState([]);
-  const [groupMembers, setGroupMembers] = useState([]);
-  const [groups, setGroups] = useState([]);
   const [userGroups, setUserGroups] = useState([]);
+  const [groupData, setGroupData] = useState([]);
+
+  let groupMems;
+  let employeeID;
+  let employees = [];
+  let groupIDs = [];
+  let groupDetails = [];
+  let tmpUserGroups = [];
 
   useEffect(() => {
     window.dbConnection.getGroupMembers().then((result) => {
-      setGroupMembers([...result]);
-      console.log(result);
-      let groupMems = result;
+      groupMems = result;
+      window.dbConnection.getEmployees().then((result) => {
+        employees = result;
+        employees.forEach((item, i) => {
+          if (item.email === $("#userProfile p.userName").text()) {
+            employeeID = item.ID;
+          }
+        });
 
-        window.dbConnection.getEmployeeIDs({
-          email: $("#userProfile .userName").text()
-        }).then((result) => {
-          console.log(result);
-          let employeeID = result[0].ID;
-
-          console.log(employeeID);
-          groupMems.forEach((item, i) => {
-            console.log(item.UserID, employeeID);
-            if (item.UserID === employeeID) {
-              console.log("got match");
-              let tmp = groups;
-              tmp.push(item.GroupID);
-              setGroups(tmp);
-            }
-          });
-          console.log(groups);
-
-          window.dbConnection.getGroupDetails().then((result) => {
+        groupMems.forEach((groupMem, i) => {
+          if (groupMem.UserID === employeeID) {
             let tmp = [];
-            result.forEach((item, i) => {
-              groups.forEach((group, j) => {
-                if (item.ID === group[j]) {
-                  console.log(item.GroupName);
-                  tmp.push(item.)
+            let tmpID = groupMem.GroupID;
+
+            groupMems.forEach((item, i) => {
+              if (tmpID === item.GroupID) {
+                tmp.push(item.UserID);
+              }
+            });
+            groupIDs.push({groupID: groupMem.ID, empIDs: tmp});
+          }
+        });
+
+        window.dbConnection.getGroupDetails().then((result) => {
+          groupDetails = result;
+          let tmpEmp = [];
+          let tmpGroup = [];
+          groupIDs.forEach((group, i) => {
+            group.empIDs.forEach((empID, i) => {
+              employees.forEach((emp, i) => {
+                if (empID === emp.ID) {
+                  tmpEmp.push(emp.Fname + " " + emp.Lname);
                 }
               });
             });
 
-            console.log(result);
-            // setUserGroups(result);
+            groupDetails.forEach((groupDet, i) => {
+              console.log(group.groupID, groupDet.GroupMembers_ID);
+              if (group.groupID === groupDet.GroupMembers_ID) {
+                tmpGroup.push(groupDet);
+              }
+            });
+
+            setUserGroups(tmpGroup);
+            setGroupData(tmpEmp);
           });
         });
       });
+    });
   }, []);
+
+  const openBar = (el) => {
+    $('#' + el + ' .collapsible').toggleClass('open');
+  }
 
   return (
     <>
@@ -61,8 +80,22 @@ const Groups = (props) => {
           {userGroups.map((item, i) => {
             return (
               <>
-                <div className="group">
+                <div id={item.ID} className="group" onClick={() =>  openBar(item.ID)}>
                   <h2>{item.GroupName}</h2>
+                  <hr/>
+                  <div className="collapsible open">
+                  <p>Group Members:</p>
+                  <hr/>
+                  {groupData.map((group, i) => {
+                    return (
+                      <>
+                        <ul className="list-group">
+                          <li className="list-group-item  list-group-item-dark">{group}</li>
+                        </ul>
+                      </>
+                    )
+                  })}
+                  </div>
                 </div>
               </>
             )
