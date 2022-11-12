@@ -53,7 +53,6 @@ const Groups = (props) => {
             });
 
             groupDetails.forEach((groupDet, i) => {
-              console.log(group.groupID, groupDet.GroupMembers_ID);
               if (group.groupID === groupDet.GroupMembers_ID) {
                 tmpGroup.push(groupDet);
               }

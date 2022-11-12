@@ -13,18 +13,14 @@ const Department = (props) => {
   useEffect(() => {
     window.dbConnection.getDepartments().then((result) => {
       setDprt([...result]);
-      console.log(result);
 
       window.dbConnection.getSupervisors().then((result) => {
         setSup([...result]);
         supervisors = result;
-        console.log(result);
 
         window.dbConnection.getEmployees().then((result) => {
-          console.log("res",result);
           setEmp([...result]);
           employees = result;
-          console.log("sup", sup);
 
           $(document).ready(function() {
             $("#departmentBody tr .supervisorID").each(function(i, el) {
