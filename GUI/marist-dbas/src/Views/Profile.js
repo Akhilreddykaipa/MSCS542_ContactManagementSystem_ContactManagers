@@ -41,7 +41,6 @@ const Profile = (props) => {
         <h2>Profile</h2>
         <hr/>
         {employees.map((item, i) => {
-          console.log(item)
           return (
             <>
               <div className="row">

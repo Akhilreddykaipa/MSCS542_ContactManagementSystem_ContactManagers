@@ -85,6 +85,7 @@ const EditMessagesTable = (props) => {
             <thead>
               <tr>
                 <th scope="col">senderID</th>
+                <th scope="col">ID</th>
                 <th scope="col">userID</th>
                 <th scope="col">groupID</th>
                 <th scope="col">Message</th>
@@ -97,6 +98,7 @@ const EditMessagesTable = (props) => {
                 return (
                   <>
                     <tr id={attr.ID}>
+                      <td>{attr.ID}</td>
                       <td>{attr.senderID}</td>
                       <td>{attr.userID}</td>
                       <td>{attr.groupID}</td>

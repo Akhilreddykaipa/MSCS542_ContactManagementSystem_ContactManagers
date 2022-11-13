@@ -18,7 +18,6 @@ const EditEmployeeTable = (props) => {
 
   const getEmployeeData = () => {
     window.dbConnection.getEmployees().then((result) => {
-      console.log(result);
       setEmployees([...result]);
       setFirstRun(false);
     });

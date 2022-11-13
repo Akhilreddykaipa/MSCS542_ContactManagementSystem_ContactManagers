@@ -18,7 +18,6 @@ const EditCertificationTable = (props) => {
 
   const getCertificationData = () => {
     window.dbConnection.getCertifications().then((result) => {
-      console.log(result);
       setCertification(result);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
@@ -31,7 +30,6 @@ const EditCertificationTable = (props) => {
       Name: arg.Name,
       Type: arg.Type,
     }).then((result) => {
-      console.log(result);
       $(".successMessage").addClass("active");
       getCertificationData();
       setShowEdit(false);
@@ -82,7 +80,6 @@ const EditCertificationTable = (props) => {
             </thead>
             <tbody id="certificationBody">
               {certification.map((attr) => {
-                console.log(attr)
                 return (
                   <>
                     <tr id={attr.ID}>

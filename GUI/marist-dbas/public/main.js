@@ -390,6 +390,20 @@ ipcMain.handle('get-email-history', async (e, arg) => {
   });
 });
 
+ipcMain.handle('set-email-history', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE EmailHistory SET SenderID=?, Message=?, ReceiverID=?, EmailDate=? WHERE ID =?',
+      [Number(arg.SenderID), arg.Message, Number(arg.ReceiverID), arg.EmailDate, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-group-members', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {

@@ -17,7 +17,6 @@ const Messages = (props) => {
         let employeeData = result;
 
         window.dbConnection.getGroupDetails().then((result) => {
-          console.log(result);
           groupDet = result;
 
         }).then((result) => {
@@ -51,7 +50,6 @@ const Messages = (props) => {
                   $(el).remove();
                 }
                 groupDet.forEach((item, i) => {
-                  console.log(item);
                   if (groupName.text() == item.ID) {
                     groupName.text(item.GroupName);
                   }

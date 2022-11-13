@@ -63,7 +63,7 @@ const Main = (props) => {
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
             <Route path="/" exact element={<Contacts />} />
-            <Route path="/contacts" element={<Contacts/>}/>
+            <Route path="/contacts" index element={<Contacts/>}/>
             <Route path="/groups" element={<Groups/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/emailHistory" element={<EmailHistory/>}/>

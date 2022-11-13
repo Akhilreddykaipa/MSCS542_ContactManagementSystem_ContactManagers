@@ -70,6 +70,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  setEmailHistory: (args) => ipcRenderer.invoke('set-email-history', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getGroupMembers: (args) => ipcRenderer.invoke('get-group-members', (args)).then((result) => {
     // console.log(result);
     return result;

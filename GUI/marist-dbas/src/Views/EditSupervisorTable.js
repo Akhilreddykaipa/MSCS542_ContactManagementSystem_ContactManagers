@@ -81,7 +81,6 @@ const EditSupervisorTable = (props) => {
             </thead>
             <tbody id="supervisorBody">
               {supervisors.map((attr) => {
-                console.log(attr)
                 return (
                   <>
                     <tr id={attr.ID}>

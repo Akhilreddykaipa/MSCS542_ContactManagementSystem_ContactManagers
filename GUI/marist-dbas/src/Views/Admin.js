@@ -125,7 +125,7 @@ const Admin = (props) => {
           <div className="row">
             <div className="col">
               <button className="btn btn-primary adminBtn">
-                <Link to="/editEmailHistory">
+                <Link to="/editEmailHistoryTable">
                   <h4>Edit EmialHistory table</h4>
                 </Link>
               </button>
