@@ -19,9 +19,6 @@ const TableEditor = (props) => {
     $(document).ready(() => {
       for (let i = 0; i < tableHeaders.length; i++) {
         let key = tableHeaders[i];
-        console.log(key);
-        console.log(props.rows);
-        console.log(props.rows[key]);
         $("#editValues .init." + key).text(props.rows[key]);
         $("#insertValues .insert." + key + " input").val(props.rows[key]);
       }
@@ -52,10 +49,6 @@ const TableEditor = (props) => {
             </div>
             <div className="row">
               <h2>Update data in {props.tableName} table</h2>
-              <div className="resultMessages">
-                <p className="successMessage">Successfully updated data</p>
-                <p className="errorMessage"></p>
-              </div>
               <hr/>
               <div id="originalData" className="col-6">
                 <h2>Original {props.tableName} Data</h2>

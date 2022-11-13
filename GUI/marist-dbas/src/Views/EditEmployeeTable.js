@@ -43,11 +43,11 @@ const EditEmployeeTable = (props) => {
       Supervisor_ID: $("#employeeInsertValues .insert.Supervisor_ID input").val()
     }).then((result) => {
       console.log(result);
-      $("#employeeEditContainer .successMessage").addClass("active");
+      $("#EmployeeTable .successMessage").addClass("active");
       getEmployeeData();
+      $("#employeeEditContainer").hide();
       setTimeout(() => {
-        $("#employeeEditContainer .successMessage").removeClass("active");
-        $("#employeeEditContainer").hide();
+        $("#EmployeeTable .successMessage").removeClass("active");
       }, 4000);
     });
   }
@@ -63,6 +63,10 @@ const EditEmployeeTable = (props) => {
         <h1>Edit Employees Table</h1>
         <hr/>
         <div id="EmployeeTable">
+          <div className="resultMessages">
+            <p className="successMessage">Successfully updated data</p>
+            <p className="errorMessage"></p>
+          </div>
           <div id="employeeEditContainer" className="container">
             <div>
               <div className="close">
@@ -72,10 +76,6 @@ const EditEmployeeTable = (props) => {
               </div>
               <div className="row">
                 <h2>Update data in Employees table</h2>
-                <div className="resultMessages">
-                  <p className="successMessage">Successfully updated data</p>
-                  <p className="errorMessage"></p>
-                </div>
                 <hr/>
                 <div id="originalData" className="col-6">
                   <h2>Original Employee Data</h2>

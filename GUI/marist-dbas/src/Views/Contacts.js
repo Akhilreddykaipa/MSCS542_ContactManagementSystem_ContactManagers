@@ -12,35 +12,29 @@ const Contacts = (props) => {
   useEffect(() => {
       window.dbConnection.getContacts().then((result) => {
         contacts = result;
-        console.log(contacts);
 
         window.dbConnection.getEmployees().then((result) => {
           employees = result;
-          console.log(employees);
 
           employees.forEach((emp, i) => {
             if (emp.email == $("#userProfile .userName").text()) {
-              console.log("match", emp);
               empID = emp;
             }
           });
 
           contacts.forEach((cont, i) => {
-            console.log(cont);
             employees.forEach((emp, i) => {
               if (cont.user2ID == emp.ID && cont.user1ID == empID.ID) {
                 contList.push(emp);
               }
             });
           });
-          console.log(contList);
           setCont([...contList]);
         });
       });
   }, []);
 
   const handleDelete = (el) => {
-    console.log(el);
     window.dbConnection.deleteContact({
       user2ID: el
     }).then((result) => {
@@ -62,7 +56,7 @@ const Contacts = (props) => {
         {cont.map((el, i) => {
           return (
             <>
-            <div id={el.ID} className="contactWrapper row">
+            <div key={el.ID} id={el.ID} className="contactWrapper row">
               <div className="contact col">
                 <div className="row">
                   <div className="col-3">Name<span className="float-end">:</span></div>

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TableEditor from "./TableEditor";
 import $ from 'jquery';
-// import validate from 'jquery-validation';
 import "../css/EditMessagesTable.css";
 const utils = require('../utils/utils.js');
 
@@ -21,7 +20,6 @@ const EditMessagesTable = (props) => {
 
   const getMessageData = () => {
     window.dbConnection.getMessages().then((result) => {
-      console.log(result);
       setMessages([...result]);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
@@ -43,7 +41,6 @@ const EditMessagesTable = (props) => {
       Message: arg.Message, //$("#userInsertValues .insert.Message input").val(),
       Messagedate: arg.Messagedate, //$("#userInsertValues .insert.Messagedate input").val(),
     }).then((result) => {
-      console.log(result);
       $("#userEditContainer .successMessage").addClass("active");
       getMessageData();
       setTimeout(() => {
@@ -55,7 +52,6 @@ const EditMessagesTable = (props) => {
 
   const handleMessageEdit = (data) => {
     setColDat(data);
-    console.log(colDat);
     setShowEdit(true);
   }
 

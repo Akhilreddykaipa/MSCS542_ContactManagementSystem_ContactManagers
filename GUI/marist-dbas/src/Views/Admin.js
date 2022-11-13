@@ -28,6 +28,24 @@ const Admin = (props) => {
         <hr/>
         <div className="row">
           <div className="col">
+            <p>Edit data in Relationship Table</p>
+            <button className="btn btn-primary">
+              <Link to="/editRelationshipTable">Edit Relationship Table</Link>
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div className="row">
+          <div className="col">
+            <p>Edit data in GroupDetails Table</p>
+            <button className="btn btn-primary">
+              <Link to="/editGroupDetailsTable">Edit GroupDetails Table</Link>
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div className="row">
+          <div className="col">
             <p>Edit data in Employees table</p>
             <button className="btn btn-primary">
               <Link to="/editEmployeeTable">Edit Employee Table</Link>

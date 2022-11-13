@@ -1,0 +1,28 @@
+#EditRelationshipTable .resultMessages {
+  position: relative;
+  display: grid;
+}
+
+#EditRelationshipTable .successMessage, #EditRelationshipTable .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#EditRelationshipTable .successMessage {
+  background: green;
+  z-index: 100;
+}
+
+#EditRelationshipTable .errorMessage {
+  background: red;
+}
+
+#EditRelationshipTable .successMessage.active, #EditRelationshipTable .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.2s;
+}

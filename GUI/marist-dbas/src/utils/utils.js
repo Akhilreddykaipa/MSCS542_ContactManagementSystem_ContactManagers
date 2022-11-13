@@ -6,8 +6,10 @@ function formatDate(date) {
   let newDate = new Date(date);
   let m = newDate.getMonth();
   let d = newDate.getDate();
-  let y = newDate.getFullYear().toString().slice(2,4);
-  return m + "/" + d + "/" + y;
+  // let y = newDate.getFullYear().toString().slice(2,4);
+  let y = newDate.getFullYear();
+  // return m + "/" + d + "/" + y;
+  return y + "-" + m + "-" + d;
 }
 
 function caesarEncrypt(str, shift) {

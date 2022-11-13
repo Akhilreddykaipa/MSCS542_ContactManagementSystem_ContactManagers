@@ -68,12 +68,12 @@
   height: 38px;
 }
 
-#employeeEditContainer .resultMessages {
+#EmployeeTable .resultMessages {
   position: relative;
   display: grid;
 }
 
-#employeeEditContainer .successMessage, #employeeEditContainer .errorMessage {
+#EmployeeTable .successMessage, #EmployeeTable .errorMessage {
   opacity: 0%;
   justify-self: center;
   font-size: 24px;
@@ -83,15 +83,15 @@
   transition: opacity 0.2s;
 }
 
-#employeeEditContainer .successMessage {
+#EmployeeTable .successMessage {
   background: green;
 }
 
-#employeeEditContainer .errorMessage {
+#EmployeeTable .errorMessage {
   background: red;
 }
 
-#employeeEditContainer .successMessage.active, #employeeEditContainer .errorMessage.active {
+#EmployeeTable .successMessage.active, #EmployeeTable .errorMessage.active {
   opacity: 100%;
   transition: opacity 0.4s;
 }
