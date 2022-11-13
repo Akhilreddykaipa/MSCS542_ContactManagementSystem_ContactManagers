@@ -18,6 +18,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  setSupervisors: (args) => ipcRenderer.invoke('set-supervisors', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getUsers: () => ipcRenderer.invoke('get-users').then((result) => {
     // console.log(result);
     return result;

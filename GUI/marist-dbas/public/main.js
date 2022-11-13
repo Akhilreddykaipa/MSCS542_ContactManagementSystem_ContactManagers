@@ -206,7 +206,21 @@ ipcMain.handle('get-supervisors', async (e) => {
         console.log(err);
         resolve(err)
       }
-      console.log(results);
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-supervisors', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Supervisor SET UserID=?, DepartmentID=? WHERE ID =?',
+      [arg.UserID, arg.DepartmentID, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
       resolve(results);
     });
   });
