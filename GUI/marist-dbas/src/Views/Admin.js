@@ -6,113 +6,109 @@ const Admin = (props) => {
   return (
     <>
       <div id="admin" className="container">
-        <h2>Admin</h2>
+        <h1>Admin</h1>
         <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Create a new user entry</p>
-            <button className="btn btn-primary">
-              <Link to="/createAccount">Create new user</Link>
-            </button>
+        <h2 className="sectionHeader">Actions:</h2>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h4>Create a new user entry</h4>
+              <button className="btn btn-primary">
+                <Link to="/createAccount">Create new user</Link>
+              </button>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <h4>Delete a user entry</h4>
+              <button className="btn btn-danger">
+                <Link to="/deleteAccount">Delete a user</Link>
+              </button>
+            </div>
           </div>
         </div>
         <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Delete a user entry</p>
-            <button className="btn btn-danger">
-              <Link to="/deleteAccount">Delete a user</Link>
-            </button>
+        <h2 className="sectionHeader">Edit:</h2>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h4>Edit Relationship Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editRelationshipTable">Edit Relationship Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Relationship Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editRelationshipTable">Edit Relationship Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit GroupDetails Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editGroupDetailsTable">Edit GroupDetails Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in GroupDetails Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editGroupDetailsTable">Edit GroupDetails Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit GroupDetails Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editGroupMembersTable">Edit GroupMembers Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in GroupDetails Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editGroupMembersTable">Edit GroupMembers Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Certified Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editCertifiedTable">Edit Certified Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Certified Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editCertifiedTable">Edit Certified Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Certifications Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editCertificationTable">Edit Certification Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Certifications Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editCertificationTable">Edit Certification Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Supervisor Table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editSupervisorTable">Edit Supervisor Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Supervisor Table</p>
-            <button className="btn btn-primary">
-              <Link to="/editSupervisorTable">Edit Supervisor Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Employees table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editEmployeeTable">Edit Employee Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Employees table</p>
-            <button className="btn btn-primary">
-              <Link to="/editEmployeeTable">Edit Employee Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Users table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editUserTable">Edit Users Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Users table</p>
-            <button className="btn btn-primary">
-              <Link to="/editUserTable">Edit Users Table</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>Edit Messages table</h4>
+              <button className="btn btn-primary">
+                <Link to="/editMessagesTable">Edit Messages Table</Link>
+              </button>
+            </div>
           </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>Edit data in Messages table</p>
-            <button className="btn btn-primary">
-              <Link to="/editMessagesTable">Edit Messages Table</Link>
-            </button>
-          </div>
-        </div>
-        <hr/>
-        <div className="row">
-          <div className="col">
-            <p>table editor</p>
-            <button className="btn btn-primary">
-              <Link to="/test">table editor</Link>
-            </button>
+          <div className="row">
+            <div className="col">
+              <h4>table editor</h4>
+              <button className="btn btn-primary">
+                <Link to="/test">table editor</Link>
+              </button>
+            </div>
           </div>
         </div>
         <hr/>
