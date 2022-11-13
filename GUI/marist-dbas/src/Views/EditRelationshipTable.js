@@ -2,56 +2,48 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TableEditor from "./TableEditor";
 import $ from 'jquery';
-import "../css/EditMessagesTable.css";
+import "../css/EditRelationshipTable.css";
 const utils = require('../utils/utils.js');
 
-const EditMessagesTable = (props) => {
-  const [messages, setMessages] = useState([]);
+const EditRelationshipTable = (props) => {
+  const [relationship, setRelationship] = useState([]);
   const [firstRun, setFirstRun] = useState(true);
   const [showEdit, setShowEdit] = useState(false);
   const [colDat, setColDat] = useState(null);
   const [headers, setHeaders] = useState([]);
 
   useEffect(() => {
-    if (firstRun) {
-      getMessageData();
-    }
+    getRelationshipData();
   }, []);
 
-  const getMessageData = () => {
-    window.dbConnection.getMessages().then((result) => {
-      setMessages([...result]);
+  const getRelationshipData = () => {
+    window.dbConnection.getContacts().then((result) => {
+      console.log(result);
+      setRelationship(result);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
-      setFirstRun(false);
-      $("#messagesBody").show();
     });
   }
 
-  const cancelMessageEdit = () => {
-    $("#messageEditContainer").hide();
-  }
-
   const submitEdit = (arg) => {
-    window.dbConnection.setMessages({
+    window.dbConnection.setContacts({
       ID: arg.ID,
-      senderID: arg.senderID,
-      userID: arg.userID,
-      groupID: arg.groupID,
-      Message: arg.Message,
-      Messagedate: utils.formatDate(arg.Messagedate),
+      user1ID: arg.user1ID,
+      user2ID: arg.user2ID,
+      Rstatus: arg.Rstatus,
+      Rdate: utils.formatDate(arg.Rdate)
     }).then((result) => {
-      getMessageData();
-      // $("#userEditContainer").hide();
-      setShowEdit(false);
+      console.log(result);
       $(".successMessage").addClass("active");
+      getRelationshipData();
+      setShowEdit(false);
       setTimeout(() => {
-        $(".successMessage").removeClass("active");
+        $("#EditRelationshipTable .successMessage").removeClass("active");
       }, 4000);
     });
   }
 
-  const handleMessageEdit = (data) => {
+  const handleEdit = (data) => {
     setColDat(data);
     setShowEdit(true);
   }
@@ -63,48 +55,45 @@ const EditMessagesTable = (props) => {
           <Link to="/admin">&lt; Back</Link>
         </button>
       </div>
-      <div id="EditMessagesTable" className="container">
-        <h1>Edit Messages Table</h1>
+      <div id="EditRelationshipTable" className="container">
+        <h1>Edit Relationship Table</h1>
         <div className="resultMessages">
           <p className="successMessage">Successfully updated data</p>
           <p className="errorMessage"></p>
         </div>
         <hr/>
-        <div id="MessagesTable">
+        <div id="RelationshipTable">
           <TableEditor
             key={utils.newID()}
-            tableName={"Messages"}
+            tableName={"Relationship"}
             show={showEdit}
             setShow={setShowEdit}
             submit={submitEdit}
             tableData={headers}
             rows={colDat}
           />
-
           <table className="table table-dark table-hover">
             <thead>
               <tr>
-                <th scope="col">senderID</th>
                 <th scope="col">ID</th>
-                <th scope="col">userID</th>
-                <th scope="col">groupID</th>
-                <th scope="col">Message</th>
-                <th scope="col">Messagedate</th>
+                <th scope="col">user1ID</th>
+                <th scope="col">user2ID</th>
+                <th scope="col">Rstatus</th>
+                <th scope="col">Rdate</th>
                 <th scope="col">Edit</th>
               </tr>
             </thead>
-            <tbody id="messagesBody">
-              {messages.map((attr) => {
+            <tbody id="relationshipBody">
+              {relationship.map((attr) => {
                 return (
                   <>
                     <tr id={attr.ID}>
                       <td>{attr.ID}</td>
-                      <td>{attr.senderID}</td>
-                      <td>{attr.userID}</td>
-                      <td>{attr.groupID}</td>
-                      <td>{attr.Message}</td>
-                      <td>{utils.formatDate(attr.Messagedate)}</td>
-                      <td><button className="btn btn-warning" onClick={() => handleMessageEdit(attr)}>Edit</button></td>
+                      <td>{attr.user1ID}</td>
+                      <td>{attr.user2ID}</td>
+                      <td>{attr.Rstatus}</td>
+                      <td>{utils.formatDate(attr.Rdate)}</td>
+                      <td><button className="btn btn-warning" onClick={() => handleEdit(attr)}>Edit</button></td>
                     </tr>
                   </>
                 )
@@ -117,4 +106,4 @@ const EditMessagesTable = (props) => {
   );
 };
 
-export default EditMessagesTable;
+export default EditRelationshipTable;

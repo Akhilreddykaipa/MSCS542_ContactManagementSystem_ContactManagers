@@ -192,6 +192,50 @@ ipcMain.handle('get-departments', async (e) => {
         console.log(err);
         resolve(err)
       }
+      console.log(results);
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-departments', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Department SET DName=? WHERE ID =?',
+      [arg.DName, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      console.log(results);
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-supervisors', async (e) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Supervisor', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-supervisors', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Supervisor SET UserID=?, DepartmentID=? WHERE ID =?',
+      [arg.UserID, arg.DepartmentID, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
       resolve(results);
     });
   });
@@ -225,6 +269,27 @@ ipcMain.handle('set-users', async (e, arg) => {
         resolve(err)
       }
       resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('delete-user', (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('DELETE from users WHERE useremail =?',
+      [arg.email], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      db.con.query('DELETE from Employees WHERE email =?',
+        [arg.email], (err, results) => {
+        if (err) {
+          console.log(err);
+          resolve(err)
+        }
+        resolve(results);
+      });
     });
   });
 });
@@ -303,6 +368,199 @@ ipcMain.handle('set-messages', async (e, arg) => {
   return new Promise((resolve, reject) => {
     db.con.query('UPDATE Messages SET senderID=?, userID=?, groupID=?, Message=?, Messagedate=? WHERE ID =?',
       [arg.senderID, arg.userID, arg.groupID, arg.Message, arg.Messagedate, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-email-history', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from EmailHistory', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-email-history', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE EmailHistory SET SenderID=?, Message=?, ReceiverID=?, EmailDate=? WHERE ID =?',
+      [Number(arg.SenderID), arg.Message, Number(arg.ReceiverID), arg.EmailDate, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-group-members', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from GroupMembers', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-group-members', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE GroupMembers SET GroupID=?, UserID=?, JoinDate=? WHERE ID =?',
+      [arg.GroupID, arg.UserID, arg.JoinDate, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-group-details', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from GroupDetails', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-group-details', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE GroupDetails SET LeaderID=?, GroupName=?, CreatedDate=? WHERE ID =?',
+      [arg.LeaderID, arg.GroupName, arg.CreatedDate, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-contacts', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Relationship', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-contacts', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Relationship SET user1ID=?, user2ID=?, Rstatus=?, Rdate=? WHERE ID =?',
+      [Number(arg.user1ID), Number(arg.user2ID), arg.Rstatus, arg.Rdate, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('create-contact', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('insert into Relationship (user1ID, user2ID, Rstatus, Rdate) values(?, ?, ?, CURDATE())',
+      [arg.user1ID, arg.user2ID, arg.Rstatus], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('delete-contact', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('DELETE from Relationship WHERE user2ID =?',
+      [arg.user2ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-certified', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Certified', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-certified', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Certified SET UserID=?, CertificationID=?, CertDate=? WHERE ID =?',
+      [Number(arg.UserID), Number(arg.CertificationID), arg.CertDate, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('get-certifications', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Certification', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-certifications', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Certification SET Name=?, Type=? WHERE ID =?',
+      [arg.Name, arg.Type, Number(arg.ID)], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)

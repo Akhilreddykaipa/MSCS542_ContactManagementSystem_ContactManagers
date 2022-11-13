@@ -1,3 +1,7 @@
 #Profile {
   color: #fff;
 }
+
+#Profile .col-10 div {
+  min-height: 24px;
+}

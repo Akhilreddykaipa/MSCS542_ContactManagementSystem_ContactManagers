@@ -1,6 +1,14 @@
 import SideNav from "../Components/SideNav";
 import Login from "./Login";
 import EditEmployeeTable from "./EditEmployeeTable";
+import EditRelationshipTable from "./EditRelationshipTable";
+import EditGroupDetailsTable from "./EditGroupDetailsTable";
+import EditGroupMembersTable from "./EditGroupMembersTable";
+import EditCertificationTable from "./EditCertificationTable";
+import EditCertifiedTable from "./EditCertifiedTable";
+import EditSupervisorTable from "./EditSupervisorTable";
+import EditDepartmentTable from "./EditDepartmentTable";
+import EditEmailHistoryTable from "./EditEmailHistoryTable";
 import Test from "./Test";
 import EditUserTable from "./EditUserTable";
 import EditMessagesTable from "./EditMessagesTable";
@@ -15,6 +23,8 @@ import Contacts from "./Contacts";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import CreateAccount from "../Views/CreateAccount.js"
+import CreateContact from "../Views/CreateContact.js"
+import DeleteAccount from "../Views/DeleteAccount.js"
 import Admin from "../Views/Admin.js"
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -53,7 +63,7 @@ const Main = (props) => {
         <div id="routes" className="p-4 p-md-5 pt-5">
           <Routes>
             <Route path="/" exact element={<Contacts />} />
-            <Route path="/contacts" element={<Contacts/>}/>
+            <Route path="/contacts" index element={<Contacts/>}/>
             <Route path="/groups" element={<Groups/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/emailHistory" element={<EmailHistory/>}/>
@@ -63,10 +73,20 @@ const Main = (props) => {
             <Route path="/admin" element={<Admin admin={props.admin}/>}/>
             <Route path="/login" exact element={<Login />} />
             <Route path="/createAccount" element={<CreateAccount/>}/>
+            <Route path="/deleteAccount" element={<DeleteAccount/>}/>
             <Route path="/editEmployeeTable" element={<EditEmployeeTable/>}/>
             <Route path="/editUserTable" element={<EditUserTable/>}/>
             <Route path="/editMessagesTable" element={<EditMessagesTable/>}/>
+            <Route path="/editRelationshipTable" element={<EditRelationshipTable/>}/>
+            <Route path="/editGroupDetailsTable" element={<EditGroupDetailsTable/>}/>
+            <Route path="/editGroupMembersTable" element={<EditGroupMembersTable/>}/>
+            <Route path="/editCertificationTable" element={<EditCertificationTable/>}/>
+            <Route path="/editCertifiedTable" element={<EditCertifiedTable/>}/>
+            <Route path="/editSupervisorTable" element={<EditSupervisorTable/>}/>
+            <Route path="/editDepartmentTable" element={<EditDepartmentTable/>}/>
+            <Route path="/editEmailHistoryTable" element={<EditEmailHistoryTable/>}/>
             <Route path="/changePassword" element={<ChangePassword/>}/>
+            <Route path="/createContact" element={<CreateContact/>}/>
             <Route path="/test" element={<Test/>}/>
             <Route render={
               ()=>(<Navigate to="/login"/>)}

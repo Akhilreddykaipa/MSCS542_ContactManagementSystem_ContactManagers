@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import backImg from "../images/settings.png";
 import "../css/Settings.css";
 
 const Settings = (props) => {
@@ -11,19 +12,28 @@ const Settings = (props) => {
   return (
     <>
       <div id="settings" className="container">
-        <h2>Settings</h2>
+        <img src={backImg} className="backgroundImg"></img>
+        <h1>Settings</h1>
         <hr/>
-        <div className="row">
-          <p>Change your password</p>
-          <Link to="/changePassword">
-            <button className="btn btn-danger">Change Password</button>
-          </Link>
+        <h2 className="sectionHeader">User options:</h2>
+        <div className="container">
+          <div className="row">
+            <button className="btn btn-danger adminBtn">
+              <Link to="/changePassword">
+                <h4>Change your password</h4>
+              </Link>
+            </button>
+          </div>
         </div>
         <hr/>
-        <div className="row">
-          <p>Log out of system</p>
-          <div>
-            <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+        <h2 className="sectionHeader">System:</h2>
+        <div className="container">
+          <div className="row">
+            <div>
+              <button className="btn btn-danger adminBtn" onClick={handleLogout}>
+                <h4>Log out of system</h4>
+              </button>
+            </div>
           </div>
         </div>
         <hr/>

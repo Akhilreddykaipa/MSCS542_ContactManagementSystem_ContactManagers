@@ -15,8 +15,12 @@ const Login = (props) => {
         props.loggedIn(true);
         props.setUserEmail($("#userEmail").val());
       } else {
-        let loginError = "<p class='error'>Incorrect Email or Password</p>";
-        $("#loginForm").before(loginError);
+        // let loginError = "<p class='error'>Incorrect Email or Password</p>";
+        $("#loginForm").show();
+        // $("#loginForm").before(loginError);
+        setTimeout(() => {
+          $("#loginForm").hide();
+        },3000);
       }
     });
   }
@@ -45,6 +49,7 @@ const Login = (props) => {
           <div className="header">
             Sign in
           </div>
+          <p className='error'>Incorrect Email or Password</p>
           <form id="loginForm" onSubmit={handleSubmit}>
             <div>
               <div>

@@ -7,7 +7,8 @@
   min-width: 100px;
   max-width: 100px;
   padding: 42px 32px;
-  background:#1c1d1f;
+  /* background:#1c1d1f; */
+  background: rgba(48,48,48,50%);
   color: #fff;
   -webkit-transition: all var(--transition-time);
   -o-transition: all var(--transition-time);

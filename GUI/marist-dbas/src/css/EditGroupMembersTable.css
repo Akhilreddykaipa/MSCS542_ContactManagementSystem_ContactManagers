@@ -1,0 +1,28 @@
+#EditGroupMembersTable .resultMessages {
+  position: relative;
+  display: grid;
+  z-index: 100;
+}
+
+#EditGroupMembersTable .successMessage, #EditGroupMembersTable .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#EditGroupMembersTable .successMessage {
+  background: green;
+}
+
+#EditGroupMembersTable .errorMessage {
+  background: red;
+}
+
+#EditGroupMembersTable .successMessage.active, #EditGroupMembersTable .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.2s;
+}

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
-// import validate from 'jquery-validation';
 import "../css/EditUserTable.css";
 const utils = require('../utils/utils.js');
 
@@ -17,7 +16,6 @@ const EditUserTable = (props) => {
 
   const getUserData = () => {
     window.dbConnection.getUsers().then((result) => {
-      console.log(result);
       setUsers([...result]);
       setFirstRun(false);
     });
@@ -36,23 +34,14 @@ const EditUserTable = (props) => {
       loginkey: $("#userInsertValues .insert.loginkey input").val(),
       Employees_ID: $("#userInsertValues .insert.Employees_ID input").val()
     }).then((result) => {
-      console.log(result);
-      $("#userEditContainer .successMessage").addClass("active");
+      $("#UserTable .successMessage").addClass("active");
       getUserData();
+      $("#userEditContainer").hide();
       setTimeout(() => {
-        $("#userEditContainer .successMessage").removeClass("active");
-        $("#userEditContainer").hide();
+        $("#UserTable .successMessage").removeClass("active");
       }, 4000);
     });
   }
-
-  // const setFields = (data) => {    
-  //   for (let i = 0; i < Object.keys(data).length; i++) {
-  //     let key = Object.keys(data)[i];
-  //     $("#userEditValues .init." + key).text(data[key]);
-  //     $("#userInsertValues .insert." + key + " input").val(data[key]);
-  //   }
-  // }
 
   return (
     <>
@@ -65,6 +54,10 @@ const EditUserTable = (props) => {
         <h1>Edit Users Table</h1>
         <hr/>
         <div id="UserTable">
+          <div className="resultMessages">
+            <p className="successMessage">Successfully updated data</p>
+            <p className="errorMessage"></p>
+          </div>
           <div id="userEditContainer" className="container">
             <div>
               <div className="close">
@@ -74,10 +67,6 @@ const EditUserTable = (props) => {
               </div>
               <div className="row">
                 <h2>Update data in Users table</h2>
-                <div className="resultMessages">
-                  <p className="successMessage">Successfully updated data</p>
-                  <p className="errorMessage"></p>
-                </div>
                 <hr/>
                 <div id="originalData" className="col-6">
                   <h2>Original User Data</h2>

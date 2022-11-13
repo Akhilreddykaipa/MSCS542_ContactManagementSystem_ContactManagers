@@ -1,0 +1,28 @@
+.resultMessages {
+  position: relative;
+  display: grid;
+  z-index: 100;
+}
+
+.successMessage, .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+.successMessage {
+  background: green;
+}
+
+.errorMessage {
+  background: red;
+}
+
+.successMessage.active, .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.2s;
+}

@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
 import "../css/Messages.css";
+import backImg from "../images/messages.png";
 const utils = require('../utils/utils.js');
 
 const Messages = (props) => {
   const [messages, setMessages] = useState([]);
   const [firstRun, setFirstRun] = useState(true);
+  let groupDet;
 
   useEffect(() => {
     if (firstRun) {
@@ -14,34 +16,48 @@ const Messages = (props) => {
       });
       window.dbConnection.getEmployees().then((result) => {
         let employeeData = result;
-        window.dbConnection.getEmployeeIDs({
-          email: $("#userProfile .userName").text()
+
+        window.dbConnection.getGroupDetails().then((result) => {
+          groupDet = result;
+
         }).then((result) => {
-          $(document).ready(() => {
-            $("#messagesBody tr").each((i, el) => {
-              let sender = $(el).find(".sender");
-              let receiver = $(el).find(".receiver");
-              if (sender.text() == result[0].ID) {
-                sender.text(result[0].Fname + " " + result[0].Lname);
-                employeeData.forEach((item, i) => {
-                  for (let i = 0; i < Object.keys(item).length; i++) {
-                    let key = Object.keys(item)[i];
-                    if (item[key] === null) item[key] = "";
+          window.dbConnection.getEmployeeIDs({
+            email: $("#userProfile .userName").text()
+          }).then((result) => {
+            $(document).ready(() => {
+              $("#messagesBody tr").each((i, el) => {
+                let sender = $(el).find(".sender");
+                let receiver = $(el).find(".receiver");
+                let groupName = $(el).find(".groupName");
+                if (sender.text() == result[0].ID) {
+                  sender.text(result[0].Fname + " " + result[0].Lname);
+                  employeeData.forEach((item, i) => {
+                    for (let i = 0; i < Object.keys(item).length; i++) {
+                      let key = Object.keys(item)[i];
+                      if (item[key] === null) item[key] = "";
+                    }
+                    if (receiver.text() == item.ID) receiver.text(item.Fname + " " + item.Lname);
+                  });
+                } else if (receiver.text() == result[0].ID) {
+                  receiver.text(result[0].Fname + " " + result[0].Lname);
+                  employeeData.forEach((item, i) => {
+                    for (let i = 0; i < Object.keys(item).length; i++) {
+                      let key = Object.keys(item)[i];
+                      if (item[key] === null) item[key] = "";
+                    }
+                    if (sender.text() == item.ID) sender.text(item.Fname + " " + item.Lname);
+                  });
+                } else {
+                  $(el).remove();
+                }
+                groupDet.forEach((item, i) => {
+                  if (groupName.text() == item.ID) {
+                    groupName.text(item.GroupName);
                   }
-                  if (receiver.text() == item.ID) receiver.text(item.Fname + " " + item.Lname);
                 });
-              } else if (receiver.text() == result[0].ID) {
-                receiver.text(result[0].Fname + " " + result[0].Lname);
-                employeeData.forEach((item, i) => {
-                  for (let i = 0; i < Object.keys(item).length; i++) {
-                    let key = Object.keys(item)[i];
-                    if (item[key] === null) item[key] = "";
-                  }
-                  if (sender.text() == item.ID) sender.text(item.Fname + " " + item.Lname);
-                });
-              } else {
-                $(el).remove();
-              }
+
+                // groupName.text()
+              });
               $("#messagesBody").show();
             });
           });
@@ -54,6 +70,7 @@ const Messages = (props) => {
   return (
     <>
       <div id="contacts" className="container">
+      <img src={backImg} className="backgroundImg"></img>
         <h2>Messages</h2>
         <hr/>
         <table className="table table-dark table-hover">
@@ -73,7 +90,7 @@ const Messages = (props) => {
                   <tr>
                     <td className="sender">{item.senderID}</td>
                     <td className="receiver">{item.userID}</td>
-                    <td>{item.groupID}</td>
+                    <td className="groupName">{item.groupID}</td>
                     <td>{item.Message}</td>
                     <td>{utils.formatDate(item.Messagedate)}</td>
                   </tr>
