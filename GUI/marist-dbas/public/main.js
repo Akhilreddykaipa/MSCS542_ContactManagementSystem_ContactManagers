@@ -413,3 +413,17 @@ ipcMain.handle('create-contact', async (e, arg) => {
     });
   });
 });
+
+ipcMain.handle('delete-contact', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('DELETE from Relationship WHERE user2ID =?',
+      [arg.user2ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});

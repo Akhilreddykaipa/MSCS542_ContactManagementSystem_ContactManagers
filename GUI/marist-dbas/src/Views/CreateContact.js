@@ -22,6 +22,7 @@ const CreateContact = (props) => {
     e.preventDefault();
     console.log(employees);
     let userID = null;
+    let userToAdd = null;
 
     employees.forEach((emp, i) => {
       if (emp.email ==  $("#userProfile .userName").text()) {
@@ -32,55 +33,52 @@ const CreateContact = (props) => {
 
     window.dbConnection.getContacts().then((result) => {
       contacts = result;
-      console.log(contacts);
       let err = false;
+      userToAdd = $("#userToAdd").val();
 
-      // if (!err) {
-        if (contacts.length > 0) {
-          console.log("checking contacts");
-          contacts.forEach((item, i) => {
-            console.log(item);
-            console.log(item.user2ID, $("#userToAdd").val());
+      if (contacts.length > 0) {
+        console.log("checking contacts");
+        contacts.forEach((item, i) => {
+          if (item.user2ID == userToAdd || userToAdd == null) {
+            console.log("error!!!!!", item);
+            $("#createContact .errorMessage").addClass("active");
+            setTimeout(() => {
+              $("#createContact .errorMessage").removeClass("active");
+            }, 4000);
+            err = true;
+          }
+        });
+      } else {
+        console.log("no contacts, making one");
+        window.dbConnection.createContact({
+          user1ID: userID,
+          user2ID: userToAdd,
+          Rstatus: "active"
+        }).then((result) => {
+          console.log(result);
+        });
 
-            if (item.user2ID == $("#userToAdd").val()) {
-              console.log("error!!!!!", item);
-              $("#createContact .errorMessage").addClass("active");
-              setTimeout(() => {
-                $("#createContact .errorMessage").removeClass("active");
-              }, 4000);
-              err = true;
-            }
-          });
-        } else {
-          console.log("no contacts, making one");
-          window.dbConnection.createContact({
-            user1ID: userID,
-            user2ID: $("#userToAdd").val(),
-            Rstatus: "active"
-          }).then((result) => {
-            console.log(result);
-          });
+        $("#createContact .successMessage").addClass("active");
+        setTimeout(() => {
+          $("#createContact .successMessage").removeClass("active");
+        }, 4000);
+        err = true;
+      }
 
-          $("#createContact .successMessage").addClass("active");
-          setTimeout(() => {
-            $("#createContact .successMessage").removeClass("active");
-          }, 4000);
-        }
+      if (!err) {
+        window.dbConnection.createContact({
+          user1ID: userID,
+          user2ID: userToAdd,
+          Rstatus: "active"
+        }).then((result) => {
+          console.log(result);
+        });
 
-        if (!err) {
-          window.dbConnection.createContact({
-            user1ID: userID,
-            user2ID: $("#userToAdd").val(),
-            Rstatus: "active"
-          }).then((result) => {
-            console.log(result);
-          });
-
-          $("#createContact .successMessage").addClass("active");
-          setTimeout(() => {
-            $("#createContact .successMessage").removeClass("active");
-          }, 4000);
-        }
+        $("#createContact .successMessage").addClass("active");
+        setTimeout(() => {
+          $("#createContact .successMessage").removeClass("active");
+        }, 4000);
+      }
     });
   }
 

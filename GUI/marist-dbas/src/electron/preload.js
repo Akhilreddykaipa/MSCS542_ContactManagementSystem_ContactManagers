@@ -77,6 +77,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
   createContact: (args) => ipcRenderer.invoke('create-contact', (args)).then((result) => {
     // console.log(result);
     return result;
+  }),
+  deleteContact: (args) => ipcRenderer.invoke('delete-contact', (args)).then((result) => {
+    // console.log(result);
+    return result;
   })
 });
 
