@@ -70,12 +70,12 @@
   /* font-weight: bold; */
 }
 
-#userEditContainer .resultMessages {
+#UserTable .resultMessages {
   position: relative;
   display: grid;
 }
 
-#userEditContainer .successMessage, #userEditContainer .errorMessage {
+#UserTable .successMessage, #UserTable .errorMessage {
   opacity: 0%;
   justify-self: center;
   font-size: 24px;
@@ -85,15 +85,15 @@
   transition: opacity 0.2s;
 }
 
-#userEditContainer .successMessage {
+#UserTable .successMessage {
   background: green;
 }
 
-#userEditContainer .errorMessage {
+#UserTable .errorMessage {
   background: red;
 }
 
-#userEditContainer .successMessage.active, #userEditContainer .errorMessage.active {
+#UserTable .successMessage.active, #UserTable .errorMessage.active {
   opacity: 100%;
   transition: opacity 0.4s;
 }

@@ -31,7 +31,7 @@ const EditRelationshipTable = (props) => {
       user1ID: arg.user1ID,
       user2ID: arg.user2ID,
       Rstatus: arg.Rstatus,
-      Rdate: arg.Rdate,
+      Rdate: utils.formatDate(arg.Rdate)
     }).then((result) => {
       console.log(result);
       $(".successMessage").addClass("active");

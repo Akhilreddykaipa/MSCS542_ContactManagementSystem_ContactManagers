@@ -3,13 +3,9 @@ function newID() {
 }
 
 function formatDate(date) {
-  let newDate = new Date(date);
-  let m = newDate.getMonth();
-  let d = newDate.getDate();
-  // let y = newDate.getFullYear().toString().slice(2,4);
-  let y = newDate.getFullYear();
-  // return m + "/" + d + "/" + y;
-  return y + "-" + m + "-" + d;
+  let newIsoDate = new Date(date).toISOString();
+  newIsoDate = newIsoDate.substring(0, newIsoDate.indexOf('T'));
+  return newIsoDate;
 }
 
 function caesarEncrypt(str, shift) {

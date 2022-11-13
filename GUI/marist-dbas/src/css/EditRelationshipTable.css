@@ -1,6 +1,7 @@
 #EditRelationshipTable .resultMessages {
   position: relative;
   display: grid;
+  z-index: 100;
 }
 
 #EditRelationshipTable .successMessage, #EditRelationshipTable .errorMessage {
@@ -15,7 +16,6 @@
 
 #EditRelationshipTable .successMessage {
   background: green;
-  z-index: 100;
 }
 
 #EditRelationshipTable .errorMessage {

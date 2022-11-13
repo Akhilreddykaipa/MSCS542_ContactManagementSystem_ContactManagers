@@ -68,12 +68,13 @@
   height: 38px;
 }
 
-#messageEditContainer .resultMessages {
+#EditMessagesTable .resultMessages {
   position: relative;
   display: grid;
+  z-index: 100;
 }
 
-#messageEditContainer .successMessage, #messageEditContainer .errorMessage {
+#EditMessagesTable .successMessage, #EditMessagesTable .errorMessage {
   opacity: 0%;
   justify-self: center;
   font-size: 24px;
@@ -83,15 +84,15 @@
   transition: opacity 0.2s;
 }
 
-#messageEditContainer .successMessage {
+#EditMessagesTable .successMessage {
   background: green;
 }
 
-#messageEditContainer .errorMessage {
+#EditMessagesTable .errorMessage {
   background: red;
 }
 
-#messageEditContainer .successMessage.active, #messageEditContainer .errorMessage.active {
+#EditMessagesTable .successMessage.active, #EditMessagesTable .errorMessage.active {
   opacity: 100%;
   transition: opacity 0.4s;
 }

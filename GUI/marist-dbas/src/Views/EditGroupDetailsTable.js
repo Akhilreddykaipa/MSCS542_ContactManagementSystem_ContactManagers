@@ -13,21 +13,37 @@ const EditGroupDetailsTable = (props) => {
   const [headers, setHeaders] = useState([]);
 
   useEffect(() => {
+    getGroupDetailData();
+  }, []);
+
+  const getGroupDetailData = () => {
     window.dbConnection.getGroupDetails().then((result) => {
       console.log(result);
       setGroupDet(result);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
     });
-  }, []);
-
-  const submitEdit = (arg) => {
-
   }
 
-  const handleMessageEdit = (data) => {
+  const submitEdit = (arg) => {
+    window.dbConnection.setGroupDetails({
+      ID: arg.ID,
+      LeaderID: arg.LeaderID,
+      GroupName: arg.GroupName,
+      CreatedDate: utils.formatDate(arg.CreatedDate)
+    }).then((result) => {
+      console.log(result);
+      $(".successMessage").addClass("active");
+      getGroupDetailData();
+      setShowEdit(false);
+      setTimeout(() => {
+        $("#EditRelationshipTable .successMessage").removeClass("active");
+      }, 4000);
+    });
+  }
+
+  const handleEdit = (data) => {
     setColDat(data);
-    console.log(colDat);
     setShowEdit(true);
   }
 
@@ -40,6 +56,10 @@ const EditGroupDetailsTable = (props) => {
       </div>
       <div id="EditGroupDetailsTable" className="container">
         <h1>Edit GroupDetails Table</h1>
+        <div className="resultMessages">
+          <p className="successMessage">Successfully updated data</p>
+          <p className="errorMessage"></p>
+        </div>
         <hr/>
         <div id="GroupDetailsTable">
           <TableEditor
@@ -70,7 +90,7 @@ const EditGroupDetailsTable = (props) => {
                       <td>{attr.GroupName}</td>
                       <td>{utils.formatDate(attr.CreatedDate)}</td>
                       <td>{attr.GroupMembers_ID}</td>
-                      <td><button className="btn btn-warning" onClick={() => handleMessageEdit(attr)}>Edit</button></td>
+                      <td><button className="btn btn-warning" onClick={() => handleEdit(attr)}>Edit</button></td>
                     </tr>
                   </>
                 )

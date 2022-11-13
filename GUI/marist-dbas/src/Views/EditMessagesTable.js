@@ -34,18 +34,19 @@ const EditMessagesTable = (props) => {
 
   const submitEdit = (arg) => {
     window.dbConnection.setMessages({
-      ID: arg.ID, //$("#userInsertValues .insert.Employees_ID input").val()
-      senderID: arg.senderID, //$("#userInsertValues .insert.senderID input").val(),
-      userID: arg.userID, //$("#userInsertValues .insert.userID input").val(),
-      groupID: arg.groupID, //$("#userInsertValues .insert.groupID input").val(),
-      Message: arg.Message, //$("#userInsertValues .insert.Message input").val(),
-      Messagedate: arg.Messagedate, //$("#userInsertValues .insert.Messagedate input").val(),
+      ID: arg.ID,
+      senderID: arg.senderID,
+      userID: arg.userID,
+      groupID: arg.groupID,
+      Message: arg.Message,
+      Messagedate: utils.formatDate(arg.Messagedate),
     }).then((result) => {
-      $("#userEditContainer .successMessage").addClass("active");
       getMessageData();
+      // $("#userEditContainer").hide();
+      setShowEdit(false);
+      $(".successMessage").addClass("active");
       setTimeout(() => {
-        $("#userEditContainer .successMessage").removeClass("active");
-        $("#userEditContainer").hide();
+        $(".successMessage").removeClass("active");
       }, 4000);
     });
   }
@@ -64,6 +65,10 @@ const EditMessagesTable = (props) => {
       </div>
       <div id="EditMessagesTable" className="container">
         <h1>Edit Messages Table</h1>
+        <div className="resultMessages">
+          <p className="successMessage">Successfully updated data</p>
+          <p className="errorMessage"></p>
+        </div>
         <hr/>
         <div id="MessagesTable">
           <TableEditor

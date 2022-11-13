@@ -387,6 +387,20 @@ ipcMain.handle('get-group-details', async (e, arg) => {
   });
 });
 
+ipcMain.handle('set-group-details', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE GroupDetails SET LeaderID=?, GroupName=?, CreatedDate=? WHERE ID =?',
+      [arg.LeaderID, arg.GroupName, arg.CreatedDate, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-contacts', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {
@@ -401,12 +415,10 @@ ipcMain.handle('get-contacts', async (e, arg) => {
 });
 
 ipcMain.handle('set-contacts', async (e, arg) => {
-  let newD = new Date(arg.Rdate).toISOString();
-  newD = newD.substring(0, newD.indexOf('T'));
   e.preventDefault();
   return new Promise((resolve, reject) => {
     db.con.query('UPDATE Relationship SET user1ID=?, user2ID=?, Rstatus=?, Rdate=? WHERE ID =?',
-      [Number(arg.user1ID), Number(arg.user2ID), arg.Rstatus, newD, Number(arg.ID)], (err, results) => {
+      [Number(arg.user1ID), Number(arg.user2ID), arg.Rstatus, arg.Rdate, Number(arg.ID)], (err, results) => {
       if (err) {
         console.log(err);
         resolve(err)
