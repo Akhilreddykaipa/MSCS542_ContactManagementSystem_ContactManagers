@@ -5,6 +5,7 @@ import EditRelationshipTable from "./EditRelationshipTable";
 import EditGroupDetailsTable from "./EditGroupDetailsTable";
 import EditGroupMembersTable from "./EditGroupMembersTable";
 import EditCertificationTable from "./EditCertificationTable";
+import EditCertifiedTable from "./EditCertifiedTable";
 import Test from "./Test";
 import EditUserTable from "./EditUserTable";
 import EditMessagesTable from "./EditMessagesTable";
@@ -77,6 +78,7 @@ const Main = (props) => {
             <Route path="/editGroupDetailsTable" element={<EditGroupDetailsTable/>}/>
             <Route path="/editGroupMembersTable" element={<EditGroupMembersTable/>}/>
             <Route path="/editCertificationTable" element={<EditCertificationTable/>}/>
+            <Route path="/editCertifiedTable" element={<EditCertifiedTable/>}/>
             <Route path="/changePassword" element={<ChangePassword/>}/>
             <Route path="/createContact" element={<CreateContact/>}/>
             <Route path="/test" element={<Test/>}/>

@@ -55,7 +55,16 @@ const Admin = (props) => {
         <hr/>
         <div className="row">
           <div className="col">
-            <p>Edit data in GroupDetails Table</p>
+            <p>Edit data in Certified Table</p>
+            <button className="btn btn-primary">
+              <Link to="/editCertifiedTable">Edit Certified Table</Link>
+            </button>
+          </div>
+        </div>
+        <hr/>
+        <div className="row">
+          <div className="col">
+            <p>Edit data in Certifications Table</p>
             <button className="btn btn-primary">
               <Link to="/editCertificationTable">Edit Certification Table</Link>
             </button>

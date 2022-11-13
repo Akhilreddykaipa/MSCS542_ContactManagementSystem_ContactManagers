@@ -2,38 +2,39 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import TableEditor from "./TableEditor";
 import $ from 'jquery';
-import "../css/EditCertificationTable.css";
+import "../css/EditCertifiedTable.css";
 const utils = require('../utils/utils.js');
 
-const EditCertificationTable = (props) => {
-  const [certification, setCertification] = useState([]);
+const EditCertifiedTable = (props) => {
+  const [certified, setCertified] = useState([]);
   const [firstRun, setFirstRun] = useState(true);
   const [showEdit, setShowEdit] = useState(false);
   const [colDat, setColDat] = useState(null);
   const [headers, setHeaders] = useState([]);
 
   useEffect(() => {
-    getCertificationData();
+    getCertifiedData();
   }, []);
 
-  const getCertificationData = () => {
-    window.dbConnection.getCertifications().then((result) => {
+  const getCertifiedData = () => {
+    window.dbConnection.getCertified().then((result) => {
       console.log(result);
-      setCertification(result);
+      setCertified(result);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
     });
   }
 
   const submitEdit = (arg) => {
-    window.dbConnection.setCertifications({
+    window.dbConnection.setCertified({
       ID: arg.ID,
-      Name: arg.Name,
-      Type: arg.Type,
+      UserID: arg.UserID,
+      CertificationID: arg.CertificationID,
+      CertDate: utils.formatDate(arg.CertDate)
     }).then((result) => {
       console.log(result);
       $(".successMessage").addClass("active");
-      getCertificationData();
+      getCertifiedData();
       setShowEdit(false);
       setTimeout(() => {
         $(".successMessage").removeClass("active");
@@ -53,8 +54,8 @@ const EditCertificationTable = (props) => {
           <Link to="/admin">&lt; Back</Link>
         </button>
       </div>
-      <div id="EditCertificationTable" className="container">
-        <h1>Edit Certification Table</h1>
+      <div id="EditCertifiedTable" className="container">
+        <h1>Edit Certified Table</h1>
         <div className="resultMessages">
           <p className="successMessage">Successfully updated data</p>
           <p className="errorMessage"></p>
@@ -74,22 +75,22 @@ const EditCertificationTable = (props) => {
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Certified_ID</th>
+                <th scope="col">UserID</th>
+                <th scope="col">CertificationID</th>
+                <th scope="col">CertDate</th>
                 <th scope="col">Edit</th>
               </tr>
             </thead>
             <tbody id="certificationBody">
-              {certification.map((attr) => {
+              {certified.map((attr) => {
                 console.log(attr)
                 return (
                   <>
                     <tr id={attr.ID}>
                       <td>{attr.ID}</td>
-                      <td>{attr.Name}</td>
-                      <td>{attr.Type}</td>
-                      <td>{attr.Certified_ID}</td>
+                      <td>{attr.UserID}</td>
+                      <td>{attr.CertificationID}</td>
+                      <td>{utils.formatDate(attr.CertDate)}</td>
                       <td><button className="btn btn-warning" onClick={() => handleEdit(attr)}>Edit</button></td>
                     </tr>
                   </>
@@ -103,4 +104,4 @@ const EditCertificationTable = (props) => {
   );
 };
 
-export default EditCertificationTable;
+export default EditCertifiedTable;

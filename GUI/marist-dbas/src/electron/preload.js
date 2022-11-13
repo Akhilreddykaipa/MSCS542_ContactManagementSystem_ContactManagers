@@ -94,6 +94,14 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  getCertified: (args) => ipcRenderer.invoke('get-certified', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  setCertified: (args) => ipcRenderer.invoke('set-certified', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getCertifications: (args) => ipcRenderer.invoke('get-certifications', (args)).then((result) => {
     // console.log(result);
     return result;
