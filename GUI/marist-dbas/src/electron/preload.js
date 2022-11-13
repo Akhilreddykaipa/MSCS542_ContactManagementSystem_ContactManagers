@@ -66,6 +66,10 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
+  setGroupMembers: (args) => ipcRenderer.invoke('set-group-members', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
   getGroupDetails: (args) => ipcRenderer.invoke('get-group-details', (args)).then((result) => {
     // console.log(result);
     return result;

@@ -374,6 +374,20 @@ ipcMain.handle('get-group-members', async (e, arg) => {
   });
 });
 
+ipcMain.handle('set-group-members', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE GroupMembers SET GroupID=?, UserID=?, JoinDate=? WHERE ID =?',
+      [arg.GroupID, arg.UserID, arg.JoinDate, arg.ID], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-group-details', async (e, arg) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {

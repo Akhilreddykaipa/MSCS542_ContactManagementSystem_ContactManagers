@@ -3,6 +3,7 @@ import Login from "./Login";
 import EditEmployeeTable from "./EditEmployeeTable";
 import EditRelationshipTable from "./EditRelationshipTable";
 import EditGroupDetailsTable from "./EditGroupDetailsTable";
+import EditGroupMembersTable from "./EditGroupMembersTable";
 import Test from "./Test";
 import EditUserTable from "./EditUserTable";
 import EditMessagesTable from "./EditMessagesTable";
@@ -73,6 +74,7 @@ const Main = (props) => {
             <Route path="/editMessagesTable" element={<EditMessagesTable/>}/>
             <Route path="/editRelationshipTable" element={<EditRelationshipTable/>}/>
             <Route path="/editGroupDetailsTable" element={<EditGroupDetailsTable/>}/>
+            <Route path="/editGroupMembersTable" element={<EditGroupMembersTable/>}/>
             <Route path="/changePassword" element={<ChangePassword/>}/>
             <Route path="/createContact" element={<CreateContact/>}/>
             <Route path="/test" element={<Test/>}/>
