@@ -198,6 +198,21 @@ ipcMain.handle('get-departments', async (e) => {
   });
 });
 
+ipcMain.handle('set-departments', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Department SET DName=? WHERE ID =?',
+      [arg.DName, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      console.log(results);
+      resolve(results);
+    });
+  });
+});
+
 ipcMain.handle('get-supervisors', async (e) => {
   e.preventDefault();
   return new Promise((resolve, reject) => {

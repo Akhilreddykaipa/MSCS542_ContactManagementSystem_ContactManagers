@@ -10,11 +10,15 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
-  getDepartments: () => ipcRenderer.invoke('get-departments').then((result) => {
+  getDepartments: (args) => ipcRenderer.invoke('get-departments', (args)).then((result) => {
     // console.log(result);
     return result;
   }),
-  getSupervisors: () => ipcRenderer.invoke('get-supervisors').then((result) => {
+  setDepartments: (args) => ipcRenderer.invoke('set-departments', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  getSupervisors: (args) => ipcRenderer.invoke('get-supervisors', (args)).then((result) => {
     // console.log(result);
     return result;
   }),
@@ -22,7 +26,7 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
-  getUsers: () => ipcRenderer.invoke('get-users').then((result) => {
+  getUsers: (args) => ipcRenderer.invoke('get-users', (args)).then((result) => {
     // console.log(result);
     return result;
   }),
@@ -34,7 +38,7 @@ contextBridge.exposeInMainWorld('dbConnection', {
     // console.log(result);
     return result;
   }),
-  getEmployees: () => ipcRenderer.invoke('get-employees').then((result) => {
+  getEmployees: (args) => ipcRenderer.invoke('get-employees', (args)).then((result) => {
     // console.log(result);
     return result;
   }),
