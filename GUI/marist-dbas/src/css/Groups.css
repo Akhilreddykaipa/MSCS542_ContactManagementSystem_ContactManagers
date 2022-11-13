@@ -1,6 +1,6 @@
 .group {
   height: auto;
-  background: #333;
+  background: rgba(48,48,48,50%);
   border-radius: 4px;
   padding: 16px;
   margin-bottom: 32px;

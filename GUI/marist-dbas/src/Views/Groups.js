@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import "../css/Groups.css";
+import backImg from "../images/groups.png";
 const utils = require('../utils/utils.js');
 
 const Groups = (props) => {
@@ -73,6 +74,7 @@ const Groups = (props) => {
   return (
     <>
       <div id="contacts" className="container">
+        <img src={backImg} className="backgroundImg"></img>
         <h2>Groups</h2>
         <hr/>
         <div id="groupContainer">

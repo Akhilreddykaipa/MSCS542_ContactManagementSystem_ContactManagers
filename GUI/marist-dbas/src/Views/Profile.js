@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import "../css/Profile.css";
+import profileImg from "../images/profile.png";
 const utils = require('../utils/utils.js');
 
 const Profile = (props) => {
@@ -8,6 +9,11 @@ const Profile = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+
+    $(document).ready(() => {
+      console.log($("#root"));
+      $("#root").css({"background-image": "url(../images/profile.png)"});
+    });
     window.dbConnection.getEmployeeIDs({
       email: $("#userProfile .userName").text()
     }).then((result) => {
@@ -38,6 +44,7 @@ const Profile = (props) => {
   return (
     <>
       <div id="Profile" className="container">
+      <img src={profileImg} className="backgroundImg"></img>
         <h2>Profile</h2>
         <hr/>
         {employees.map((item, i) => {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import backImg from "../images/settings.png";
 import "../css/Settings.css";
 
 const Settings = (props) => {
@@ -11,6 +12,7 @@ const Settings = (props) => {
   return (
     <>
       <div id="settings" className="container">
+        <img src={backImg} className="backgroundImg"></img>
         <h1>Settings</h1>
         <hr/>
         <h2 className="sectionHeader">User options:</h2>

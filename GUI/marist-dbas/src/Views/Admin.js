@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import backImg from "../images/admin.jpg";
 import "../css/Admin.css";
 
 const Admin = (props) => {
   return (
     <>
       <div id="admin" className="container">
+        <img src={backImg} className="backgroundImg"></img>
         <h1>Admin</h1>
         <hr/>
         <h2 className="sectionHeader">Actions:</h2>

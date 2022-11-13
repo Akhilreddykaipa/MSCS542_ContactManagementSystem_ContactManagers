@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
+import contactImg from "../images/contact.png";
 import "../css/Contacts.css";
 
 const Contacts = (props) => {
@@ -51,6 +52,7 @@ const Contacts = (props) => {
   return (
     <>
       <div id="contacts" className="container">
+        <img src={contactImg} className="backgroundImg"></img>
         <h2>Contacts</h2>
         <hr/>
         {cont.map((el, i) => {

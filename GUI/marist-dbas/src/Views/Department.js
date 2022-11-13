@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
 import "../css/Department.css";
+import backImg from "../images/departments.jpg";
 const utils = require('../utils/utils.js');
 
 const Department = (props) => {
@@ -43,6 +44,7 @@ const Department = (props) => {
   return (
     <>
       <div id="department" className="container">
+        <img src={backImg} className="backgroundImg"></img>
         <h2>Department</h2>
         <hr/>
         <table className="table table-dark table-hover">

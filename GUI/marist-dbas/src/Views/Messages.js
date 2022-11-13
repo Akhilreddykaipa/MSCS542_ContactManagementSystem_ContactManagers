@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
 import "../css/Messages.css";
+import backImg from "../images/messages.png";
 const utils = require('../utils/utils.js');
 
 const Messages = (props) => {
@@ -69,6 +70,7 @@ const Messages = (props) => {
   return (
     <>
       <div id="contacts" className="container">
+      <img src={backImg} className="backgroundImg"></img>
         <h2>Messages</h2>
         <hr/>
         <table className="table table-dark table-hover">

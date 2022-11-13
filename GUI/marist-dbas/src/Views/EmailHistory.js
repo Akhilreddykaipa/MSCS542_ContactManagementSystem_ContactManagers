@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
 import "../css/EmailHistory.css";
+import backImg from "../images/messages.png";
 const utils = require('../utils/utils.js');
 
 const EmailHistory = (props) => {
@@ -54,6 +55,7 @@ const EmailHistory = (props) => {
   return (
     <>
       <div id="contacts" className="container">
+        <img src={backImg} className="backgroundImg"></img>
         <h2>Email History</h2>
         <hr/>
         <table className="table table-dark table-hover">
