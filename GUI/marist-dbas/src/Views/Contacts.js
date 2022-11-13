@@ -12,7 +12,6 @@ const Contacts = (props) => {
   useEffect(() => {
       window.dbConnection.getContacts().then((result) => {
         contacts = result;
-        // setCont([...result]);
         console.log(contacts);
 
         window.dbConnection.getEmployees().then((result) => {
@@ -27,8 +26,9 @@ const Contacts = (props) => {
           });
 
           contacts.forEach((cont, i) => {
+            console.log(cont);
             employees.forEach((emp, i) => {
-              if (cont.user2ID == emp.ID) {
+              if (cont.user2ID == emp.ID && cont.user1ID == empID.ID) {
                 contList.push(emp);
               }
             });
@@ -48,14 +48,10 @@ const Contacts = (props) => {
     });
 
     cont.forEach((item, i) => {
-      // if (item.ID == el) {
-        let tmp = cont;
-        tmp = tmp.filter(tmp => tmp.ID != el);
-        setCont(tmp);
-      // }
+      let tmp = cont;
+      tmp = tmp.filter(tmp => tmp.ID != el);
+      setCont(tmp);
     });
-
-    console.log(cont);
   }
 
   return (
@@ -64,7 +60,6 @@ const Contacts = (props) => {
         <h2>Contacts</h2>
         <hr/>
         {cont.map((el, i) => {
-          console.log(el)
           return (
             <>
             <div id={el.ID} className="contactWrapper row">
