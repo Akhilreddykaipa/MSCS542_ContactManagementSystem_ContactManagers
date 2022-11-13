@@ -16,19 +16,21 @@ const Settings = (props) => {
         <h2 className="sectionHeader">User options:</h2>
         <div className="container">
           <div className="row">
-            <h4>Change your password:</h4>
-            <Link to="/changePassword">
-              <button className="btn btn-danger">Change Password</button>
-            </Link>
+            <button className="btn btn-danger adminBtn">
+              <Link to="/changePassword">
+                <h4>Change your password</h4>
+              </Link>
+            </button>
           </div>
         </div>
         <hr/>
         <h2 className="sectionHeader">System:</h2>
         <div className="container">
           <div className="row">
-            <h4>Log out of system</h4>
             <div>
-              <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+              <button className="btn btn-danger adminBtn" onClick={handleLogout}>
+                <h4>Log out of system</h4>
+              </button>
             </div>
           </div>
         </div>

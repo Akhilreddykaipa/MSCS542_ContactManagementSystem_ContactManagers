@@ -8,6 +8,7 @@ import EditCertificationTable from "./EditCertificationTable";
 import EditCertifiedTable from "./EditCertifiedTable";
 import EditSupervisorTable from "./EditSupervisorTable";
 import EditDepartmentTable from "./EditDepartmentTable";
+import EditEmailHistoryTable from "./EditEmailHistoryTable";
 import Test from "./Test";
 import EditUserTable from "./EditUserTable";
 import EditMessagesTable from "./EditMessagesTable";
@@ -83,6 +84,7 @@ const Main = (props) => {
             <Route path="/editCertifiedTable" element={<EditCertifiedTable/>}/>
             <Route path="/editSupervisorTable" element={<EditSupervisorTable/>}/>
             <Route path="/editDepartmentTable" element={<EditDepartmentTable/>}/>
+            <Route path="/editEmailHistoryTable" element={<EditEmailHistoryTable/>}/>
             <Route path="/changePassword" element={<ChangePassword/>}/>
             <Route path="/createContact" element={<CreateContact/>}/>
             <Route path="/test" element={<Test/>}/>

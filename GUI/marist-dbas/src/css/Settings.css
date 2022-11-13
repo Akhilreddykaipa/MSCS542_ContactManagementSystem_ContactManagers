@@ -6,3 +6,8 @@
 .sectionHeader {
   text-decoration: underline;
 }
+
+#settings button.adminBtn {
+  width: 100%;
+  height: 64px;
+}
