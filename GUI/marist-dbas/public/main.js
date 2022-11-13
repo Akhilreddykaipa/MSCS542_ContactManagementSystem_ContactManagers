@@ -386,3 +386,30 @@ ipcMain.handle('get-group-details', async (e, arg) => {
     });
   });
 });
+
+ipcMain.handle('get-contacts', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Relationship', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('create-contact', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('insert into Relationship (user1ID, user2ID, Rstatus, Rdate) values(?, ?, ?, CURDATE())',
+      [arg.user1ID, arg.user2ID, arg.Rstatus], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});

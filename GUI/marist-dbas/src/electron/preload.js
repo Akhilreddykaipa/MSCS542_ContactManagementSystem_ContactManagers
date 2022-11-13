@@ -69,6 +69,14 @@ contextBridge.exposeInMainWorld('dbConnection', {
   getGroupDetails: (args) => ipcRenderer.invoke('get-group-details', (args)).then((result) => {
     // console.log(result);
     return result;
+  }),
+  getContacts: (args) => ipcRenderer.invoke('get-contacts', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  createContact: (args) => ipcRenderer.invoke('create-contact', (args)).then((result) => {
+    // console.log(result);
+    return result;
   })
 });
 

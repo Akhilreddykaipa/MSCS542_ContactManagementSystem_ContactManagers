@@ -1,0 +1,41 @@
+#contactWrapper {
+
+}
+
+#contacts {
+  color: #fff;
+}
+
+.contact {
+  background: #333;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+#contacts .resultMessages {
+  position: relative;
+  display: grid;
+}
+
+#contacts .successMessage, #contacts .errorMessage {
+  opacity: 0%;
+  justify-self: center;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  position: absolute;
+  transition: opacity 0.2s;
+}
+
+#contacts .successMessage {
+  background: green;
+}
+
+#contacts .errorMessage {
+  background: red;
+}
+
+#contacts .successMessage.active, #contacts .errorMessage.active {
+  opacity: 100%;
+  transition: opacity 0.4s;
+}
