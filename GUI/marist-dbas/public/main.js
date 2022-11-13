@@ -469,3 +469,31 @@ ipcMain.handle('delete-contact', async (e, arg) => {
     });
   });
 });
+
+ipcMain.handle('get-certifications', async (e, arg) => {
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('select * from Certified', [], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});
+
+ipcMain.handle('set-certifications', async (e, arg) => {
+  console.log(arg);
+  e.preventDefault();
+  return new Promise((resolve, reject) => {
+    db.con.query('UPDATE Certified SET UserID=?, CertificationID=?, CertDate=? WHERE ID =?',
+      [Number(arg.UserID), Number(arg.CertificationID), arg.CertDate, Number(arg.ID)], (err, results) => {
+      if (err) {
+        console.log(err);
+        resolve(err)
+      }
+      resolve(results);
+    });
+  });
+});

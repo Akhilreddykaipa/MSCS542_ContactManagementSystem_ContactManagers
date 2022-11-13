@@ -93,6 +93,14 @@ contextBridge.exposeInMainWorld('dbConnection', {
   deleteContact: (args) => ipcRenderer.invoke('delete-contact', (args)).then((result) => {
     // console.log(result);
     return result;
+  }),
+  getCertifications: (args) => ipcRenderer.invoke('get-certifications', (args)).then((result) => {
+    // console.log(result);
+    return result;
+  }),
+  setCertifications: (args) => ipcRenderer.invoke('set-certifications', (args)).then((result) => {
+    // console.log(result);
+    return result;
   })
 });
 

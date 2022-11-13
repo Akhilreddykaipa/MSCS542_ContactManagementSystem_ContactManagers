@@ -3,6 +3,7 @@ function newID() {
 }
 
 function formatDate(date) {
+  console.log(date);
   let newIsoDate = new Date(date).toISOString();
   newIsoDate = newIsoDate.substring(0, newIsoDate.indexOf('T'));
   return newIsoDate;
