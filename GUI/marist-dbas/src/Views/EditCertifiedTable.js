@@ -18,7 +18,6 @@ const EditCertifiedTable = (props) => {
 
   const getCertifiedData = () => {
     window.dbConnection.getCertified().then((result) => {
-      console.log(result);
       setCertified(result);
       let keys = Object.keys(result[0]);
       setHeaders([...keys]);
@@ -32,7 +31,6 @@ const EditCertifiedTable = (props) => {
       CertificationID: arg.CertificationID,
       CertDate: utils.formatDate(arg.CertDate)
     }).then((result) => {
-      console.log(result);
       $(".successMessage").addClass("active");
       getCertifiedData();
       setShowEdit(false);
@@ -50,9 +48,9 @@ const EditCertifiedTable = (props) => {
   return (
     <>
       <div className="container">
-        <button id="backButton" className="btn btn-warning">
-          <Link to="/admin">&lt; Back</Link>
-        </button>
+        <Link to="/admin">
+          <button id="backButton" className="btn btn-warning">&lt; Back</button>
+        </Link>
       </div>
       <div id="EditCertifiedTable" className="container">
         <h1>Edit Certified Table</h1>
@@ -83,7 +81,6 @@ const EditCertifiedTable = (props) => {
             </thead>
             <tbody id="certificationBody">
               {certified.map((attr) => {
-                console.log(attr)
                 return (
                   <>
                     <tr id={attr.ID}>

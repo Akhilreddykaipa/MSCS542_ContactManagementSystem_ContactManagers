@@ -46,9 +46,9 @@ const EditDepartmentTable = (props) => {
   return (
     <>
       <div className="container">
-        <button id="backButton" className="btn btn-warning">
-          <Link to="/admin">&lt; Back</Link>
-        </button>
+          <Link to="/admin">
+            <button id="backButton" className="btn btn-warning">&lt; Back</button>
+          </Link>
       </div>
       <div id="EditDepartmentTable" className="container">
         <h1>Edit Department Table</h1>

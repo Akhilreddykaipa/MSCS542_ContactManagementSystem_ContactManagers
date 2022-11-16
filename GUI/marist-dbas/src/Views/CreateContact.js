@@ -86,9 +86,9 @@ const CreateContact = (props) => {
     <>
       <div id="contacts" className="container">
         <div className="container">
-          <button id="backButton" className="btn btn-warning">
-            <Link to="/contacts">&lt; Back</Link>
-          </button>
+          <Link to="/contacts">
+            <button id="backButton" className="btn btn-warning">&lt; Back</button>
+          </Link>
         </div>
         <div id="createContact" className="container">
           <div>

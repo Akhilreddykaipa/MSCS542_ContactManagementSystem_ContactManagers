@@ -14,20 +14,20 @@ const Admin = (props) => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/createAccount">
+              <Link to="/createAccount">
+                <button className="btn btn-primary adminBtn">
                   <h4>Create new user</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-danger adminBtn">
-                <Link to="/deleteAccount">
+              <Link to="/deleteAccount">
+                <button className="btn btn-danger adminBtn">
                   <h4>Delete a user</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -36,101 +36,101 @@ const Admin = (props) => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editRelationshipTable">
+              <Link to="/editRelationshipTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Relationship Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editGroupDetailsTable">
+              <Link to="/editGroupDetailsTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit GroupDetails Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editGroupMembersTable">
+              <Link to="/editGroupMembersTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit GroupMembers Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editCertifiedTable">
+              <Link to="/editCertifiedTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Certified Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editCertificationTable">
+              <Link to="/editCertificationTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Certifications Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editSupervisorTable">
+              <Link to="/editSupervisorTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Supervisor Table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editEmployeeTable">
+              <Link to="/editEmployeeTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Employees table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editUserTable">
+              <Link to="/editUserTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Users table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editMessagesTable">
+              <Link to="/editMessagesTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Messages table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editDepartmentTable">
+              <Link to="/editDepartmentTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit Department table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="row">
             <div className="col">
-              <button className="btn btn-primary adminBtn">
-                <Link to="/editEmailHistoryTable">
+              <Link to="/editEmailHistoryTable">
+                <button className="btn btn-primary adminBtn">
                   <h4>Edit EmialHistory table</h4>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
