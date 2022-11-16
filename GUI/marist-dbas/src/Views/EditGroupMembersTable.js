@@ -48,12 +48,12 @@ const EditGroupMembersTable = (props) => {
   return (
     <>
       <div className="container">
-        <button id="backButton" className="btn btn-warning">
-          <Link to="/admin">&lt; Back</Link>
-        </button>
+        <Link to="/admin">
+          <button id="backButton" className="btn btn-warning">&lt; Back</button>
+        </Link>
       </div>
       <div id="EditGroupMembersTable" className="container">
-        <h1>Edit GroupDetails Table</h1>
+        <h1>Edit GroupMembers Table</h1>
         <div className="resultMessages">
           <p className="successMessage">Successfully updated data</p>
           <p className="errorMessage"></p>
@@ -79,7 +79,7 @@ const EditGroupMembersTable = (props) => {
                 <th scope="col">Edit</th>
               </tr>
             </thead>
-            <tbody id="groupDetailsBody">
+            <tbody id="groupMembersBody">
               {groupMem.map((attr) => {
                 return (
                   <>
