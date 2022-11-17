@@ -5,13 +5,24 @@
 
 # Launching the application
 
-### `npm install`
+### - `npm install`
 
 This should be run on first launch to install any missing node modules.
 
-### `npm run dev`
+### - `npm run dev`
 
-This launches the react application while concurrently launching the associated electron application.
+This launches the React.js application while concurrently launching the associated Electron.js application.
+
+# Alternative method to launch application
+If launching the application did not work properly, you can still launch the application by opening two terminals. In the first terminal, run the command:
+
+### - `npm run start`
+
+This will launch the React.js application which runs at localhost:3000.
+
+### - `npm run start-electron`
+
+This will launch the Electron.js application window that will load and display the React.js from localhost:3000.
 
 ## Available Scripts
 
